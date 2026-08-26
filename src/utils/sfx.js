@@ -1,4 +1,47 @@
-// High-Tech Stark HUD Web Audio API SFX Utility
+// High-Tech Stark HUD Audio & Web Speech Voice Utility
+
+// 1. Web Speech API JARVIS Voice Confirmation ("Hello Meet")
+export const speakJarvisGreeting = () => {
+  try {
+    if (!('speechSynthesis' in window)) return;
+    
+    // Stop any active speech
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance("Hello Meet. Jarvis online. Welcome to your portfolio.");
+    utterance.rate = 0.92; // Sophisticated, steady AI pace
+    utterance.pitch = 0.95; // Deeper tone
+
+    const playSpeech = () => {
+      const voices = window.speechSynthesis.getVoices();
+      // Prefer British Male or Natural English Voice (JARVIS style)
+      const jarvisVoice = voices.find(v => 
+        v.name.includes('David') || 
+        v.name.includes('Google UK English Male') || 
+        v.name.includes('British') || 
+        v.name.includes('Natural') || 
+        v.name.includes('Daniel') ||
+        (v.lang && v.lang.startsWith('en'))
+      );
+
+      if (jarvisVoice) {
+        utterance.voice = jarvisVoice;
+      }
+      window.speechSynthesis.speak(utterance);
+    };
+
+    if (window.speechSynthesis.getVoices().length > 0) {
+      playSpeech();
+    } else {
+      window.speechSynthesis.onvoiceschanged = () => {
+        playSpeech();
+        window.speechSynthesis.onvoiceschanged = null;
+      };
+    }
+  } catch (e) {
+    console.log('Speech synthesis error:', e);
+  }
+};
 
 let audioCtx = null;
 
@@ -15,60 +58,7 @@ const getAudioContext = () => {
   return audioCtx;
 };
 
-// 1. Arc Reactor Power-Up Sound Effect
-export const playPowerUpSFX = () => {
-  try {
-    const ctx = getAudioContext();
-    if (!ctx) return;
-
-    const now = ctx.currentTime;
-
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    const filter = ctx.createBiquadFilter();
-
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(140, now);
-    osc.frequency.exponentialRampToValueAtTime(850, now + 0.9);
-
-    gain.gain.setValueAtTime(0.01, now);
-    gain.gain.linearRampToValueAtTime(0.2, now + 0.4);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(300, now);
-    filter.frequency.exponentialRampToValueAtTime(2800, now + 0.9);
-
-    osc.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 1.2);
-
-    // Chime
-    const chimeOsc = ctx.createOscillator();
-    const chimeGain = ctx.createGain();
-
-    chimeOsc.type = 'sine';
-    chimeOsc.frequency.setValueAtTime(1046.5, now + 0.7); // C6
-    chimeOsc.frequency.setValueAtTime(1318.5, now + 0.85); // E6
-
-    chimeGain.gain.setValueAtTime(0.001, now + 0.7);
-    chimeGain.gain.linearRampToValueAtTime(0.18, now + 0.75);
-    chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 1.3);
-
-    chimeOsc.connect(chimeGain);
-    chimeGain.connect(ctx.destination);
-
-    chimeOsc.start(now + 0.7);
-    chimeOsc.stop(now + 1.3);
-  } catch (e) {
-    console.log('SFX error:', e);
-  }
-};
-
-// 2. High-Tech Click SFX
+// High-Tech Subtle Click SFX
 export const playClickSFX = () => {
   try {
     const ctx = getAudioContext();
@@ -79,10 +69,10 @@ export const playClickSFX = () => {
     const gain = ctx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(880, now); // A5
-    osc.frequency.exponentialRampToValueAtTime(1760, now + 0.08); // A6
+    osc.frequency.setValueAtTime(880, now);
+    osc.frequency.exponentialRampToValueAtTime(1760, now + 0.08);
 
-    gain.gain.setValueAtTime(0.15, now);
+    gain.gain.setValueAtTime(0.12, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
 
     osc.connect(gain);
@@ -95,7 +85,7 @@ export const playClickSFX = () => {
   }
 };
 
-// 3. Subtle Hover Beep SFX
+// Subtle Hover Beep SFX
 export const playHoverSFX = () => {
   try {
     const ctx = getAudioContext();
@@ -108,7 +98,7 @@ export const playHoverSFX = () => {
     osc.type = 'sine';
     osc.frequency.setValueAtTime(1200, now);
 
-    gain.gain.setValueAtTime(0.03, now);
+    gain.gain.setValueAtTime(0.02, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
 
     osc.connect(gain);

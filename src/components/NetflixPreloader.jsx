@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { playPowerUpSFX, playClickSFX } from '../utils/sfx';
+import { speakJarvisGreeting } from '../utils/sfx';
 
 const StarkPreloader = ({ onComplete }) => {
   const preloaderRef = useRef(null);
@@ -9,17 +9,17 @@ const StarkPreloader = ({ onComplete }) => {
   const [audioEngaged, setAudioEngaged] = useState(false);
 
   const handleEngageAudio = () => {
-    playPowerUpSFX();
+    speakJarvisGreeting();
     setAudioEngaged(true);
   };
 
   useEffect(() => {
-    // Attempt auto-play power up sound
-    playPowerUpSFX();
+    // Attempt auto voice greeting on mount
+    speakJarvisGreeting();
 
-    // Listen for any early user gesture to unlock AudioContext
+    // Listen for any early user gesture to trigger voice speech
     const handleGesture = () => {
-      playPowerUpSFX();
+      speakJarvisGreeting();
       window.removeEventListener('click', handleGesture);
       window.removeEventListener('touchstart', handleGesture);
       window.removeEventListener('keydown', handleGesture);
@@ -54,7 +54,7 @@ const StarkPreloader = ({ onComplete }) => {
         filter: "blur(12px)",
         duration: 0.5,
         ease: "power3.in",
-        delay: 1.2
+        delay: 1.5
       })
       .to(preloaderRef.current, {
         opacity: 0,
@@ -79,7 +79,7 @@ const StarkPreloader = ({ onComplete }) => {
         <div 
           onClick={handleEngageAudio}
           className="relative w-24 h-24 flex items-center justify-center cursor-pointer group"
-          title="Click to Test Arc Reactor SFX"
+          title="Click for JARVIS Voice Greeting"
         >
           {/* Outer Blue Arc Glow */}
           <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-2xl animate-pulse group-hover:bg-cyan-400/40"></div>
@@ -97,7 +97,7 @@ const StarkPreloader = ({ onComplete }) => {
         {/* Blue Typography */}
         <div className="space-y-2">
           <div className="text-[10px] font-mono uppercase tracking-[0.4em] text-cyan-400 font-bold">
-            // STARK INDUSTRIES &bull; JARVIS OS v8.5
+            // STARK INDUSTRIES &bull; JARVIS VOICE PROTOCOL v8.5
           </div>
           <h1 
             className="text-3xl md:text-5xl font-black uppercase tracking-[0.25em] text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.7)]"
@@ -106,16 +106,17 @@ const StarkPreloader = ({ onComplete }) => {
             MEET PAVAGADHI
           </h1>
           <div className="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-medium flex items-center justify-center gap-2">
-            <span>INITIALIZING BLUE HUD INTERFACE...</span>
+            <span>JARVIS VOICE CONFIRMATION ENGAGED...</span>
           </div>
         </div>
 
-        {/* Interactive Sound Trigger Button */}
+        {/* Interactive Voice Greeting Trigger Button */}
         <button
           onClick={handleEngageAudio}
-          className="mt-2 px-5 py-2 rounded-xl bg-blue-500/10 border border-cyan-400/40 text-cyan-400 text-xs font-mono font-bold tracking-widest hover:bg-cyan-400/20 hover:border-cyan-400 transition-all duration-300 shadow-[0_0_20px_rgba(0,240,255,0.2)] active:scale-95"
+          className="mt-2 px-5 py-2.5 rounded-xl bg-blue-500/10 border border-cyan-400/40 text-cyan-400 text-xs font-mono font-bold tracking-widest hover:bg-cyan-400/20 hover:border-cyan-400 transition-all duration-300 shadow-[0_0_20px_rgba(0,240,255,0.2)] active:scale-95 flex items-center gap-2"
         >
-          {audioEngaged ? '🔊 SFX AUDIO ENGAGED' : '🔊 CLICK TO TEST STARK SFX'}
+          <span>🤖</span>
+          <span>{audioEngaged ? 'VOICE GREETING ACTIVE' : 'CLICK FOR JARVIS VOICE CONFIRMATION'}</span>
         </button>
 
       </div>
