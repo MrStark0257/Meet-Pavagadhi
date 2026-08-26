@@ -43,48 +43,47 @@ const Expertise = () => {
     const cards = cardsRef.current.filter(Boolean);
     if (!cards.length) return;
 
-    // Set 3D perspective initial styles
+    // Set initial styles for smooth entrance
     cards.forEach((card, i) => {
       if (i > 0) {
         gsap.set(card, {
-          y: 120,
+          y: 60,
           opacity: 0,
-          scale: 0.92,
-          rotateX: 10
+          scale: 0.97,
+          rotateX: 4
         });
       }
     });
 
-    // Create ScrollTrigger pinning and 3D deck stacking timeline
+    // Create snappy, smooth ScrollTrigger stacking timeline without heavy blur
     cards.forEach((card, index) => {
       if (index < cards.length - 1) {
         const nextCard = cards[index + 1];
 
-        // Slide next card up while stacking current card into background
         gsap.timeline({
           scrollTrigger: {
             trigger: card,
-            start: "top 20%",
-            end: "bottom top",
-            scrub: 1,
+            start: "top 25%",
+            end: "top 5%",
+            scrub: 0.3,
             pin: false
           }
         })
         .to(card, {
-          scale: 0.92 - index * 0.02,
-          y: -25,
-          rotateX: -6,
-          opacity: 0.5,
-          filter: "brightness(0.6) blur(2px)",
-          ease: "power2.out"
+          scale: 0.96 - index * 0.015,
+          y: -15,
+          rotateX: -3,
+          opacity: 0.75,
+          filter: "brightness(0.85)",
+          ease: "power1.out"
         }, 0)
         .to(nextCard, {
           y: 0,
           opacity: 1,
           scale: 1,
           rotateX: 0,
-          filter: "brightness(1) blur(0px)",
-          ease: "power2.out"
+          filter: "none",
+          ease: "power1.out"
         }, 0);
       }
     });
