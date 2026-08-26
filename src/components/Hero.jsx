@@ -58,11 +58,6 @@ const Hero = () => {
     const xToRing = gsap.quickTo(cursorRingRef.current, "x", { duration: 0.15, ease: "power3.out" });
     const yToRing = gsap.quickTo(cursorRingRef.current, "y", { duration: 0.15, ease: "power3.out" });
 
-    const xTilt = gsap.quickTo(card, "rotationY", { duration: 0.4, ease: "power3.out" });
-    const yTilt = gsap.quickTo(card, "rotationX", { duration: 0.4, ease: "power3.out" });
-    const glareX = gsap.quickTo(glareRef.current, "x", { duration: 0.3, ease: "power2.out" });
-    const glareY = gsap.quickTo(glareRef.current, "y", { duration: 0.3, ease: "power2.out" });
-
     const handleMouseMove = (e) => {
       const rect = section.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -71,31 +66,14 @@ const Hero = () => {
       const dotSize = 12;
       const ringSize = 48;
 
-      // Update Spotlight position instantly via inline style
       if (spotlightRef.current) {
         spotlightRef.current.style.transform = `translate3d(${x - 300}px, ${y - 300}px, 0)`;
       }
 
-      // Update Custom Cursor coordinates
       xToDot(x - dotSize / 2);
       yToDot(y - dotSize / 2);
       xToRing(x - ringSize / 2);
       yToRing(y - ringSize / 2);
-
-      // Card 3D Perspective Calculations
-      const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2 - rect.left;
-      const cardCenterY = cardRect.top + cardRect.height / 2 - rect.top;
-
-      const rotateX = -((y - cardCenterY) / (cardRect.height / 2)) * 16;
-      const rotateY = ((x - cardCenterX) / (cardRect.width / 2)) * 16;
-
-      xTilt(rotateY);
-      yTilt(rotateX);
-
-      // Holographic Glare mapping
-      glareX((x - cardRect.left) - cardRect.width / 2);
-      glareY((y - cardRect.top) - cardRect.height / 2);
     };
 
     const handleMouseEnter = () => {
@@ -116,8 +94,6 @@ const Hero = () => {
         ease: "power2.inOut"
       });
       if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3 });
-      xTilt(0);
-      yTilt(0);
     };
 
     section.addEventListener("mousemove", handleMouseMove);
@@ -296,7 +272,16 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* 4. Custom Precision Cursor Suite */}
+      <div
+        ref={cursorDotRef}
+        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3B82F6]"
+      ></div>
 
+      <div
+        ref={cursorRingRef}
+        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-cyan-400/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
+      ></div>
 
       {/* --- STARK INDUSTRIES NAVBAR --- */}
       <header className="absolute top-0 inset-x-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
