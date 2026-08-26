@@ -187,7 +187,7 @@ const Hero = () => {
         {/* Top Stark Industries HUD Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-            <span className="px-2 py-0.5 rounded bg-blue-500/20 border border-cyan-400 text-cyan-400 font-black text-xs shadow-[0_0_10px_#00F0FF] tracking-normal">MP</span>
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
             <span className="text-cyan-400 font-bold tracking-wider">STARK INDUSTRIES // HUD v8.5</span>
             <span className="text-white/40">|</span>
             <span className="text-blue-400 font-semibold">SYSTEM ONLINE</span>
@@ -261,7 +261,7 @@ const Hero = () => {
 
           {/* Center Stage: Floating Holographic Developer Card with Arc Reactor Halo & Floating Widgets */}
           <div className="lg:col-span-4 flex justify-center perspective-[1400px] relative my-8 lg:my-0">
-            
+
             {/* Top Laser Guideline & Glowing HUD Target Node */}
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none z-20">
               <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00F0FF] animate-ping"></div>
@@ -331,15 +331,15 @@ const Hero = () => {
 
           {/* Right Side: Interactive Stark Diagnostic Terminal & Skill Matrix */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
-            <div 
+            <div
               ref={schematicsRef}
               className="relative group w-full max-w-md transition-all duration-500 hover:scale-[1.03]"
             >
               {/* Glowing Cyber Accent Ring */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-3xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
-              
+
               <div className="relative p-6 bg-[#080e1e]/95 backdrop-blur-3xl border border-blue-500/40 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.9)] group-hover:border-cyan-400 transition-colors duration-500 overflow-hidden space-y-5">
-                
+
                 {/* Top Cyan Accent Laser Stripe */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-60 transition-all duration-500"></div>
 
@@ -353,7 +353,7 @@ const Hero = () => {
                     ONLINE
                   </span>
                 </div>
-                
+
                 {/* Skill Matrix Progress Indicators */}
                 <div className="space-y-3.5 font-mono text-xs">
                   <div>

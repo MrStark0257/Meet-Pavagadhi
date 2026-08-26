@@ -8,8 +8,8 @@ const Footer = () => {
         {/* Top Section: Brand & Quick Links */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-12 border-b border-white/10">
           <div className="space-y-2">
-            <div className="text-2xl font-black text-white tracking-tighter flex items-center gap-2.5 drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">
-              <span className="px-2.5 py-0.5 rounded-lg bg-blue-500/20 border border-cyan-400 text-cyan-400 font-black text-base shadow-[0_0_15px_#00F0FF] tracking-normal">MP</span>
+            <div className="text-2xl font-black text-white tracking-tighter flex items-center gap-2 drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#00F0FF] animate-pulse"></span>
               STARK <span className="text-cyan-400">//</span> MEET
             </div>
             <p className="text-xs font-mono text-cyan-400/80 tracking-widest uppercase">
