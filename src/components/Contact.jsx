@@ -9,6 +9,7 @@ const Contact = () => {
     email: '',
     service: '3D ANIMATION & RIGGING',
     message: '',
+    website_url_hp: '',
     permission: false
   });
 
@@ -228,6 +229,18 @@ const Contact = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden Honeypot Anti-Bot Field */}
+                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                    <input 
+                      type="text" 
+                      id="website_url_hp" 
+                      name="website_url_hp" 
+                      tabIndex="-1" 
+                      autoComplete="off" 
+                      value={formData.website_url_hp} 
+                      onChange={handleChange} 
+                    />
+                  </div>
                   
                   {/* Service Selector Tabs */}
                   <div className="space-y-2">
