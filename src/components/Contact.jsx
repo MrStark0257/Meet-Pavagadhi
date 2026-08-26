@@ -341,10 +341,10 @@ const Contact = () => {
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-mono font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-mono font-bold uppercase tracking-[0.08em] sm:tracking-[0.2em] text-[11px] sm:text-xs flex items-center justify-center gap-2.5 transition-all duration-300 shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
                   >
-                    <span>{isSubmitting ? 'DISPATCHING TRANSMISSION...' : 'ENGAGE TRANSMISSION PROTOCOL'}</span>
-                    <svg className={`w-4 h-4 ${isSubmitting ? 'animate-spin' : 'animate-pulse'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="text-center leading-tight">{isSubmitting ? 'DISPATCHING TRANSMISSION...' : 'ENGAGE TRANSMISSION PROTOCOL'}</span>
+                    <svg className={`w-4 h-4 shrink-0 ${isSubmitting ? 'animate-spin' : 'animate-pulse'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       {isSubmitting ? (
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m0 14v1m8-8h-1M5 8h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
                       ) : (
