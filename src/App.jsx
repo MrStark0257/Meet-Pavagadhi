@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import NetflixPreloader from './components/NetflixPreloader';
 import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
@@ -28,6 +29,9 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
+
+      {/* Vercel Analytics */}
+      <Analytics />
     </main>
   );
 }
