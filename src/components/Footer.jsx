@@ -9,11 +9,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-12 border-b border-white/10">
           <div className="space-y-2">
             <div className="text-2xl font-black text-white tracking-tighter flex items-center gap-2 drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_10px_#3B82F6] animate-pulse"></span>
-              MEET <span className="text-cyan-400">//</span> PAVAGADHI
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#00F0FF] animate-pulse"></span>
+              STARK <span className="text-cyan-400">//</span> MEET
             </div>
             <p className="text-xs font-mono text-cyan-400/80 tracking-widest uppercase">
-              // ELECTRIC BLUE EDITION &bull; CYBER DEVELOPER SUITE
+              // STARK INDUSTRIES DEVELOPER PROTOCOL &bull; MARK LXXXV EDITION
             </p>
           </div>
 
@@ -69,7 +69,7 @@ const Footer = () => {
         {/* Bottom Copyright & Cinematic Tagline */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5 text-[11px] font-mono text-white/40 uppercase tracking-widest">
           <p>&copy; {new Date().getFullYear()} Meet Pavagadhi. All Rights Reserved.</p>
-          <p className="text-blue-400/80">CYBER SUITE OPERATIONAL &bull; BUILT WITH REACT & ELECTRIC BLUE HUD ENGINE</p>
+          <p className="text-cyan-400/80">STARK OS OPERATIONAL WORLDWIDE &bull; BUILT WITH REACT & STARK HUD ENGINE</p>
         </div>
 
       </div>

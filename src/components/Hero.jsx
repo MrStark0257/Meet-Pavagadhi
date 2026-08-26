@@ -183,7 +183,7 @@ const Hero = () => {
             <span className="text-blue-400 font-semibold">SYSTEM ONLINE</span>
           </div>
           <div className="hidden md:flex items-center gap-2 text-xs font-mono text-white/60 tracking-wider">
-            <span className="px-2.5 py-0.5 border border-blue-500/30 rounded bg-black/50 text-blue-400">BLUE CYBER PROTOCOL</span>
+            <span className="px-2.5 py-0.5 border border-blue-500/30 rounded bg-black/50 text-blue-400">MARK LXXXV PROTOCOL</span>
             <span className="px-2.5 py-0.5 border border-cyan-500/30 rounded bg-black/50 text-cyan-300">B.SC. IT SPECIALIST</span>
           </div>
         </div>
@@ -195,7 +195,7 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
 
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse">ELECTRIC BLUE EDITION</span>
+              <span className="px-2.5 py-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse">STARK PROTOCOL</span>
               <span className="text-cyan-400 text-xs font-mono tracking-widest uppercase">// 3D ANIMATOR & WEB ENGINEER</span>
             </div>
 
@@ -207,7 +207,7 @@ const Hero = () => {
             </h1>
 
             <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
-              <span className="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400">CYBER CORE</span>
+              <span className="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400">ARC REACTOR CORE</span>
               <span className="text-white/40">•</span>
               <span className="text-cyan-300">Blender & Maya</span>
               <span className="text-white/40">•</span>
@@ -265,7 +265,7 @@ const Hero = () => {
 
                 {/* Stark Tag */}
                 <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
-                  3D & WEB SPECIALIST
+                  STARK SPECIALIST
                 </div>
 
                 <img
@@ -280,7 +280,7 @@ const Hero = () => {
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
             <div className="p-5 bg-black/80 backdrop-blur-2xl border border-blue-500/30 rounded-xl shadow-[0_0_30px_rgba(59,130,246,0.2)] w-full max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold mb-2">// SCHEMATICS CORE</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold mb-2">// STARK SCHEMATICS</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
                 B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Visual Media Specialist.
               </p>
