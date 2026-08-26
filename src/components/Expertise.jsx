@@ -8,26 +8,30 @@ const expertiseData = [
   {
     number: "01",
     title: "3D Animation & Rigging",
-    text: "Creating high-quality 3D animations for films, games, and advertisements. Expert in character modeling, rigging, rendering, and asset optimization using Maya, Blender, 3ds Max, and Cinema 4D.",
-    tag: "3D & ANIMATION WORKFLOW"
+    text: "High-precision 3D character modeling, facial & biped rigging, UV unwrapping, motion keyframing, and production-ready rendering for films, commercials, and games.",
+    tag: "3D ART & ANIMATION PIPELINE",
+    deliverables: ["Character Rigging & Skinning", "Maya & Blender 3D", "UV Unwrapping & Texturing", "Keyframe Animation Cycles"]
   },
   {
     number: "02",
-    title: "Web Development",
-    text: "Designing and developing responsive websites using HTML, CSS, JavaScript, and modern frameworks like React for projects including FETC, Parikshaa, and Zclick Media.",
-    tag: "WEB ENGINEERING & REACT"
+    title: "Full-Stack Web Architecture",
+    text: "Designing and deploying responsive, high-performance web applications, interactive UI frameworks, REST API integrations, and optimized web platforms.",
+    tag: "WEB ENGINEERING & REACT",
+    deliverables: ["React.js & Modern JS", "Responsive UI Architecture", "REST API Integration", "Tailwind & Web Performance"]
   },
   {
     number: "03",
-    title: "Game Development",
-    text: "Integrating real-time 3D animation assets and interactive mechanics into Unity and Unreal Engine. Experienced in performance optimization for interactive gaming environments.",
-    tag: "GAME ENGINES & INTERACTIVE"
+    title: "Game Development & Engines",
+    text: "Integrating real-time 3D animation rigs, environment layout, physics collision, and interactive gameplay mechanics into Unity and Unreal Engine pipelines.",
+    tag: "GAME ENGINES & REAL-TIME 3D",
+    deliverables: ["Unity & Unreal Engine", "Real-Time 3D Asset Rigs", "Environment Assembly", "Low-Poly Optimization"]
   },
   {
     number: "04",
-    title: "Graphic Design & Video Editing",
-    text: "Creating compelling visual marketing assets, banners, brochures, and commercial video edits using Adobe Photoshop, Illustrator, Premiere Pro, and After Effects.",
-    tag: "VISUAL MEDIA & CREATIVE SUITE"
+    title: "Graphic Design & Post-Production",
+    text: "Producing cinematic video commercials, motion graphics, promo reels, brand identity suites, and visual marketing collateral across Adobe Creative Cloud.",
+    tag: "POST-PRODUCTION & VISUAL SUITE",
+    deliverables: ["Premiere Pro & After Effects", "Photoshop & Illustrator", "Brand Identity Systems", "Cinematic Motion Graphics"]
   }
 ];
 
@@ -41,7 +45,6 @@ const Expertise = () => {
     if (!cards.length || !container) return;
 
     let ctx = gsap.context(() => {
-      // 1. Initial State: Card 0 is positioned at top (y: 0). Cards 1, 2, 3 start pushed down below view.
       cards.forEach((card, i) => {
         if (i > 0) {
           gsap.set(card, {
@@ -60,7 +63,6 @@ const Expertise = () => {
         }
       });
 
-      // 2. Master Pinned ScrollTrigger Timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container,
@@ -72,14 +74,12 @@ const Expertise = () => {
         }
       });
 
-      // Animate each subsequent card sliding UP over the previous card
       cards.forEach((card, i) => {
         if (i === 0) return;
 
         const prevCards = cards.slice(0, i);
-        const targetY = i * 28; // Stacked header offset
+        const targetY = i * 28;
 
-        // Previous cards scale down slightly to form a stacked deck background
         tl.to(prevCards, {
           scale: (idx) => 1 - (i - idx) * 0.03,
           y: (idx) => idx * 28 - (i - idx) * 10,
@@ -88,7 +88,6 @@ const Expertise = () => {
           ease: "power2.out"
         }, (i - 1) * 1);
 
-        // Current card slides up over previous card
         tl.to(card, {
           y: targetY,
           opacity: 1,
@@ -98,7 +97,6 @@ const Expertise = () => {
         }, (i - 1) * 1);
       });
 
-      // Mouse spotlight highlight per card
       const handleMouseMove = (e, card) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -136,27 +134,27 @@ const Expertise = () => {
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
             <span className="text-cyan-400 font-bold">PROTOCOL 02</span>
             <span className="text-white/40">|</span>
-            <span className="text-blue-400 font-semibold">STARK SUITE CAPABILITIES</span>
+            <span className="text-blue-400 font-semibold">SPECIALIZATIONS & CORE SERVICES</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
-            STARK LABS <br />
+            DOMAINS OF EXPERTISE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
-              TECHNICAL PROTOCOLS.
+              & CREATIVE SERVICES.
             </span>
           </h2>
         </div>
         <p className="text-white/75 text-xs md:text-sm font-light leading-relaxed max-w-xs border-l-2 border-cyan-400/40 pl-4">
-          Specializing in 3D animation, game engine mechanics, full-stack web architecture, and digital post-production.
+          Comprehensive engineering & creative solutions — bridging 3D digital art, game engine architecture, full-stack web applications, and video post-production.
         </p>
       </div>
 
       {/* Pinned 3D Stacking Deck Workspace */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full h-[480px] md:h-[520px] my-auto flex items-center justify-center">
+      <div className="relative z-10 max-w-6xl mx-auto w-full h-[480px] md:h-[530px] my-auto flex items-center justify-center">
         {expertiseData.map((item, index) => (
           <div
             key={index}
             ref={el => cardsRef.current[index] = el}
-            className="absolute inset-x-0 mx-auto w-full p-8 md:p-12 rounded-[2.5rem] bg-[#090e1c]/95 backdrop-blur-3xl border border-blue-500/40 shadow-[0_30px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between h-[380px] md:h-[420px] overflow-hidden group hover:border-cyan-400 hover:shadow-[0_30px_90px_rgba(0,240,255,0.3)] transition-colors duration-300 will-change-transform"
+            className="absolute inset-x-0 mx-auto w-full p-8 md:p-11 rounded-[2.5rem] bg-[#090e1c]/95 backdrop-blur-3xl border border-blue-500/40 shadow-[0_30px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between h-[390px] md:h-[440px] overflow-hidden group hover:border-cyan-400 hover:shadow-[0_30px_90px_rgba(0,240,255,0.3)] transition-colors duration-300 will-change-transform"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden'
@@ -174,7 +172,7 @@ const Expertise = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent z-10 group-hover:w-80 transition-all duration-500" />
 
             {/* Card Header Top */}
-            <div className="flex items-center justify-between w-full mb-4 relative z-10">
+            <div className="flex items-center justify-between w-full mb-3 relative z-10">
               <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 px-3.5 py-1 rounded-xl bg-blue-500/10 border border-blue-500/30 group-hover:border-cyan-400 transition-colors">
                 {item.tag}
               </span>
@@ -184,16 +182,28 @@ const Expertise = () => {
             </div>
 
             {/* Card Body */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-auto relative z-10">
-              <div className="lg:col-span-5">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start my-auto relative z-10">
+              <div className="lg:col-span-5 space-y-2">
                 <h3 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors duration-300">
                   {item.title}
                 </h3>
               </div>
-              <div className="lg:col-span-7">
-                <p className="text-sm md:text-base text-white/90 font-light leading-relaxed">
+              <div className="lg:col-span-7 space-y-4">
+                <p className="text-xs md:text-sm text-white/90 font-light leading-relaxed">
                   {item.text}
                 </p>
+
+                {/* Key Deliverable Pills */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {item.deliverables.map((del, dIdx) => (
+                    <span 
+                      key={dIdx}
+                      className="text-[10px] sm:text-xs font-mono text-cyan-300 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-lg font-medium"
+                    >
+                      ✓ {del}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -205,8 +215,8 @@ const Expertise = () => {
 
       {/* Footer Ticker Indicator */}
       <div className="relative z-20 max-w-7xl mx-auto w-full flex items-center justify-between text-xs font-mono text-white/40 tracking-widest uppercase pointer-events-none pb-4">
-        <span>STARK LABS TECHNICAL CAPABILITIES</span>
-        <span>PROTOCOL SUITE 01-04</span>
+        <span>MEET PAVAGADHI SPECIALIZATION MATRIX</span>
+        <span>CORE DOMAINS 01-04</span>
       </div>
 
     </section>
