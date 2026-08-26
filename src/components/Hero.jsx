@@ -10,6 +10,7 @@ const Hero = () => {
   const cursorDotRef = useRef(null);
   const cursorRingRef = useRef(null);
   const contentRef = useRef(null);
+  const schematicsRef = useRef(null);
 
   const developerRoles = [
     '3D ANIMATOR // GAME SPECIALIST',
@@ -44,6 +45,17 @@ const Hero = () => {
         { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, duration: 1.4, ease: "back.out(1.2)" },
         "-=0.9"
       );
+
+    // Continuous Floating Bobbing Motion for STARK SCHEMATICS box
+    if (schematicsRef.current) {
+      gsap.to(schematicsRef.current, {
+        y: -10,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
 
     // --- MOUSE PHYSICS & SPOTLIGHT TRACKING ---
     gsap.set([cursorDotRef.current, cursorRingRef.current], {
@@ -255,11 +267,29 @@ const Hero = () => {
 
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
-            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-blue-500/30 rounded-xl shadow-[0_0_30px_rgba(59,130,246,0.2)] w-full max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold mb-2">// STARK SCHEMATICS</h3>
-              <p className="text-xs text-white/80 leading-relaxed font-light">
-                B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Visual Media Specialist.
-              </p>
+            <div 
+              ref={schematicsRef}
+              className="relative group w-full max-w-xs transition-all duration-500 hover:scale-[1.04]"
+            >
+              {/* Glowing Cyber Accent Ring */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur-md opacity-40 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+              
+              <div className="relative p-5 bg-[#090d16]/90 backdrop-blur-2xl border border-blue-500/40 rounded-xl shadow-[0_10px_35px_rgba(59,130,246,0.3)] group-hover:border-cyan-400 transition-colors duration-500 overflow-hidden">
+                {/* Top Cyan Accent Stripe */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-48 transition-all duration-500"></div>
+
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF] animate-ping"></span>
+                    // STARK SCHEMATICS
+                  </h3>
+                  <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">ONLINE</span>
+                </div>
+                
+                <p className="text-xs text-white/85 leading-relaxed font-light">
+                  B.Sc. IT (VNSGU) &bull; 3D Animation Specialist &bull; Web Developer &bull; Visual Media Specialist.
+                </p>
+              </div>
             </div>
           </div>
 
