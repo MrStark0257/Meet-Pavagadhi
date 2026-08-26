@@ -96,7 +96,7 @@ const Expertise = () => {
       {/* Cinematic Red Ambient Glow */}
       <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full space-y-12">
+      <div className="relative z-10 max-w-7xl mx-auto w-full space-y-12">
         
         {/* Compact Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">

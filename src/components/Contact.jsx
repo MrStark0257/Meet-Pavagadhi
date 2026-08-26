@@ -65,13 +65,13 @@ const Contact = () => {
       </motion.div>
 
       {/* Form Card Overlay */}
-      <div className="relative z-10 w-full flex justify-end items-end">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-center items-center">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-[#141414]/95 backdrop-blur-2xl border-t border-l border-white/15 w-full md:w-[90%] lg:w-[82%] p-8 md:p-16 text-white flex flex-col justify-between rounded-tl-[3rem] shadow-[0_-25px_60px_rgba(0,0,0,0.9)] relative overflow-hidden"
+          className="bg-[#141414]/95 backdrop-blur-2xl border border-white/15 w-full p-8 md:p-16 text-white flex flex-col justify-between rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,0,0,0.9)] relative overflow-hidden my-12"
         >
           {/* Subtle internal top crimson highlight glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-90"></div>

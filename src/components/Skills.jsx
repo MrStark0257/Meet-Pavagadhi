@@ -200,6 +200,16 @@ const Skills = () => {
         ))}
       </div>
 
+      {/* Section Header Badge */}
+      <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-xl">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+          <span className="text-red-500 font-bold">EPISODE 03</span>
+          <span className="text-white/40">|</span>
+          <span>TECHNICAL SKILLS</span>
+        </div>
+      </div>
+
       {/* Carousel Container */}
       <div 
         className="relative w-full h-full flex md:items-center md:justify-center z-10 md:[transform-style:preserve-3d] overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center px-[10vw] md:px-0 gap-4 md:gap-0 touch-pan-x"

@@ -245,6 +245,16 @@ const Projects = () => {
   return (
     <section id="projects" ref={containerRef} className="bg-[#0b0b0b] min-h-[100svh] md:min-h-[170vh] relative font-sans overflow-x-clip text-white w-full flex items-center justify-center py-24 md:py-40 select-none">
       
+      {/* Section Header Badge */}
+      <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-xl">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+          <span className="text-red-500 font-bold">NETFLIX ORIGINALS</span>
+          <span className="text-white/40">|</span>
+          <span>FEATURED PROJECTS</span>
+        </div>
+      </div>
+
       {/* Background Netflix Cinematic Title Watermark */}
       <div className="absolute top-10 left-0 w-full flex items-start justify-center pointer-events-none z-0">
         <h1 className="text-[14vw] sm:text-[17vw] md:text-[20vw] font-black text-white/[0.03] tracking-tighter leading-none whitespace-nowrap uppercase">

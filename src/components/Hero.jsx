@@ -133,8 +133,9 @@ const Hero = () => {
 
   return (
     <section
+      id="home"
       ref={sectionRef}
-      className="relative w-full h-screen bg-[#050505] overflow-hidden flex flex-col justify-between select-none cursor-none"
+      className="relative w-full min-h-screen bg-[#050505] text-white flex flex-col justify-between select-none overflow-hidden"
     >
       <style>{`
         @keyframes marquee {
@@ -171,7 +172,7 @@ const Hero = () => {
       ></div>
 
       {/* 3. Main Content Layer */}
-      <div ref={contentRef} className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 h-full flex flex-col justify-between pt-24 pb-12">
+      <div ref={contentRef} className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 min-h-screen flex flex-col justify-between pt-28 pb-10">
 
         {/* Top Netflix Cinematic Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
@@ -275,8 +276,8 @@ const Hero = () => {
           </div>
 
           {/* Right Side: Technical Specs & Stack */}
-          <div className="hero-anim-item lg:col-span-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
-            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl max-w-xs">
+          <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
+            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl w-full max-w-xs">
               <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Awards</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
                 Flipkart GRiD 7.0 Semi-Finalist, AlgoUniversity Tech Fellow, GitHub Foundations Certified.
@@ -305,9 +306,9 @@ const Hero = () => {
       ></div>
 
       {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
-      <header className="absolute top-0 left-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
+      <header className="absolute top-0 inset-x-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
         <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(229,9,20,0.9)]">
-          SUSHMITA<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
+          MEET<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
           <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
