@@ -56,8 +56,12 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="text-white/40 tracking-widest uppercase">
-            LOCATION: ANDHRA PRADESH, IN
+          <div className="flex flex-wrap items-center gap-6 text-white/50 tracking-widest uppercase">
+            <a href="tel:+919824999054" className="hover:text-red-500 transition-colors">+91-9824999054</a>
+            <span>//</span>
+            <a href="mailto:haneypavagadhi1234@gmail.com" className="hover:text-red-500 transition-colors">haneypavagadhi1234@gmail.com</a>
+            <span>//</span>
+            <span>LOCATION: GUJARAT, INDIA</span>
           </div>
         </div>
 

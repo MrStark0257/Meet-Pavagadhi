@@ -6,40 +6,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 const skillCategories = [
   { 
-    title: 'Frontend Engineering', 
-    desc: 'Crafting responsive and interactive user interfaces using React, JavaScript, HTML5, CSS3, and Tailwind CSS.', 
-    tag: 'UI / INTERACTION',
-    skills: ['React', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'] 
+    title: '3D Animation & Rigging', 
+    desc: 'Modeling, rigging, keyframe animation, and asset optimization for films, games, and commercial projects.', 
+    tag: '3D ART & ANIMATION',
+    skills: ['Autodesk Maya', 'Blender', '3ds Max', 'Cinema 4D', 'Rigging'] 
   },
   { 
-    title: 'Backend & Databases', 
-    desc: 'Building secure REST APIs, authentication flows, server-side applications, and high-performance database architectures.', 
-    tag: 'ARCHITECTURE',
-    skills: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'DQL'] 
+    title: 'Web Design & Coding', 
+    desc: 'Designing and building responsive, high-performance web applications with modern frontend frameworks.', 
+    tag: 'FULL-STACK WEB',
+    skills: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Angular'] 
   },
   { 
-    title: 'AI & Machine Learning', 
-    desc: 'Developing intelligent applications leveraging NLP, generative AI workflows, computer vision, and LLM systems.', 
-    tag: 'INTELLIGENCE',
-    skills: ['NLP', 'Generative AI', 'Computer Vision', 'LLMs', 'AWS AI'] 
+    title: 'Game Development', 
+    desc: 'Integrating 3D assets, environment design, and interactive gameplay mechanics into real-time game engines.', 
+    tag: 'INTERACTIVE ENGINES',
+    skills: ['Unity', 'Unreal Engine', 'Asset Optimization', 'Interactive 3D'] 
   },
   { 
-    title: 'Cloud & DevOps', 
-    desc: 'Deploying and scaling production-grade applications using Docker containers, GitHub Actions, and CI/CD pipelines.', 
-    tag: 'INFRASTRUCTURE',
-    skills: ['Docker', 'GitHub', 'CI/CD Pipelines', 'Render', 'Docker Hub'] 
+    title: 'Graphic Design', 
+    desc: 'Creating visual identity, social media graphics, promotional banners, and marketing brochures.', 
+    tag: 'BRAND & VISUALS',
+    skills: ['Photoshop', 'Illustrator', 'Design Thinking', 'Brand Assets'] 
   },
   { 
-    title: 'Algorithmic Problem Solving', 
-    desc: 'Optimizing data structures and solving complex algorithmic challenges across competitive programming platforms.', 
-    tag: 'COMPETITIVE',
-    skills: ['Data Structures', 'Algorithms', 'LeetCode', 'CodeChef', 'GFG'] 
+    title: 'Video Editing & Motion', 
+    desc: 'Editing cinematic video commercials, motion graphics, promo reels, and visual effects.', 
+    tag: 'POST-PRODUCTION',
+    skills: ['Premiere Pro', 'After Effects', 'Video Editing', 'Motion Graphics'] 
   },
   { 
-    title: 'Tools & Ecosystem', 
-    desc: 'Equipped with industry-grade instruments for version control, productivity extensions, and workflow management.', 
-    tag: 'PRODUCTIVITY',
-    skills: ['Git', 'Chrome APIs', 'Adobe Express', 'Google Cloud', 'VS Code'] 
+    title: 'Design Thinking & Wireframing', 
+    desc: 'Conceptualizing user experiences, wireframing interfaces, and translating ideas into visual products.', 
+    tag: 'UX & WIREFRAMES',
+    skills: ['Wireframing', 'Design Systems', 'UI Layouts', 'Prototyping'] 
   },
 ];
 

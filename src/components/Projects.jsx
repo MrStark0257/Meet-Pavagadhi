@@ -7,68 +7,52 @@ gsap.registerPlugin(ScrollTrigger);
 // Authentic Project Data based on your engineering portfolio
 const projectsData = [
   {
-    title: "Notice Hub",
-    category: "Full-Stack Architecture",
-    description: "Consolidates university announcements and streamlines real-time student communication with high uptime.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
+    title: "FETC Web Platform",
+    category: "Full-Stack Web Architecture",
+    description: "Designed and developed responsive web portal integrating custom APIs and user interaction flows.",
+    tags: ["React", "JavaScript", "HTML5", "CSS3"],
     match: "99%",
     episode: "S01 E01"
   },
   {
-    title: "Multi-Tenant SaaS Platform",
-    category: "Cloud & Distributed Systems",
-    description: "Containerized enterprise SaaS featuring strict database isolation and granular role-based access control.",
-    tags: ["Docker", "PostgreSQL", "Node.js", "Express"],
+    title: "Parikshaa Portal",
+    category: "Web Application",
+    description: "Interactive web application for online assessment with real-time UI response and third-party service integration.",
+    tags: ["React", "JavaScript", "REST APIs", "Tailwind"],
     match: "98%",
     episode: "S01 E02"
   },
   {
-    title: "Payment Gateway System",
-    category: "Fintech Architecture",
-    description: "Simulates complex transaction state management, webhook verification, and multi-method processing.",
-    tags: ["JavaScript", "PostgreSQL", "REST APIs", "Docker"],
-    match: "97%",
+    title: "Zclick Media Studio Suite",
+    category: "Visual Media & Branding",
+    description: "Produced comprehensive visual marketing campaigns, promotional banners, and video commercials.",
+    tags: ["Photoshop", "Illustrator", "Premiere Pro", "After Effects"],
+    match: "99%",
     episode: "S01 E03"
   },
   {
-    title: "Productivity Suite Extension",
-    category: "Client-Side Engineering",
-    description: "Custom Chrome extension built with Chrome APIs and advanced JavaScript for task automation and management.",
-    tags: ["JavaScript", "Chrome APIs", "Tailwind CSS", "HTML5"],
-    match: "99%",
+    title: "Gym Management System",
+    category: "Full-Stack Software",
+    description: "End-to-end web management software for member tracking, scheduling, and admin workflow automation.",
+    tags: ["HTML5", "CSS3", "JavaScript", "React"],
+    match: "97%",
     episode: "S01 E04"
   },
   {
-    title: "AI & ML Diagnostic Engine",
-    category: "Artificial Intelligence",
-    description: "Intelligent data processing pipeline leveraging machine learning models and NLP workflows.",
-    tags: ["Python", "Machine Learning", "NLP", "AWS"],
-    match: "96%",
+    title: "3D Character Rigging & Animation",
+    category: "3D Animation & VFX",
+    description: "Created production-ready character models, biped rigging, and keyframe animations for films & ads.",
+    tags: ["Autodesk Maya", "Blender", "3ds Max", "Cinema 4D"],
+    match: "100%",
     episode: "S01 E05"
   },
   {
-    title: "Algorithmic Problem Solver",
-    category: "Competitive Programming",
-    description: "Optimized data structure solutions across LeetCode, CodeChef, and GeeksforGeeks platforms.",
-    tags: ["Data Structures", "Algorithms", "C++", "JavaScript"],
-    match: "99%",
-    episode: "S01 E06"
-  },
-  {
-    title: "Portfolio Cinematics v2.6",
-    category: "UI/UX & Animation",
-    description: "Award-winning dark studio interactive portfolio featuring GSAP physics and responsive layouts.",
-    tags: ["React", "GSAP", "Tailwind CSS", "Framer Motion"],
-    match: "100%",
-    episode: "S01 E07"
-  },
-  {
-    title: "Cloud CI/CD Pipeline",
-    category: "DevOps & Infrastructure",
-    description: "Automated deployment workflows using GitHub Actions and containerized Docker environments.",
-    tags: ["Docker", "GitHub Actions", "CI/CD", "Render"],
+    title: "Interactive Game Asset Pipeline",
+    category: "Game Development",
+    description: "Optimized low-poly 3D game assets and integrated animation rigs into Unity & Unreal Engine projects.",
+    tags: ["Unity", "Unreal Engine", "Asset Optimization", "Rigging"],
     match: "98%",
-    episode: "S01 E08"
+    episode: "S01 E06"
   }
 ];
 

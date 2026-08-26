@@ -87,7 +87,7 @@ const About = () => {
         {/* Bento Grid Layout with Interactive Mouse Light Tracking */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-          {/* Card 1: Bio & Academic Core (Span 7) */}
+          {/* Card 1: Bio & Core Profile (Span 7) */}
           <div
             ref={addToRefs}
             className="md:col-span-7 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
@@ -105,23 +105,24 @@ const About = () => {
             </div>
 
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Cast & Background</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Cast & Profile</h3>
               <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
-                I am <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span>, a B.Tech student in Artificial Intelligence and Machine Learning.
+                Hi, I'm <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span> — a 3D Animator, Web Developer, and Game Specialist.
               </p>
               <p className="text-sm md:text-base text-white/60 font-light leading-relaxed">
-                My technical narrative bridges rigorous algorithmic problem-solving with full-stack software architecture, translating complex backend logic into seamless, high-performance interfaces.
+                With a B.Sc. in IT and mastery across Autodesk Maya, Blender, Unity, Unreal Engine, React, and Adobe Creative Suite, I turn creative concepts into high-impact digital experiences, 3D animations, and responsive web applications.
               </p>
             </div>
 
             <div className="pt-8 flex flex-wrap gap-2 relative z-10">
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">AI & ML</span>
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Full-Stack Development</span>
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">System Architecture</span>
+              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Web Design & Coding</span>
+              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">3D Rigging & Animation</span>
+              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Game Development</span>
+              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Graphic & Video Editing</span>
             </div>
           </div>
 
-          {/* Card 2: Fellowships & Achievements (Span 5) */}
+          {/* Card 2: Academic Core & Education (Span 5) */}
           <div
             ref={addToRefs}
             className="md:col-span-5 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
@@ -139,29 +140,38 @@ const About = () => {
             </div>
 
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Milestones & Accolades</h3>
-              <ul className="space-y-3.5 text-sm text-white/80 font-light">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
-                  <span>National Semi-Finalist in <strong className="text-white">Flipkart GRiD 7.0</strong> competition.</span>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Education & Training</h3>
+              <ul className="space-y-4 text-sm text-white/80 font-light">
+                <li className="flex flex-col gap-0.5">
+                  <div className="flex items-center justify-between">
+                    <strong className="text-white font-bold">B.Sc. Information & Technology</strong>
+                    <span className="text-xs font-mono text-red-400">2019 - 2022</span>
+                  </div>
+                  <span className="text-xs text-white/50">Veer Narmad South Gujarat University</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
-                  <span>Member of the elite <strong className="text-white">AlgoUniversity Tech Fellowship</strong> for advanced data structures.</span>
+                <li className="flex flex-col gap-0.5 pt-2 border-t border-white/10">
+                  <div className="flex items-center justify-between">
+                    <strong className="text-white font-bold">3D Animation Specialization</strong>
+                    <span className="text-xs font-mono text-red-400">2021 - 2022</span>
+                  </div>
+                  <span className="text-xs text-white/50">Sanju Design Factory</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
-                  <span>Certified <strong className="text-white">GitHub Foundations</strong> & <strong className="text-white">AWS Certified AI Practitioner</strong>.</span>
+                <li className="flex flex-col gap-0.5 pt-2 border-t border-white/10">
+                  <div className="flex items-center justify-between">
+                    <strong className="text-white font-bold">Game Development Program</strong>
+                    <span className="text-xs font-mono text-red-400">2020 - 2022</span>
+                  </div>
+                  <span className="text-xs text-white/50">Online Platform Certification</span>
                 </li>
               </ul>
             </div>
 
             <div className="pt-6 font-mono text-xs text-white/40 relative z-10">
-              // SEASON_01 HIGHLIGHTS
+              // ACADEMIC & TECHNICAL FOUNDATION
             </div>
           </div>
 
-          {/* Card 3: Technical Ecosystem (Span 12) */}
+          {/* Card 3: Professional Experience Summary (Span 12) */}
           <div
             ref={addToRefs}
             className="md:col-span-12 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-red-600/60 transition-all duration-500 overflow-hidden relative group"
@@ -175,12 +185,12 @@ const About = () => {
             ></div>
 
             <div className="space-y-2 text-left relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Production Tech Stack</h3>
-              <p className="text-base md:text-lg font-semibold text-white">Equipped with industry-grade instruments for robust scaling.</p>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Professional Experience</h3>
+              <p className="text-base md:text-lg font-semibold text-white">Freelance 3D Animator (2021-Present) • Web Developer (2022-Present) • Z click Media (2023-2026)</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 relative z-10">
-              {['React', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Docker', 'JavaScript'].map((tech, idx) => (
+              {['Autodesk Maya', 'Blender', 'Unity', 'Unreal Engine', 'React', 'JavaScript', 'Photoshop', 'After Effects'].map((tech, idx) => (
                 <span
                   key={idx}
                   className="px-4 py-2 rounded bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-wider text-white shadow-inner hover:bg-red-600/20 hover:border-red-600/40 hover:scale-105 transition-all"

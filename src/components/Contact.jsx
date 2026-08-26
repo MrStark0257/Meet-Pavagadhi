@@ -76,14 +76,20 @@ const Contact = () => {
           {/* Subtle internal top crimson highlight glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-90"></div>
 
-          <div className="flex items-center justify-between mb-12 md:mb-16">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-red-600/10 border border-red-600/30 text-xs font-mono uppercase tracking-widest text-red-500">
               <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
               <span>EPISODE 04 // GET IN TOUCH</span>
             </div>
-            <span className="text-xs font-mono text-white/40 tracking-wider hidden md:block">
-              // LET'S BUILD SOMETHING CINEMATIC
-            </span>
+            
+            <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-white/80">
+              <a href="tel:+919824999054" className="flex items-center gap-2 hover:text-red-500 transition-colors">
+                <span className="text-red-500">TEL:</span> +91-9824999054
+              </a>
+              <a href="mailto:haneypavagadhi1234@gmail.com" className="flex items-center gap-2 hover:text-red-500 transition-colors">
+                <span className="text-red-500">EMAIL:</span> haneypavagadhi1234@gmail.com
+              </a>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-12 md:gap-16 w-full">

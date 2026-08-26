@@ -7,30 +7,30 @@ gsap.registerPlugin(ScrollTrigger);
 const expertiseData = [
   {
     number: "01",
-    title: "Frontend Development",
-    text: "Crafting responsive, high-fidelity user interfaces with React, modern JavaScript, Tailwind CSS, and buttery smooth GSAP motion interactions.",
-    tag: "UI / UX & INTERACTION",
+    title: "3D Animation & Rigging",
+    text: "Creating high-quality 3D animations for films, games, and advertisements. Expert in character modeling, rigging, rendering, and asset optimization using Maya, Blender, 3ds Max, and Cinema 4D.",
+    tag: "3D & ANIMATION WORKFLOW",
     gradient: "from-[#1f0a0c] via-[#121212] to-[#0a0a0a]"
   },
   {
     number: "02",
-    title: "Backend Development",
-    text: "Architecting secure REST APIs, enterprise authentication pipelines, and scalable database schemas across PostgreSQL and MongoDB.",
-    tag: "API & ARCHITECTURE",
+    title: "Web Development",
+    text: "Designing and developing responsive websites using HTML, CSS, JavaScript, and modern frameworks like React. Architected projects including FETC, Parikshaa, Zclick Media, and Gym Management Systems.",
+    tag: "WEB ENGINEERING & REACT",
     gradient: "from-[#1a0809] via-[#111111] to-[#090909]"
   },
   {
     number: "03",
-    title: "AI & Machine Learning",
-    text: "Integrating production-grade LLM workflows, predictive machine learning pipelines, and computer vision systems backed by AWS AI certification.",
-    tag: "INTELLIGENCE & ML",
+    title: "Game Development",
+    text: "Integrating real-time 3D animation assets and interactive mechanics into Unity and Unreal Engine. Experienced in performance optimization for interactive gaming environments.",
+    tag: "GAME ENGINES & INTERACTIVE",
     gradient: "from-[#220a0d] via-[#131313] to-[#0a0a0a]"
   },
   {
     number: "04",
-    title: "Cloud & Deployment",
-    text: "Deploying resilient, containerized multi-tenant services using Docker, GitHub Actions CI/CD workflows, and optimized cloud hosting.",
-    tag: "DEVOPS & CLOUD",
+    title: "Graphic Design & Video Editing",
+    text: "Creating compelling visual marketing assets, banners, brochures, and commercial video edits using Adobe Photoshop, Illustrator, Premiere Pro, and After Effects.",
+    tag: "VISUAL MEDIA & CREATIVE SUITE",
     gradient: "from-[#1d090b] via-[#101010] to-[#080808]"
   }
 ];

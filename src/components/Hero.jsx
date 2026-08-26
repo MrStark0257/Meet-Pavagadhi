@@ -12,10 +12,10 @@ const Hero = () => {
   const contentRef = useRef(null);
 
   const developerRoles = [
-    'FEATURE FILM // FULL-STACK ARCHITECT',
-    'ORIGINAL SERIES // AI & ML SPECIALIST',
-    'BLOCKBUSTER // DISTRIBUTED SYSTEMS',
-    'ACCLAIMED // ALGORITHMIC PROBLEM SOLVER'
+    '3D ANIMATOR // GAME SPECIALIST',
+    'WEB DEVELOPER // REACT ARCHITECT',
+    'GRAPHIC DESIGNER // VIDEO EDITOR',
+    'B.SC. IT // DIGITAL CREATIVE'
   ];
 
   useEffect(() => {
@@ -183,8 +183,8 @@ const Hero = () => {
             <span className="text-white/80">SEASONS 2024 - 2026</span>
           </div>
           <div className="hidden md:flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider">
-            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">FULL-STACK 4K</span>
-            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">AI / ML CERTIFIED</span>
+            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">3D & WEB DEV</span>
+            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">B.SC. IT GRADUATE</span>
           </div>
         </div>
 
@@ -195,27 +195,29 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
 
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">TOP 1%</span>
-              <span className="text-white/80 text-xs font-mono tracking-widest uppercase">Software Engineer & Problem Solver</span>
+              <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">CREATIVE & TECH</span>
+              <span className="text-white/80 text-xs font-mono tracking-widest uppercase">3D Animator & Web Developer</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               MEET <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_35px_rgba(220,38,38,0.5)]">
-                DEV.ENGINE
+                PAVAGADHI
               </span>
             </h1>
 
-            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono text-red-400 font-bold">
-              <span className="px-2 py-0.5 bg-red-500/10 border border-red-500/30 rounded text-red-500">99.9% Uptime</span>
+            <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs font-mono text-red-400 font-bold">
+              <span className="px-2 py-0.5 bg-red-500/10 border border-red-500/30 rounded text-red-500">3D & Web</span>
               <span className="text-white/40">•</span>
-              <span>React • Node.js • PostgreSQL</span>
+              <span>Blender & Maya</span>
               <span className="text-white/40">•</span>
-              <span className="text-white/70">Docker & Cloud</span>
+              <span>React & JS</span>
+              <span className="text-white/40">•</span>
+              <span className="text-white/70">Adobe Suite</span>
             </div>
 
             <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md drop-shadow">
-              Architecting robust full-stack systems, building scalable multi-tenant SaaS platforms, and engineering cutting-edge AI integrations.
+              Specializing in 3D animation, game development, responsive web design, and graphic/video post-production. Turning creative vision into high-performance digital products.
             </p>
 
             {/* Action Button Set */}
@@ -278,9 +280,9 @@ const Hero = () => {
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
             <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl w-full max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Awards</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Profile</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
-                Flipkart GRiD 7.0 Semi-Finalist, AlgoUniversity Tech Fellow, GitHub Foundations Certified.
+                B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Graphic & Video Editor (Z click Media).
               </p>
             </div>
           </div>
