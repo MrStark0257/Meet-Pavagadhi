@@ -43,20 +43,20 @@ const StarkPreloader = ({ onComplete }) => {
     tl.set(preloaderRef.current, { autoAlpha: 1 })
       .fromTo(
         contentRef.current,
-        { scale: 0.85, opacity: 0, filter: "blur(12px)" },
-        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "power4.out" }
+        { scale: 0.9, opacity: 0, filter: "blur(8px)" },
+        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }
       )
       .to(contentRef.current, {
-        scale: 1.1,
+        scale: 1.05,
         opacity: 0,
-        filter: "blur(12px)",
-        duration: 0.5,
-        ease: "power3.in",
-        delay: 1.2
+        filter: "blur(8px)",
+        duration: 0.3,
+        ease: "power2.in",
+        delay: 0.3
       })
       .to(preloaderRef.current, {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: "power2.inOut"
       });
 

@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import NetflixPreloader from './components/NetflixPreloader';
 import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
-import About from './components/About';
-import Expertise from './components/Expertise';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Lazy load below-the-fold components for ultra-fast initial bundle load
+const About = lazy(() => import('./components/About'));
+const Expertise = lazy(() => import('./components/Expertise'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,14 +24,18 @@ function App() {
       {/* Global Mouse Hover Effects & Spotlight across ALL sections */}
       <CustomCursor />
 
-      {/* Portfolio Sections */}
+      {/* Hero Section (Eager Load for Instant FCP) */}
       <Hero />
-      <About />
-      <Expertise />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+
+      {/* Below-the-fold Sections (Lazy Loaded with Suspense) */}
+      <Suspense fallback={<div className="min-h-[200px] bg-[#050505]" />}>
+        <About />
+        <Expertise />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </Suspense>
 
       {/* Vercel Analytics & Speed Insights */}
       <Analytics />

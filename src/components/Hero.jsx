@@ -313,6 +313,9 @@ const Hero = () => {
                 <img
                   src={pictureImg}
                   alt="Meet Pavagadhi - Developer Portrait"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
                   className="w-full h-[350px] md:h-[410px] object-cover object-top rounded-[1.8rem] group-hover:scale-[1.02] transition-transform duration-500 relative z-10 filter contrast-105"
                 />
 
