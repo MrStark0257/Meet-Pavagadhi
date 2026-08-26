@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { speakJarvisGreeting } from '../utils/sfx';
 
@@ -6,28 +6,10 @@ const StarkPreloader = ({ onComplete }) => {
   const preloaderRef = useRef(null);
   const contentRef = useRef(null);
   const reactorRef = useRef(null);
-  const [audioEngaged, setAudioEngaged] = useState(false);
-
-  const handleEngageAudio = () => {
-    speakJarvisGreeting();
-    setAudioEngaged(true);
-  };
 
   useEffect(() => {
-    // Attempt auto voice greeting on mount
+    // Auto-trigger deep JARVIS voice greeting on page load / reload
     speakJarvisGreeting();
-
-    // Listen for any early user gesture to trigger voice speech
-    const handleGesture = () => {
-      speakJarvisGreeting();
-      window.removeEventListener('click', handleGesture);
-      window.removeEventListener('touchstart', handleGesture);
-      window.removeEventListener('keydown', handleGesture);
-    };
-
-    window.addEventListener('click', handleGesture);
-    window.addEventListener('touchstart', handleGesture);
-    window.addEventListener('keydown', handleGesture);
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -54,7 +36,7 @@ const StarkPreloader = ({ onComplete }) => {
         filter: "blur(12px)",
         duration: 0.5,
         ease: "power3.in",
-        delay: 1.5
+        delay: 1.6
       })
       .to(preloaderRef.current, {
         opacity: 0,
@@ -62,11 +44,6 @@ const StarkPreloader = ({ onComplete }) => {
         ease: "power2.inOut"
       });
 
-    return () => {
-      window.removeEventListener('click', handleGesture);
-      window.removeEventListener('touchstart', handleGesture);
-      window.removeEventListener('keydown', handleGesture);
-    };
   }, [onComplete]);
 
   return (
@@ -77,9 +54,9 @@ const StarkPreloader = ({ onComplete }) => {
       <div ref={contentRef} className="flex flex-col items-center gap-6 text-center px-4">
         {/* Core Arc Reactor Icon */}
         <div 
-          onClick={handleEngageAudio}
+          onClick={speakJarvisGreeting}
           className="relative w-24 h-24 flex items-center justify-center cursor-pointer group"
-          title="Click for JARVIS Voice Greeting"
+          title="Click to replay JARVIS Voice Greeting"
         >
           {/* Outer Blue Arc Glow */}
           <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-2xl animate-pulse group-hover:bg-cyan-400/40"></div>
@@ -109,15 +86,6 @@ const StarkPreloader = ({ onComplete }) => {
             <span>JARVIS VOICE CONFIRMATION ENGAGED...</span>
           </div>
         </div>
-
-        {/* Interactive Voice Greeting Trigger Button */}
-        <button
-          onClick={handleEngageAudio}
-          className="mt-2 px-5 py-2.5 rounded-xl bg-blue-500/10 border border-cyan-400/40 text-cyan-400 text-xs font-mono font-bold tracking-widest hover:bg-cyan-400/20 hover:border-cyan-400 transition-all duration-300 shadow-[0_0_20px_rgba(0,240,255,0.2)] active:scale-95 flex items-center gap-2"
-        >
-          <span>🤖</span>
-          <span>{audioEngaged ? 'VOICE GREETING ACTIVE' : 'CLICK FOR JARVIS VOICE CONFIRMATION'}</span>
-        </button>
 
       </div>
     </div>

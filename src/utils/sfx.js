@@ -1,28 +1,31 @@
 // High-Tech Stark HUD Audio & Web Speech Voice Utility
 
-// 1. Web Speech API JARVIS Voice Confirmation ("Hello Meet")
+// 1. Web Speech API JARVIS Deep AI Voice Confirmation ("Hello Meet")
 export const speakJarvisGreeting = () => {
   try {
     if (!('speechSynthesis' in window)) return;
     
-    // Stop any active speech
+    // Reset previous audio speech queue
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance("Hello Meet. Jarvis online. Welcome to your portfolio.");
-    utterance.rate = 0.92; // Sophisticated, steady AI pace
-    utterance.pitch = 0.95; // Deeper tone
+    utterance.rate = 0.88; // Sophisticated, steady AI pace
+    utterance.pitch = 0.82; // Deep baritone JARVIS tone
+    utterance.volume = 1.0;
 
     const playSpeech = () => {
       const voices = window.speechSynthesis.getVoices();
-      // Prefer British Male or Natural English Voice (JARVIS style)
-      const jarvisVoice = voices.find(v => 
-        v.name.includes('David') || 
-        v.name.includes('Google UK English Male') || 
-        v.name.includes('British') || 
-        v.name.includes('Natural') || 
-        v.name.includes('Daniel') ||
-        (v.lang && v.lang.startsWith('en'))
-      );
+      
+      // Search for deep British / UK Male / Natural voices
+      const jarvisVoice = 
+        voices.find(v => v.name.includes('David')) ||
+        voices.find(v => v.name.includes('George')) ||
+        voices.find(v => v.name.includes('UK English Male')) ||
+        voices.find(v => v.name.includes('British')) ||
+        voices.find(v => v.name.includes('Google UK English Male')) ||
+        voices.find(v => v.name.includes('Natural')) ||
+        voices.find(v => v.lang === 'en-GB') ||
+        voices.find(v => v.lang && v.lang.startsWith('en'));
 
       if (jarvisVoice) {
         utterance.voice = jarvisVoice;
