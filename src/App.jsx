@@ -17,12 +17,14 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <main className="bg-[#050505] min-h-screen text-white relative cursor-none selection:bg-red-600 selection:text-white">
+    <main className="bg-[#050505] min-h-screen text-white relative md:cursor-none selection:bg-blue-600 selection:text-white">
       {/* Cinematic Preloader */}
       {loading && <NetflixPreloader onComplete={() => setLoading(false)} />}
 
-      {/* Global Mouse Hover Effects & Spotlight across ALL sections */}
-      <CustomCursor />
+      {/* Global Mouse Hover Effects & Spotlight across ALL sections (Desktop only) */}
+      <div className="hidden md:block">
+        <CustomCursor />
+      </div>
 
       {/* Hero Section (Eager Load for Instant FCP) */}
       <Hero />
