@@ -48,8 +48,8 @@ const Contact = () => {
   return (
     <section ref={ref} id="contact" className="bg-[#0b0b0b] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 border-t border-white/10 select-none">
       
-      {/* Background Cinematic Red Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
       {/* Huge Background Parallax Stark Watermark Text */}
       <motion.div 
@@ -83,11 +83,11 @@ const Contact = () => {
             </div>
             
             <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-white/80">
-              <a href="tel:+919824999054" className="flex items-center gap-2 hover:text-red-500 transition-colors">
-                <span className="text-red-500">TEL:</span> +91-9824999054
+              <a href="tel:+919824999054" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                <span className="text-cyan-400 font-bold">TEL:</span> +91-9824999054
               </a>
-              <a href="mailto:haneypavagadhi1234@gmail.com" className="flex items-center gap-2 hover:text-red-500 transition-colors">
-                <span className="text-red-500">EMAIL:</span> haneypavagadhi1234@gmail.com
+              <a href="mailto:haneypavagadhi1234@gmail.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                <span className="text-cyan-400 font-bold">EMAIL:</span> haneypavagadhi1234@gmail.com
               </a>
             </div>
           </div>
@@ -105,7 +105,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="First Name" 
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-blue-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
@@ -116,7 +116,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Last Name" 
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-blue-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
@@ -127,7 +127,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Email Address" 
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-blue-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
               </div>
@@ -141,7 +141,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Type your message here..." 
                     required
-                    className="w-full h-full min-h-[140px] bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium resize-none rounded-none text-white"
+                    className="w-full h-full min-h-[140px] bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-blue-500 transition-colors placeholder-white/40 font-medium resize-none rounded-none text-white"
                   ></textarea>
                 </div>
               </div>
@@ -156,8 +156,8 @@ const Contact = () => {
                   id="permission" 
                   checked={formData.permission}
                   onChange={handleChange}
-                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-red-600 focus:ring-0 focus:ring-offset-0 cursor-pointer" 
-                  style={{ accentColor: "#E50914" }}
+                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-blue-500 focus:ring-0 focus:ring-offset-0 cursor-pointer" 
+                  style={{ accentColor: "#3B82F6" }}
                 />
                 <label htmlFor="permission" className="cursor-pointer max-w-[280px] leading-snug">
                   I give permission to contact me at this email address.
@@ -176,7 +176,7 @@ const Contact = () => {
                   
                   <button 
                     type="submit" 
-                    className="px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-red-700 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105"
+                    className="px-8 py-3.5 rounded bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all duration-300 group whitespace-nowrap shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:scale-105"
                   >
                     Send Message
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

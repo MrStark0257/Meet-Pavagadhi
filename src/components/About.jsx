@@ -62,23 +62,23 @@ const About = () => {
       ref={sectionRef}
       className="relative w-full min-h-screen bg-[#050505] text-white py-32 px-6 md:px-12 flex flex-col justify-center select-none overflow-hidden"
     >
-      {/* Background Cinematic Red Ambient Glows */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[160px] pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px] pointer-events-none"></div>
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[160px] pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full space-y-16">
 
         {/* Section Header */}
         <div className="flex flex-col items-start space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
             <span className="text-cyan-400 font-bold">PROTOCOL 01</span>
             <span className="text-white/40">|</span>
-            <span className="text-amber-400 font-semibold">STARK SYSTEM DIAGNOSTIC</span>
+            <span className="text-blue-400 font-semibold">STARK SYSTEM DIAGNOSTIC</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
             CORE ARCHITECTURE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-400 to-red-600 drop-shadow-[0_0_30px_rgba(0,240,255,0.4)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
               ORIGIN & SCHEMATICS.
             </span>
           </h2>
@@ -90,13 +90,13 @@ const About = () => {
           {/* Card 1: Bio & Core Profile (Span 7) */}
           <div
             ref={addToRefs}
-            className="md:col-span-7 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
+            className="md:col-span-7 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-blue-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.15), transparent 70%)'
               }}
             ></div>
 
@@ -105,7 +105,7 @@ const About = () => {
             </div>
 
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Cast & Profile</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">Cast & Profile</h3>
               <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
                 Hi, I'm <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span> — a 3D Animator, Web Developer, and Game Specialist.
               </p>
@@ -125,13 +125,13 @@ const About = () => {
           {/* Card 2: Academic Core & Education (Span 5) */}
           <div
             ref={addToRefs}
-            className="md:col-span-5 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
+            className="md:col-span-5 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-blue-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.15), transparent 70%)'
               }}
             ></div>
 
@@ -140,26 +140,26 @@ const About = () => {
             </div>
 
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Education & Training</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">Education & Training</h3>
               <ul className="space-y-4 text-sm text-white/80 font-light">
                 <li className="flex flex-col gap-0.5">
                   <div className="flex items-center justify-between">
                     <strong className="text-white font-bold">B.Sc. Information & Technology</strong>
-                    <span className="text-xs font-mono text-red-400">2019 - 2022</span>
+                    <span className="text-xs font-mono text-blue-400">2019 - 2022</span>
                   </div>
                   <span className="text-xs text-white/50">Veer Narmad South Gujarat University</span>
                 </li>
                 <li className="flex flex-col gap-0.5 pt-2 border-t border-white/10">
                   <div className="flex items-center justify-between">
                     <strong className="text-white font-bold">3D Animation Specialization</strong>
-                    <span className="text-xs font-mono text-red-400">2021 - 2022</span>
+                    <span className="text-xs font-mono text-blue-400">2021 - 2022</span>
                   </div>
                   <span className="text-xs text-white/50">Sanju Design Factory</span>
                 </li>
                 <li className="flex flex-col gap-0.5 pt-2 border-t border-white/10">
                   <div className="flex items-center justify-between">
                     <strong className="text-white font-bold">Game Development Program</strong>
-                    <span className="text-xs font-mono text-red-400">2020 - 2022</span>
+                    <span className="text-xs font-mono text-blue-400">2020 - 2022</span>
                   </div>
                   <span className="text-xs text-white/50">Online Platform Certification</span>
                 </li>
@@ -174,18 +174,18 @@ const About = () => {
           {/* Card 3: Professional Experience Summary (Span 12) */}
           <div
             ref={addToRefs}
-            className="md:col-span-12 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-red-600/60 transition-all duration-500 overflow-hidden relative group"
+            className="md:col-span-12 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-blue-500/60 transition-all duration-500 overflow-hidden relative group"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.15), transparent 70%)'
               }}
             ></div>
 
             <div className="space-y-2 text-left relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Professional Experience</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">Professional Experience</h3>
               <p className="text-base md:text-lg font-semibold text-white">Freelance 3D Animator (2021-Present) • Web Developer (2022-Present) • Z click Media (2023-2026)</p>
             </div>
 

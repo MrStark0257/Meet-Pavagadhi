@@ -93,23 +93,23 @@ const Expertise = () => {
       ref={containerRef}
       className="relative w-full bg-[#050505] text-white py-20 px-6 md:px-12 select-none overflow-hidden"
     >
-      {/* Cinematic Red Ambient Glow */}
-      <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+      {/* Ambient Blue Glow */}
+      <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full space-y-12">
         
         {/* Compact Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
               <span className="text-cyan-400 font-bold">PROTOCOL 02</span>
               <span className="text-white/40">|</span>
-              <span className="text-amber-400 font-semibold">STARK SUITE CAPABILITIES</span>
+              <span className="text-blue-400 font-semibold">STARK SUITE CAPABILITIES</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
               STARK LABS <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-400 to-red-600 drop-shadow-[0_0_25px_rgba(0,240,255,0.35)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
                 TECHNICAL PROTOCOLS.
               </span>
             </h2>
@@ -132,19 +132,20 @@ const Expertise = () => {
               }}
             >
               {/* Dynamic Mouse Spotlight Highlight */}
+              {/* Card Container */}
               <div 
                 className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
                 style={{
-                  background: 'radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.18), transparent 70%)'
+                  background: 'radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.18), transparent 70%)'
                 }}
               ></div>
 
-              {/* Crimson Accent Stripe */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent z-10"></div>
+              {/* Blue Accent Stripe */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent z-10"></div>
 
               {/* Card Header Top */}
               <div className="flex items-center justify-between w-full mb-4 relative z-10">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-red-500 px-2.5 py-0.5 rounded bg-red-600/10 border border-red-600/25">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-400 px-2.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/25">
                   {item.tag}
                 </span>
                 <span className="text-2xl md:text-3xl font-mono font-black text-white/20">
@@ -155,7 +156,7 @@ const Expertise = () => {
               {/* Card Body */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center my-auto relative z-10">
                 <div className="lg:col-span-5">
-                  <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-snug group-hover:text-red-500 transition-colors duration-300">
+                  <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors duration-300">
                     {item.title}
                   </h3>
                 </div>
@@ -166,8 +167,8 @@ const Expertise = () => {
                 </div>
               </div>
 
-              {/* Subtle Red Corner Dot */}
-              <div className="absolute bottom-4 right-4 w-1.5 h-1.5 rounded-full bg-red-600 group-hover:shadow-[0_0_10px_#E50914] z-10 transition-all"></div>
+              {/* Subtle Blue Corner Dot */}
+              <div className="absolute bottom-4 right-4 w-1.5 h-1.5 rounded-full bg-blue-400 group-hover:shadow-[0_0_10px_#3B82F6] z-10 transition-all"></div>
             </div>
           ))}
         </div>

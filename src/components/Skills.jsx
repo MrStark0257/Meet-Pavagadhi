@@ -202,11 +202,11 @@ const Skills = () => {
 
       {/* Section Header Badge */}
       <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
           <span className="text-cyan-400 font-bold">PROTOCOL 03</span>
           <span className="text-white/40">|</span>
-          <span className="text-amber-400 font-semibold">TECH MATRIX & SCHEMATICS</span>
+          <span className="text-blue-400 font-semibold">TECH MATRIX & SCHEMATICS</span>
         </div>
       </div>
 
@@ -219,14 +219,14 @@ const Skills = () => {
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#141414]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-red-600/80 transition-colors duration-500"
+            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#090d16]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-blue-500/80 transition-colors duration-500"
           >
-            {/* Inner Red Glossy Reflection */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+            {/* Inner Blue Glossy Reflection */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
             
             {/* Top Card Metadata */}
             <div className="flex items-center justify-between relative z-10">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-red-500 bg-red-600/10 px-3 py-1 rounded border border-red-600/20">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-blue-400 bg-blue-500/10 px-3 py-1 rounded border border-blue-500/20">
                 {category.tag}
               </span>
               <span className="text-xs font-mono text-white/40">
@@ -236,7 +236,7 @@ const Skills = () => {
 
             {/* Middle Title & Description */}
             <div className="space-y-4 relative z-10 my-auto">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-red-500 transition-colors duration-300">
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors duration-300">
                 {category.title}
               </h3>
               <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
@@ -249,7 +249,7 @@ const Skills = () => {
               {category.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-red-600/30 transition-colors"
+                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-blue-500/40 transition-colors"
                 >
                   {skill}
                 </span>
@@ -257,7 +257,7 @@ const Skills = () => {
             </div>
 
             {/* Bottom Glow Accent */}
-            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-red-600 group-hover:shadow-[0_0_15px_#E50914] transition-all" />
+            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-blue-500 group-hover:shadow-[0_0_15px_#3B82F6] transition-all" />
           </div>
         ))}
       </div>

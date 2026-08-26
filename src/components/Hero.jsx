@@ -150,11 +150,11 @@ const Hero = () => {
       `}</style>
 
       {/* 1. Cinematic Background Gradient & Marquee */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/90 to-[#050505] z-0">
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#050b14] to-[#030712] z-0">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-10">
           <div className="flex whitespace-nowrap animate-marquee">
             {[...developerRoles, ...developerRoles].map((role, idx) => (
-              <span key={idx} className="text-[14vw] font-black text-red-600 mx-8 uppercase tracking-tighter">
+              <span key={idx} className="text-[14vw] font-black text-blue-500 mx-8 uppercase tracking-tighter">
                 {role} &bull;
               </span>
             ))}
@@ -167,7 +167,7 @@ const Hero = () => {
         ref={spotlightRef}
         className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-0 blur-[90px] transition-opacity duration-300"
         style={{
-          background: 'radial-gradient(circle, rgba(229,9,20,0.35) 0%, rgba(229,9,20,0.1) 40%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(6,182,212,0.1) 40%, transparent 70%)'
         }}
       ></div>
 
@@ -176,15 +176,15 @@ const Hero = () => {
 
         {/* Top Stark Industries HUD Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.25)]">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.25)]">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
             <span className="text-cyan-400 font-bold tracking-wider">STARK INDUSTRIES // HUD v8.5</span>
             <span className="text-white/40">|</span>
-            <span className="text-amber-400 font-semibold">JARVIS OS ONLINE</span>
+            <span className="text-blue-400 font-semibold">SYSTEM ONLINE</span>
           </div>
           <div className="hidden md:flex items-center gap-2 text-xs font-mono text-white/60 tracking-wider">
-            <span className="px-2.5 py-0.5 border border-cyan-500/30 rounded bg-black/50 text-cyan-300">MARK LXXXV PROTOCOL</span>
-            <span className="px-2.5 py-0.5 border border-amber-500/30 rounded bg-black/50 text-amber-300">B.SC. IT SPECIALIST</span>
+            <span className="px-2.5 py-0.5 border border-blue-500/30 rounded bg-black/50 text-blue-400">BLUE CYBER PROTOCOL</span>
+            <span className="px-2.5 py-0.5 border border-cyan-500/30 rounded bg-black/50 text-cyan-300">B.SC. IT SPECIALIST</span>
           </div>
         </div>
 
@@ -195,25 +195,25 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
 
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.6)] animate-pulse">STARK PROTOCOL</span>
+              <span className="px-2.5 py-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse">ELECTRIC BLUE EDITION</span>
               <span className="text-cyan-400 text-xs font-mono tracking-widest uppercase">// 3D ANIMATOR & WEB ENGINEER</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               MEET <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-400 to-red-600 drop-shadow-[0_0_35px_rgba(0,240,255,0.6)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 drop-shadow-[0_0_35px_rgba(59,130,246,0.6)]">
                 PAVAGADHI
               </span>
             </h1>
 
             <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
-              <span className="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300">ARC REACTOR CORE</span>
+              <span className="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400">CYBER CORE</span>
               <span className="text-white/40">•</span>
-              <span className="text-amber-400">Blender & Maya</span>
+              <span className="text-cyan-300">Blender & Maya</span>
               <span className="text-white/40">•</span>
-              <span className="text-cyan-300">React & JS</span>
+              <span className="text-blue-400">React & JS</span>
               <span className="text-white/40">•</span>
-              <span className="text-red-400">Unity & Unreal</span>
+              <span className="text-cyan-300">Unity & Unreal</span>
             </div>
 
             <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md drop-shadow">
@@ -224,7 +224,7 @@ const Hero = () => {
             <div className="hero-anim-item flex items-center gap-4 pt-2">
               <a
                 href="#projects"
-                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-widest rounded transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -251,11 +251,11 @@ const Hero = () => {
               ref={cardRef}
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
             >
-              {/* Iron Man Armor Neon Back Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/50 via-amber-500/40 to-red-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
+              {/* Electric Blue Neon Back Glow */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/50 via-cyan-500/40 to-indigo-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
               {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#10141d]/90 backdrop-blur-2xl rounded-2xl border border-cyan-500/40 shadow-[0_40px_80px_rgba(0,240,255,0.15)] overflow-hidden">
+              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#0a1120]/90 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_80px_rgba(59,130,246,0.2)] overflow-hidden">
 
                 {/* Dynamic Specular Glare Layer */}
                 <div
@@ -264,8 +264,8 @@ const Hero = () => {
                 ></div>
 
                 {/* Stark Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-cyan-500 to-amber-500 text-black font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
-                  STARK SPECIALIST
+                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
+                  3D & WEB SPECIALIST
                 </div>
 
                 <img
@@ -279,8 +279,8 @@ const Hero = () => {
 
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
-            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-amber-500/30 rounded-xl shadow-[0_0_30px_rgba(245,158,11,0.15)] w-full max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-2">// STARK SCHEMATICS</h3>
+            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-blue-500/30 rounded-xl shadow-[0_0_30px_rgba(59,130,246,0.2)] w-full max-w-xs">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold mb-2">// SCHEMATICS CORE</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
                 B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Visual Media Specialist.
               </p>
@@ -296,15 +296,15 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 4. Ultra Pro Max Custom Precision Cursor Suite */}
+      {/* 4. Custom Precision Cursor Suite */}
       <div
         ref={cursorDotRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-red-600 rounded-full shadow-[0_0_15px_#E50914]"
+        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3B82F6]"
       ></div>
 
       <div
         ref={cursorRingRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-red-600/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
+        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-cyan-400/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
       ></div>
 
       {/* --- STARK INDUSTRIES NAVBAR --- */}
@@ -323,7 +323,7 @@ const Hero = () => {
         </nav>
         <a
           href="#contact"
-          className="px-5 py-2 rounded bg-gradient-to-r from-cyan-500 via-amber-500 to-red-600 hover:from-cyan-400 hover:to-red-500 text-black font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.6)] hover:scale-105 active:scale-95"
+          className="px-5 py-2 rounded bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:scale-105 active:scale-95"
         >
           INITIATE LINK
         </a>
