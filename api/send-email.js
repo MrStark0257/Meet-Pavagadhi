@@ -7,6 +7,14 @@ const MAX_REQUESTS_PER_WINDOW = 5;
 
 function isRateLimited(ip) {
   const now = Date.now();
+
+  // Inline cleanup of expired IP records (replaces top-level setInterval for serverless)
+  for (const [key, record] of rateLimitMap.entries()) {
+    if (now > record.resetTime) {
+      rateLimitMap.delete(key);
+    }
+  }
+
   const userRecord = rateLimitMap.get(ip) || { count: 0, resetTime: now + RATE_LIMIT_WINDOW_MS };
 
   if (now > userRecord.resetTime) {
@@ -24,16 +32,6 @@ function isRateLimited(ip) {
   rateLimitMap.set(ip, userRecord);
   return false;
 }
-
-// Clean up old IP rate limit entries periodically
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, record] of rateLimitMap.entries()) {
-    if (now > record.resetTime) {
-      rateLimitMap.delete(ip);
-    }
-  }
-}, 10 * 60 * 1000);
 
 // HTML sanitization helper function
 function sanitizeHtml(str = '') {
@@ -100,25 +98,43 @@ export default async function handler(req, res) {
   try {
     const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const toEmail = process.env.TO_EMAIL || 'haneypavagadhi1234@gmail.com';
+    const smtpUser = process.env.SMTP_USER?.trim();
+    // Auto-strip spaces from App Password (e.g. "zizd jdfz cvvn hskg" -> "zizdjdfzcvvnhskg")
+    const smtpPass = process.env.SMTP_PASS?.replace(/\s+/g, '').trim();
+    const toEmail = process.env.TO_EMAIL?.trim() || 'haneypavagadhi1234@gmail.com';
 
     if (!smtpUser || !smtpPass) {
       return res.status(500).json({ 
-        error: 'SMTP service is currently unavailable.'
+        error: 'SMTP credentials missing on server. Please check Vercel Environment Variables.'
       });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
+    // Configure Nodemailer transporter optimized for Vercel Serverless
+    const transporterConfig = smtpHost.includes('gmail')
+      ? {
+          service: 'gmail',
+          auth: {
+            user: smtpUser,
+            pass: smtpPass,
+          },
+          connectionTimeout: 8000,
+          greetingTimeout: 8000,
+          socketTimeout: 8000,
+        }
+      : {
+          host: smtpHost,
+          port: smtpPort,
+          secure: smtpPort === 465,
+          auth: {
+            user: smtpUser,
+            pass: smtpPass,
+          },
+          connectionTimeout: 8000,
+          greetingTimeout: 8000,
+          socketTimeout: 8000,
+        };
+
+    const transporter = nodemailer.createTransport(transporterConfig);
 
     const mailOptions = {
       from: `"Stark Comms Terminal" <${smtpUser}>`,
@@ -146,7 +162,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('SMTP Transmission Error:', error);
     return res.status(500).json({ 
-      error: 'Failed to send email transmission. Please try again later.'
+      error: error.message || 'Failed to send email transmission. Please try again later.'
     });
   }
 }
