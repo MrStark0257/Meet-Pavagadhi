@@ -54,81 +54,82 @@ const Skills = () => {
     if (!cards.length || !section) return;
 
     let ctx = gsap.context(() => {
-      // 1. Initial State: All cards stacked together in the exact center
-      cards.forEach((card, i) => {
-        gsap.set(card, {
-          x: 0,
-          y: 0,
-          scale: 1 - i * 0.02,
-          rotationZ: (i - 2.5) * 3,
-          zIndex: 30 - i,
-          opacity: 1,
+
+      // Function to render cards positioned dynamically based on scroll progress
+      const updateDeck = (progress) => {
+        // progress goes from 0 (stacked) to 1 (fanned out & initial) to (skillCategories.length)
+        const isStacked = progress < 0.2;
+        const fanProgress = Math.min(1, Math.max(0, (progress - 0.05) / 0.15)); // 0 to 1 during fan-out
+        
+        // Active card index from progress
+        const activeIdx = Math.min(
+          skillCategories.length - 1,
+          Math.max(0, Math.floor((progress - 0.2) / 0.8 * skillCategories.length))
+        );
+
+        cards.forEach((card, i) => {
+          if (!card) return;
+
+          if (isStacked && fanProgress === 0) {
+            // Initial Stacked state
+            gsap.set(card, {
+              x: 0,
+              y: 0,
+              scale: 1 - i * 0.015,
+              rotationZ: (i - 2.5) * 2,
+              rotationY: 0,
+              opacity: 1,
+              zIndex: 30 - i
+            });
+          } else {
+            // Fanned Out & Centered Focus Tracking state
+            const offset = i - activeIdx;
+            
+            // Dynamic card spacing ensuring no offscreen cutoff
+            const cardSpacing = window.innerWidth < 640 ? 190 : window.innerWidth < 1024 ? 240 : 280;
+            const targetX = offset * cardSpacing;
+
+            const isFocused = i === activeIdx;
+            const scale = isFocused ? 1.05 : Math.max(0.75, 0.88 - Math.abs(offset) * 0.08);
+            const opacity = Math.max(0, 1 - Math.abs(offset) * 0.35);
+            const zIndex = isFocused ? 50 : 30 - Math.abs(offset);
+            const rotY = offset * -20;
+            const rotZ = offset * 2;
+
+            gsap.set(card, {
+              x: targetX * fanProgress,
+              y: isFocused ? -20 * fanProgress : 0,
+              scale: scale,
+              rotationY: rotY * fanProgress,
+              rotationZ: rotZ * fanProgress,
+              opacity: opacity,
+              zIndex: zIndex
+            });
+          }
         });
-      });
 
-      // 2. Master ScrollTrigger Timeline: 2 Phases
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=450%",
-          pin: true,
-          scrub: 0.6,
-          invalidateOnRefresh: true
-        }
-      });
+        // Watermark sync
+        textRefs.current.forEach((txt, i) => {
+          if (txt) {
+            gsap.set(txt, { opacity: i === activeIdx ? 1 : 0 });
+          }
+        });
+      };
 
-      // --- PHASE 1: Separate / Fan Out Horizontally (Progress 0 -> 0.3) ---
-      cards.forEach((card, i) => {
-        const spreadX = (i - (cards.length - 1) / 2) * 340; // Fanning offset
-        const rotZ = (i - (cards.length - 1) / 2) * 4;
+      // Set initial state
+      updateDeck(0);
 
-        tl.to(card, {
-          x: spreadX,
-          y: Math.abs(i - 2.5) * 15,
-          rotationZ: rotZ,
-          scale: 0.88,
-          duration: 1,
-          ease: "power2.out"
-        }, 0);
-      });
-
-      // --- PHASE 2: Card Focus Cycling (Progress 0.3 -> 1.0) ---
-      // As user continues scrolling, each card sequence becomes active and focused
-      const stepDuration = 0.6;
-      cards.forEach((card, i) => {
-        const startTime = 1 + i * stepDuration;
-
-        // Bring active card forward, scale up, glow Cyan, and dim others
-        tl.to(card, {
-          scale: 1.08,
-          y: -25,
-          zIndex: 50,
-          opacity: 1,
-          duration: stepDuration,
-          ease: "power2.out"
-        }, startTime)
-        .to(card, {
-          scale: 0.88,
-          y: 0,
-          zIndex: 30 - i,
-          opacity: 0.7,
-          duration: stepDuration,
-          ease: "power2.in"
-        }, startTime + stepDuration);
-
-        // Watermark typography sync
-        if (textRefs.current[i]) {
-          tl.to(textRefs.current[i], {
-            opacity: 1,
-            duration: stepDuration * 0.5,
-            ease: "power2.out"
-          }, startTime)
-          .to(textRefs.current[i], {
-            opacity: 0,
-            duration: stepDuration * 0.5,
-            ease: "power2.in"
-          }, startTime + stepDuration);
+      // ScrollTrigger Master Controller
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=350%",
+        pin: true,
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          // self.progress goes from 0 to 1
+          updateDeck(self.progress * (skillCategories.length));
         }
       });
 
@@ -141,7 +142,7 @@ const Skills = () => {
     <section 
       id="skills"
       ref={sectionRef} 
-      className="relative w-full h-screen bg-[#030712] text-white overflow-hidden flex items-center justify-center select-none"
+      className="relative w-full h-screen bg-[#030712] text-white overflow-hidden flex items-center justify-center perspective-[1200px] select-none"
     >
       {/* Background Matrix/Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[200px] pointer-events-none z-0" />
@@ -176,13 +177,17 @@ const Skills = () => {
         </div>
       </div>
 
-      {/* Cards Stack & Fan-Out Stage */}
-      <div className="relative w-full max-w-7xl h-full flex items-center justify-center z-10">
+      {/* Cards Stack & Centered Focus Tracking Stage */}
+      <div className="relative w-full max-w-7xl h-full flex items-center justify-center z-10 transform-style-3d">
         {skillCategories.map((category, i) => (
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="absolute shrink-0 w-[85vw] sm:w-[360px] md:w-[420px] h-[460px] md:h-[510px] rounded-[2.5rem] p-8 md:p-10 bg-[#090d16]/95 backdrop-blur-3xl border border-blue-500/30 flex flex-col justify-between overflow-hidden group shadow-[0_30px_70px_rgba(0,0,0,0.9)] hover:border-cyan-400/80 transition-colors duration-500 will-change-transform"
+            className="absolute shrink-0 w-[84vw] sm:w-[320px] md:w-[360px] h-[440px] md:h-[480px] rounded-[2.5rem] p-7 md:p-9 bg-[#090d16]/95 backdrop-blur-3xl border border-blue-500/30 flex flex-col justify-between overflow-hidden group shadow-[0_30px_70px_rgba(0,0,0,0.9)] hover:border-cyan-400/80 transition-colors duration-300 will-change-transform"
+            style={{
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden'
+            }}
           >
             {/* Top Cyan Accent Laser Stripe */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-60 transition-all duration-500 z-10" />
@@ -192,7 +197,7 @@ const Skills = () => {
             
             {/* Top Card Metadata */}
             <div className="flex items-center justify-between relative z-10">
-              <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-cyan-400 bg-blue-500/10 px-3 py-1 rounded-xl border border-blue-500/30">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-cyan-400 bg-blue-500/10 px-3 py-1 rounded-xl border border-blue-500/30">
                 {category.tag}
               </span>
               <span className="text-xs font-mono text-white/40">
@@ -201,21 +206,21 @@ const Skills = () => {
             </div>
 
             {/* Middle Title & Description */}
-            <div className="space-y-4 relative z-10 my-auto">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors duration-300">
+            <div className="space-y-3 relative z-10 my-auto">
+              <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors duration-300">
                 {category.title}
               </h3>
-              <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+              <p className="text-xs md:text-sm text-white/70 font-light leading-relaxed line-clamp-3">
                 {category.desc}
               </p>
             </div>
 
             {/* Bottom Skill Badges */}
-            <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10 relative z-10">
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10 relative z-10">
               {category.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded-lg group-hover:border-blue-500/40 transition-colors"
+                  className="text-[10px] sm:text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg group-hover:border-blue-500/40 transition-colors"
                 >
                   {skill}
                 </span>
