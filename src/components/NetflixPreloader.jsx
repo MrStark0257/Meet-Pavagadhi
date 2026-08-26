@@ -1,15 +1,31 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { speakJarvisGreeting } from '../utils/sfx';
+import { playOpenHUDSFX } from '../utils/sfx';
 
 const StarkPreloader = ({ onComplete }) => {
   const preloaderRef = useRef(null);
   const contentRef = useRef(null);
   const reactorRef = useRef(null);
 
+  const handlePlaySound = () => {
+    playOpenHUDSFX();
+  };
+
   useEffect(() => {
-    // Auto-trigger deep JARVIS voice greeting on page load / reload
-    speakJarvisGreeting();
+    // Play sleek high-tech HUD opening sound effect on load
+    playOpenHUDSFX();
+
+    // Trigger opening sound effect on early user gesture
+    const handleGesture = () => {
+      playOpenHUDSFX();
+      window.removeEventListener('click', handleGesture);
+      window.removeEventListener('touchstart', handleGesture);
+      window.removeEventListener('keydown', handleGesture);
+    };
+
+    window.addEventListener('click', handleGesture);
+    window.addEventListener('touchstart', handleGesture);
+    window.addEventListener('keydown', handleGesture);
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -36,7 +52,7 @@ const StarkPreloader = ({ onComplete }) => {
         filter: "blur(12px)",
         duration: 0.5,
         ease: "power3.in",
-        delay: 1.6
+        delay: 1.2
       })
       .to(preloaderRef.current, {
         opacity: 0,
@@ -44,6 +60,11 @@ const StarkPreloader = ({ onComplete }) => {
         ease: "power2.inOut"
       });
 
+    return () => {
+      window.removeEventListener('click', handleGesture);
+      window.removeEventListener('touchstart', handleGesture);
+      window.removeEventListener('keydown', handleGesture);
+    };
   }, [onComplete]);
 
   return (
@@ -54,9 +75,9 @@ const StarkPreloader = ({ onComplete }) => {
       <div ref={contentRef} className="flex flex-col items-center gap-6 text-center px-4">
         {/* Core Arc Reactor Icon */}
         <div 
-          onClick={speakJarvisGreeting}
+          onClick={handlePlaySound}
           className="relative w-24 h-24 flex items-center justify-center cursor-pointer group"
-          title="Click to replay JARVIS Voice Greeting"
+          title="Click to play HUD Opening Sound"
         >
           {/* Outer Blue Arc Glow */}
           <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-2xl animate-pulse group-hover:bg-cyan-400/40"></div>
@@ -74,7 +95,7 @@ const StarkPreloader = ({ onComplete }) => {
         {/* Blue Typography */}
         <div className="space-y-2">
           <div className="text-[10px] font-mono uppercase tracking-[0.4em] text-cyan-400 font-bold">
-            // STARK INDUSTRIES &bull; JARVIS VOICE PROTOCOL v8.5
+            // STARK INDUSTRIES &bull; JARVIS OS v8.5
           </div>
           <h1 
             className="text-3xl md:text-5xl font-black uppercase tracking-[0.25em] text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.7)]"
@@ -83,7 +104,7 @@ const StarkPreloader = ({ onComplete }) => {
             MEET PAVAGADHI
           </h1>
           <div className="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-medium flex items-center justify-center gap-2">
-            <span>JARVIS VOICE CONFIRMATION ENGAGED...</span>
+            <span>INITIALIZING HUD INTERFACE...</span>
           </div>
         </div>
 

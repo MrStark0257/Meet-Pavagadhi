@@ -1,50 +1,4 @@
-// High-Tech Stark HUD Audio & Web Speech Voice Utility
-
-// 1. Web Speech API JARVIS Deep AI Voice Confirmation ("Hello Meet")
-export const speakJarvisGreeting = () => {
-  try {
-    if (!('speechSynthesis' in window)) return;
-    
-    // Reset previous audio speech queue
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance("Hello Meet. Jarvis online. Welcome to your portfolio.");
-    utterance.rate = 0.88; // Sophisticated, steady AI pace
-    utterance.pitch = 0.82; // Deep baritone JARVIS tone
-    utterance.volume = 1.0;
-
-    const playSpeech = () => {
-      const voices = window.speechSynthesis.getVoices();
-      
-      // Search for deep British / UK Male / Natural voices
-      const jarvisVoice = 
-        voices.find(v => v.name.includes('David')) ||
-        voices.find(v => v.name.includes('George')) ||
-        voices.find(v => v.name.includes('UK English Male')) ||
-        voices.find(v => v.name.includes('British')) ||
-        voices.find(v => v.name.includes('Google UK English Male')) ||
-        voices.find(v => v.name.includes('Natural')) ||
-        voices.find(v => v.lang === 'en-GB') ||
-        voices.find(v => v.lang && v.lang.startsWith('en'));
-
-      if (jarvisVoice) {
-        utterance.voice = jarvisVoice;
-      }
-      window.speechSynthesis.speak(utterance);
-    };
-
-    if (window.speechSynthesis.getVoices().length > 0) {
-      playSpeech();
-    } else {
-      window.speechSynthesis.onvoiceschanged = () => {
-        playSpeech();
-        window.speechSynthesis.onvoiceschanged = null;
-      };
-    }
-  } catch (e) {
-    console.log('Speech synthesis error:', e);
-  }
-};
+// High-Tech Stark HUD Power-On Activation Sound Effect
 
 let audioCtx = null;
 
@@ -59,6 +13,61 @@ const getAudioContext = () => {
     audioCtx.resume();
   }
   return audioCtx;
+};
+
+// Sleek High-Tech HUD Opening / Power-On Sound Effect (No voice)
+export const playOpenHUDSFX = () => {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+
+    // 1. Futuristic Arc Reactor Charging Sweep
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(180, now);
+    osc.frequency.exponentialRampToValueAtTime(750, now + 0.4);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.12, now + 0.2);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(400, now);
+    filter.frequency.exponentialRampToValueAtTime(2200, now + 0.4);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.5);
+
+    // 2. Crystal Clear High-Tech Interface Startup Ping
+    const pingOsc = ctx.createOscillator();
+    const pingGain = ctx.createGain();
+
+    pingOsc.type = 'sine';
+    pingOsc.frequency.setValueAtTime(987.77, now + 0.35); // B5
+    pingOsc.frequency.exponentialRampToValueAtTime(1975.53, now + 0.45); // B6
+
+    pingGain.gain.setValueAtTime(0.001, now + 0.35);
+    pingGain.gain.linearRampToValueAtTime(0.15, now + 0.4);
+    pingGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+
+    pingOsc.connect(pingGain);
+    pingGain.connect(ctx.destination);
+
+    pingOsc.start(now + 0.35);
+    pingOsc.stop(now + 0.8);
+
+  } catch (e) {
+    console.log('SFX error:', e);
+  }
 };
 
 // High-Tech Subtle Click SFX
