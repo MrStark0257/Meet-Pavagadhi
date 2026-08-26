@@ -187,7 +187,7 @@ const Hero = () => {
         {/* Top Stark Industries HUD Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
+            <span className="px-2 py-0.5 rounded bg-blue-500/20 border border-cyan-400 text-cyan-400 font-black text-xs shadow-[0_0_10px_#00F0FF] tracking-normal">MP</span>
             <span className="text-cyan-400 font-bold tracking-wider">STARK INDUSTRIES // HUD v8.5</span>
             <span className="text-white/40">|</span>
             <span className="text-blue-400 font-semibold">SYSTEM ONLINE</span>
