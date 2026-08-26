@@ -280,8 +280,8 @@ const Hero = () => {
               <div className="absolute -top-4 -left-6 md:-left-10 z-40 px-3.5 py-2 bg-[#091122]/95 backdrop-blur-2xl border border-cyan-400/60 rounded-2xl shadow-[0_10px_30px_rgba(0,240,255,0.25)] flex items-center gap-2.5 animate-bounce" style={{ animationDuration: '4s' }}>
                 <span className="text-cyan-400 font-mono font-black text-sm">98%</span>
                 <div className="text-left">
-                  <div className="text-[9px] font-mono text-cyan-300 font-bold uppercase tracking-wider">3D & MAYA</div>
-                  <div className="text-[8px] font-mono text-white/60">ACCURACY</div>
+                  <div className="text-[9px] font-mono text-cyan-300 font-bold uppercase tracking-wider">3D ANIMATION</div>
+                  <div className="text-[8px] font-mono text-white/60 font-bold">SKILL LEVEL</div>
                 </div>
               </div>
 
@@ -347,7 +347,7 @@ const Hero = () => {
                 <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div>
                     <div className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">// STARK SCHEMATICS v8.5</div>
-                    <div className="text-base font-black text-white tracking-tight">ENGINEERING MATRIX</div>
+                    <div className="text-base font-black text-white tracking-tight">ENGINEERING SKILL MATRIX</div>
                   </div>
                   <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-400/40 font-bold shadow-[0_0_12px_rgba(0,240,255,0.3)]">
                     ONLINE
@@ -359,7 +359,7 @@ const Hero = () => {
                   <div>
                     <div className="flex justify-between text-white/90 font-bold mb-1.5">
                       <span className="flex items-center gap-1.5">
-                        <span className="text-cyan-400">❖</span> 3D ANIMATION & MAYA
+                        <span className="text-cyan-400">❖</span> 3D CHARACTER ANIMATION
                       </span>
                       <span className="text-cyan-400 font-bold">98%</span>
                     </div>
@@ -371,7 +371,7 @@ const Hero = () => {
                   <div>
                     <div className="flex justify-between text-white/90 font-bold mb-1.5">
                       <span className="flex items-center gap-1.5">
-                        <span className="text-blue-400">⚡</span> REACT & FULL-STACK
+                        <span className="text-blue-400">⚡</span> FULL-STACK WEB ARCHITECTURE
                       </span>
                       <span className="text-blue-400 font-bold">95%</span>
                     </div>
@@ -383,7 +383,7 @@ const Hero = () => {
                   <div>
                     <div className="flex justify-between text-white/90 font-bold mb-1.5">
                       <span className="flex items-center gap-1.5">
-                        <span className="text-cyan-300">🎮</span> UNITY & GAME ENGINE
+                        <span className="text-cyan-300">🎮</span> GAME DEVELOPMENT & MECHANICS
                       </span>
                       <span className="text-cyan-300 font-bold">92%</span>
                     </div>
