@@ -333,7 +333,7 @@ const Hero = () => {
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
             <div 
               ref={schematicsRef}
-              className="relative group w-full max-w-sm transition-all duration-500 hover:scale-[1.03]"
+              className="relative group w-full max-w-md transition-all duration-500 hover:scale-[1.03]"
             >
               {/* Glowing Cyber Accent Ring */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-3xl blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
@@ -357,11 +357,11 @@ const Hero = () => {
                 {/* Skill Matrix Progress Indicators */}
                 <div className="space-y-3.5 font-mono text-xs">
                   <div>
-                    <div className="flex justify-between text-white/90 font-bold mb-1.5">
-                      <span className="flex items-center gap-1.5">
-                        <span className="text-cyan-400">❖</span> 3D CHARACTER ANIMATION
+                    <div className="flex justify-between items-center text-white/90 font-bold mb-1.5 whitespace-nowrap">
+                      <span className="flex items-center gap-1.5 truncate">
+                        <span className="text-cyan-400">❖</span> 3D ANIMATION & RIGGING
                       </span>
-                      <span className="text-cyan-400 font-bold">98%</span>
+                      <span className="text-cyan-400 font-bold ml-2">98%</span>
                     </div>
                     <div className="w-full h-2 bg-black/80 rounded-full overflow-hidden border border-blue-500/30 p-0.5">
                       <div className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-400 rounded-full w-[98%] shadow-[0_0_12px_#00F0FF]"></div>
@@ -369,11 +369,11 @@ const Hero = () => {
                   </div>
 
                   <div>
-                    <div className="flex justify-between text-white/90 font-bold mb-1.5">
-                      <span className="flex items-center gap-1.5">
-                        <span className="text-blue-400">⚡</span> FULL-STACK WEB ARCHITECTURE
+                    <div className="flex justify-between items-center text-white/90 font-bold mb-1.5 whitespace-nowrap">
+                      <span className="flex items-center gap-1.5 truncate">
+                        <span className="text-blue-400">⚡</span> FULL-STACK WEB DEVELOPMENT
                       </span>
-                      <span className="text-blue-400 font-bold">95%</span>
+                      <span className="text-blue-400 font-bold ml-2">95%</span>
                     </div>
                     <div className="w-full h-2 bg-black/80 rounded-full overflow-hidden border border-blue-500/30 p-0.5">
                       <div className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full w-[95%]"></div>
@@ -381,11 +381,11 @@ const Hero = () => {
                   </div>
 
                   <div>
-                    <div className="flex justify-between text-white/90 font-bold mb-1.5">
-                      <span className="flex items-center gap-1.5">
-                        <span className="text-cyan-300">🎮</span> GAME DEVELOPMENT & MECHANICS
+                    <div className="flex justify-between items-center text-white/90 font-bold mb-1.5 whitespace-nowrap">
+                      <span className="flex items-center gap-1.5 truncate">
+                        <span className="text-cyan-300">🎮</span> GAME DEVELOPMENT & VFX
                       </span>
-                      <span className="text-cyan-300 font-bold">92%</span>
+                      <span className="text-cyan-300 font-bold ml-2">92%</span>
                     </div>
                     <div className="w-full h-2 bg-black/80 rounded-full overflow-hidden border border-blue-500/30 p-0.5">
                       <div className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full w-[92%]"></div>
