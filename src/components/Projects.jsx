@@ -11,40 +11,40 @@ const projectsData = [
     category: "Full-Stack Web Architecture",
     description: "Designed and developed responsive web portal integrating custom APIs and user interaction flows.",
     tags: ["React", "JavaScript", "HTML5", "CSS3"],
-    match: "99%",
-    episode: "S01 E01"
+    match: "POWER 99%",
+    episode: "MARK I"
   },
   {
     title: "Parikshaa Portal",
     category: "Web Application",
     description: "Interactive web application for online assessment with real-time UI response and third-party service integration.",
     tags: ["React", "JavaScript", "REST APIs", "Tailwind"],
-    match: "98%",
-    episode: "S01 E02"
+    match: "POWER 98%",
+    episode: "MARK II"
   },
   {
     title: "Zclick Media Studio Suite",
     category: "Visual Media & Branding",
     description: "Produced comprehensive visual marketing campaigns, promotional banners, and video commercials.",
     tags: ["Photoshop", "Illustrator", "Premiere Pro", "After Effects"],
-    match: "99%",
-    episode: "S01 E03"
+    match: "POWER 99%",
+    episode: "MARK III"
   },
   {
     title: "3D Character Rigging & Animation",
     category: "3D Animation & VFX",
     description: "Created production-ready character models, biped rigging, and keyframe animations for films & ads.",
     tags: ["Autodesk Maya", "Blender", "3ds Max", "Cinema 4D"],
-    match: "100%",
-    episode: "S01 E04"
+    match: "POWER 100%",
+    episode: "MARK IV"
   },
   {
     title: "Interactive Game Asset Pipeline",
     category: "Game Development",
     description: "Optimized low-poly 3D game assets and integrated animation rigs into Unity & Unreal Engine projects.",
     tags: ["Unity", "Unreal Engine", "Asset Optimization", "Rigging"],
-    match: "98%",
-    episode: "S01 E05"
+    match: "POWER 98%",
+    episode: "MARK V"
   }
 ];
 
@@ -223,18 +223,18 @@ const Projects = () => {
       
       {/* Section Header Badge */}
       <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-xl">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-          <span className="text-red-500 font-bold">NETFLIX ORIGINALS</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+          <span className="text-cyan-400 font-bold">STARK LABS</span>
           <span className="text-white/40">|</span>
-          <span>FEATURED PROJECTS</span>
+          <span className="text-amber-400 font-semibold">CLASSIFIED PROJECT PROTOCOLS</span>
         </div>
       </div>
 
-      {/* Background Netflix Cinematic Title Watermark */}
+      {/* Background Stark Title Watermark */}
       <div className="absolute top-10 left-0 w-full flex items-start justify-center pointer-events-none z-0">
-        <h1 className="text-[14vw] sm:text-[17vw] md:text-[20vw] font-black text-white/[0.03] tracking-tighter leading-none whitespace-nowrap uppercase">
-          ORIGINALS
+        <h1 className="text-[14vw] sm:text-[17vw] md:text-[20vw] font-black text-cyan-500/[0.04] tracking-tighter leading-none whitespace-nowrap uppercase">
+          STARK LABS
         </h1>
       </div>
 

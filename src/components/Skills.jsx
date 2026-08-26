@@ -183,7 +183,7 @@ const Skills = () => {
         />
       ))}
 
-      {/* Massive Background Typography (Netflix Red & White Outline) */}
+      {/* Massive Background Typography (Stark HUD Cyan & Amber Outline) */}
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         {skillCategories.map((_, i) => (
           <h1 
@@ -191,22 +191,22 @@ const Skills = () => {
             ref={el => textRefs.current[i] = el}
             className="absolute text-[22vw] md:text-[18vw] font-black uppercase text-transparent leading-none tracking-tighter mix-blend-overlay"
             style={{ 
-               WebkitTextStroke: `2px ${i % 2 === 0 ? 'rgba(229,9,20,0.3)' : 'rgba(255,255,255,0.15)'}`,
+               WebkitTextStroke: `2px ${i % 2 === 0 ? 'rgba(0,240,255,0.35)' : 'rgba(245,158,11,0.25)'}`,
                opacity: 0 
             }}
           >
-            SKILLS
+            STARK
           </h1>
         ))}
       </div>
 
       {/* Section Header Badge */}
       <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-xl">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-          <span className="text-red-500 font-bold">EPISODE 03</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+          <span className="text-cyan-400 font-bold">PROTOCOL 03</span>
           <span className="text-white/40">|</span>
-          <span>TECHNICAL SKILLS</span>
+          <span className="text-amber-400 font-semibold">TECH MATRIX & SCHEMATICS</span>
         </div>
       </div>
 

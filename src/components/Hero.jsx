@@ -174,17 +174,17 @@ const Hero = () => {
       {/* 3. Main Content Layer */}
       <div ref={contentRef} className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 min-h-screen flex flex-col justify-between pt-28 pb-10">
 
-        {/* Top Netflix Cinematic Badge */}
+        {/* Top Stark Industries HUD Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
-            <span className="text-red-500 font-bold tracking-wider">NETFLIX DEVELOPER SERIES</span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.25)]">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
+            <span className="text-cyan-400 font-bold tracking-wider">STARK INDUSTRIES // HUD v8.5</span>
             <span className="text-white/40">|</span>
-            <span className="text-white/80">SEASONS 2024 - 2026</span>
+            <span className="text-amber-400 font-semibold">JARVIS OS ONLINE</span>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider">
-            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">3D & WEB DEV</span>
-            <span className="px-2 py-0.5 border border-white/20 rounded bg-black/40">B.SC. IT GRADUATE</span>
+          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-white/60 tracking-wider">
+            <span className="px-2.5 py-0.5 border border-cyan-500/30 rounded bg-black/50 text-cyan-300">MARK LXXXV PROTOCOL</span>
+            <span className="px-2.5 py-0.5 border border-amber-500/30 rounded bg-black/50 text-amber-300">B.SC. IT SPECIALIST</span>
           </div>
         </div>
 
@@ -195,25 +195,25 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
 
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">CREATIVE & TECH</span>
-              <span className="text-white/80 text-xs font-mono tracking-widest uppercase">3D Animator & Web Developer</span>
+              <span className="px-2.5 py-0.5 bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.6)] animate-pulse">STARK PROTOCOL</span>
+              <span className="text-cyan-400 text-xs font-mono tracking-widest uppercase">// 3D ANIMATOR & WEB ENGINEER</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               MEET <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_35px_rgba(220,38,38,0.5)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-400 to-red-600 drop-shadow-[0_0_35px_rgba(0,240,255,0.6)]">
                 PAVAGADHI
               </span>
             </h1>
 
-            <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs font-mono text-red-400 font-bold">
-              <span className="px-2 py-0.5 bg-red-500/10 border border-red-500/30 rounded text-red-500">3D & Web</span>
+            <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
+              <span className="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300">ARC REACTOR CORE</span>
               <span className="text-white/40">•</span>
-              <span>Blender & Maya</span>
+              <span className="text-amber-400">Blender & Maya</span>
               <span className="text-white/40">•</span>
-              <span>React & JS</span>
+              <span className="text-cyan-300">React & JS</span>
               <span className="text-white/40">•</span>
-              <span className="text-white/70">Adobe Suite</span>
+              <span className="text-red-400">Unity & Unreal</span>
             </div>
 
             <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md drop-shadow">
@@ -251,21 +251,21 @@ const Hero = () => {
               ref={cardRef}
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
             >
-              {/* Cinematic Red Neon Back Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-red-600/70 via-rose-600/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
+              {/* Iron Man Armor Neon Back Glow */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/50 via-amber-500/40 to-red-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
               {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-red-600/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
+              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#10141d]/90 backdrop-blur-2xl rounded-2xl border border-cyan-500/40 shadow-[0_40px_80px_rgba(0,240,255,0.15)] overflow-hidden">
 
                 {/* Dynamic Specular Glare Layer */}
                 <div
                   ref={glareRef}
-                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
+                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-cyan-400/20 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
 
-                {/* Netflix Series Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-red-600 text-white font-mono text-[10px] font-bold tracking-widest rounded shadow-xl">
-                  FEATURED DEV
+                {/* Stark Tag */}
+                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-cyan-500 to-amber-500 text-black font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
+                  STARK SPECIALIST
                 </div>
 
                 <img
@@ -279,10 +279,10 @@ const Hero = () => {
 
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
-            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl w-full max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Profile</h3>
+            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-amber-500/30 rounded-xl shadow-[0_0_30px_rgba(245,158,11,0.15)] w-full max-w-xs">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-2">// STARK SCHEMATICS</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
-                B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Graphic & Video Editor (Z click Media).
+                B.Sc. IT (VNSGU) • 3D Animation Specialist • Web Developer • Visual Media Specialist.
               </p>
             </div>
           </div>
@@ -307,24 +307,25 @@ const Hero = () => {
         className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-red-600/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
       ></div>
 
-      {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
+      {/* --- STARK INDUSTRIES NAVBAR --- */}
       <header className="absolute top-0 inset-x-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
-        <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(229,9,20,0.9)]">
-          MEET<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
+        <div className="text-2xl font-black text-white tracking-tighter flex items-center gap-2.5 drop-shadow-[0_0_20px_rgba(0,240,255,0.8)]">
+          <span className="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#00F0FF] animate-pulse"></span>
+          STARK <span className="text-cyan-400">//</span> MEET
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
-          <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
-          <a href="#about" className="hover:text-red-500 transition-colors">About</a>
-          <a href="#expertise" className="hover:text-red-500 transition-colors">Expertise</a>
-          <a href="#skills" className="hover:text-red-500 transition-colors">Skills</a>
-          <a href="#projects" className="hover:text-red-500 transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
+          <a href="#home" className="hover:text-cyan-400 transition-colors">Home</a>
+          <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
+          <a href="#expertise" className="hover:text-cyan-400 transition-colors">Expertise</a>
+          <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
+          <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
+          <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
         </nav>
         <a
-          href="#hire"
-          className="px-5 py-2 rounded bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105 active:scale-95"
+          href="#contact"
+          className="px-5 py-2 rounded bg-gradient-to-r from-cyan-500 via-amber-500 to-red-600 hover:from-cyan-400 hover:to-red-500 text-black font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.6)] hover:scale-105 active:scale-95"
         >
-          Hire Me
+          INITIATE LINK
         </a>
       </header>
     </section>

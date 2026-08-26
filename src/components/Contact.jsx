@@ -51,16 +51,16 @@ const Contact = () => {
       {/* Background Cinematic Red Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
-      {/* Huge Background Parallax Netflix Watermark Text */}
+      {/* Huge Background Parallax Stark Watermark Text */}
       <motion.div 
         style={{ y }}
         className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12 opacity-10"
       >
         <h1 
-          className="text-[25vw] leading-[0.75] font-black text-red-600 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
+          className="text-[25vw] leading-[0.75] font-black text-cyan-400 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
           style={{ fontFamily: "'Bebas Neue', 'Impact', sans-serif" }}
         >
-          CONTACT
+          STARK OS
         </h1>
       </motion.div>
 
@@ -71,15 +71,15 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-[#141414]/95 backdrop-blur-2xl border border-white/15 w-full p-8 md:p-16 text-white flex flex-col justify-between rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,0,0,0.9)] relative overflow-hidden my-12"
+          className="bg-[#0e121a]/95 backdrop-blur-2xl border border-cyan-500/30 w-full p-8 md:p-16 text-white flex flex-col justify-between rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,240,255,0.15)] relative overflow-hidden my-12"
         >
-          {/* Subtle internal top crimson highlight glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-90"></div>
+          {/* Subtle internal top cyan highlight glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-90"></div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-red-600/10 border border-red-600/30 text-xs font-mono uppercase tracking-widest text-red-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-              <span>EPISODE 04 // GET IN TOUCH</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <span>PROTOCOL 04 // SECURE COMMS LINK</span>
             </div>
             
             <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-white/80">

@@ -101,21 +101,21 @@ const Expertise = () => {
         {/* Compact Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-black/80 backdrop-blur-xl border border-red-600/40 text-[11px] font-mono uppercase tracking-widest text-white shadow-xl">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-              <span className="text-red-500 font-bold">EPISODE 02</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <span className="text-cyan-400 font-bold">PROTOCOL 02</span>
               <span className="text-white/40">|</span>
-              <span>CORE COMPETENCIES</span>
+              <span className="text-amber-400 font-semibold">STARK SUITE CAPABILITIES</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
-              DIRECTOR'S CUT <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_25px_rgba(229,9,20,0.35)]">
-                TECHNICAL CAPABILITIES.
+              STARK LABS <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-400 to-red-600 drop-shadow-[0_0_25px_rgba(0,240,255,0.35)]">
+                TECHNICAL PROTOCOLS.
               </span>
             </h2>
           </div>
           <p className="text-white/60 text-xs md:text-sm font-light leading-relaxed max-w-xs">
-            Merging full-stack engineering, scalable microservices, and AI integrations into production-ready platforms.
+            Integrating 3D animation, game engine mechanics, full-stack web development, and digital post-production.
           </p>
         </div>
 
