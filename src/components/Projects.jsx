@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Authentic Project Data based on your engineering portfolio
 const projectsData = [
   {
     title: "FETC Web Platform",
@@ -49,315 +48,150 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  const containerRef = useRef(null);
-  const folderBackRef = useRef(null);
-  const folderFrontRef = useRef(null);
-  const cardsRef = useRef([]);
-  const mobileCardsRef = useRef([]);
-  const mobileCarouselRef = useRef(null);
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+  const watermarkRef = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      // Set initial origins (Centered in viewport)
-      gsap.set([folderBackRef.current, folderFrontRef.current], { 
-        xPercent: -50, 
-        yPercent: -50 
-      });
-      gsap.set(folderFrontRef.current, { transformOrigin: "bottom center" });
-      
-      const getGridPos = (index) => {
-        let row, col;
-        if (index < 3) { row = 0; col = index; }
-        else if (index === 3) { row = 1; col = 0; }
-        else if (index === 4) { row = 1; col = 2; }
-        else { row = 2; col = index - 5; }
-        return { row, col };
-      };
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
 
-      cardsRef.current.forEach((card) => {
-        gsap.set(card, {
-          xPercent: -50,
-          yPercent: -50,
-          rotation: gsap.utils.random(-6, 6),
-          scale: 0.85,
-          x: 0,
-          y: 0,
-        });
-      });
+    const getScrollAmount = () => {
+      return track.scrollWidth - window.innerWidth + 120;
+    };
 
-      let mm = gsap.matchMedia();
+    // Horizontal Scroll Pinning Reel Timeline
+    const tween = gsap.to(track, {
+      x: () => -getScrollAmount(),
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        scrub: 0.6,
+        start: "top top",
+        end: () => `+=${getScrollAmount()}`,
+        invalidateOnRefresh: true
+      }
+    });
 
-      mm.add({
-        isDesktop: "(min-width: 768px)",
-        isMobile: "(max-width: 767px)"
-      }, (context) => {
-        let { isDesktop, isMobile } = context.conditions;
-
-        if (isDesktop) {
-          let floatTween;
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 50%", 
-              end: "bottom 50%",
-              toggleActions: "play reverse play reverse",
-              onEnter: () => { if (floatTween) floatTween.kill(); },
-              onEnterBack: () => { if (floatTween) floatTween.kill(); },
-              onLeave: () => { if (floatTween) floatTween.kill(); },
-              onLeaveBack: () => { if (floatTween) floatTween.kill(); }
-            },
-            onComplete: () => {
-              floatTween = gsap.to(cardsRef.current, {
-                y: "+=12",
-                rotation: "+=1",
-                duration: 3.5,
-                yoyo: true,
-                repeat: -1,
-                ease: "sine.inOut",
-                stagger: { amount: 1.5, from: "random" }
-              });
-            }
-          });
-
-          // 1. Folder opens with smooth rotation
-          tl.to(folderFrontRef.current, {
-            rotationX: -130,
-            duration: 1.2,
-            ease: "power3.inOut"
-          });
-
-          // 2. Cards rise up collectively
-          tl.to(cardsRef.current, {
-            y: -140,
-            scale: 0.9,
-            zIndex: 70,
-            duration: 0.6,
-            stagger: 0.04,
-            ease: "back.out(1.2)"
-          }, "-=0.6");
-
-          // 3. Cards magically spread out into an ultra-clean blockbuster grid layout
-          tl.to(cardsRef.current, {
-            x: (i) => {
-              const w = Math.max(...cardsRef.current.map(c => c?.offsetWidth || 0)) || 360;
-              const gap = 40;
-              const { col } = getGridPos(i);
-              return (col - 1) * (w + gap);
-            },
-            y: (i) => {
-              const h = Math.max(...cardsRef.current.map(c => c?.offsetHeight || 0)) || 240;
-              const gap = 40;
-              const { row } = getGridPos(i);
-              return (row - 1) * (h + gap);
-            },
-            rotation: () => gsap.utils.random(-3, 3),
-            scale: 1,
-            duration: 1.4,
-            stagger: { amount: 0.4, from: "center" },
-            ease: "expo.out"
-          }, "-=0.2");
-        }
-
-        if (isMobile) {
-          const cardW = window.innerWidth * 0.8;
-          const gap = 20;
-          
-          mobileCardsRef.current.forEach((card, i) => {
-            gsap.set(card, {
-              x: -(i * (cardW + gap)), 
-              y: 0,
-              scale: 0.4,
-              opacity: 0,
-              rotation: gsap.utils.random(-15, 15)
-            });
-          });
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 60%",
-            }
-          });
-
-          tl.to(folderFrontRef.current, {
-            rotationX: -130,
-            duration: 0.8,
-            ease: "power3.inOut"
-          });
-
-          tl.to(mobileCardsRef.current, {
-            y: -100,
-            opacity: 1,
-            scale: 0.85,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "back.out(1.2)"
-          }, "-=0.4");
-
-          tl.to(mobileCardsRef.current, {
-            x: 0,
-            y: 0,
-            rotation: 0,
-            scale: (i) => i === 0 ? 1 : 0.92,
-            opacity: (i) => i === 0 ? 1 : 0.5,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "expo.out",
-            onComplete: () => {
-              if (mobileCarouselRef.current) {
-                mobileCarouselRef.current.style.overflowX = 'auto';
-                mobileCarouselRef.current.style.pointerEvents = 'auto';
-              }
-            }
-          }, "-=0.2");
+    // Parallax background watermark motion
+    if (watermarkRef.current) {
+      gsap.to(watermarkRef.current, {
+        x: () => getScrollAmount() * 0.3,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          scrub: 0.6,
+          start: "top top",
+          end: () => `+=${getScrollAmount()}`
         }
       });
-    }, containerRef);
+    }
 
-    return () => ctx.revert();
+    return () => {
+      tween.kill();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
   }, []);
 
   return (
-    <section id="projects" ref={containerRef} className="bg-[#0b0b0b] min-h-[100svh] md:min-h-[170vh] relative font-sans overflow-x-clip text-white w-full flex items-center justify-center py-24 md:py-40 select-none">
-      
-      {/* Section Header Badge */}
-      <div className="absolute top-8 inset-x-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pointer-events-none flex items-center justify-between">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-black/80 backdrop-blur-xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+    <section 
+      id="projects" 
+      ref={sectionRef} 
+      className="bg-[#030712] w-full h-screen relative overflow-hidden select-none flex flex-col justify-between py-12"
+    >
+      {/* Background Ambient Glow Orbs */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[180px] pointer-events-none z-0" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[160px] pointer-events-none z-0" />
+
+      {/* Background Parallax Watermark Text */}
+      <div 
+        ref={watermarkRef}
+        className="absolute top-16 left-0 w-[200vw] flex items-center justify-start pointer-events-none z-0 opacity-10"
+      >
+        <h1 className="text-[18vw] font-black text-cyan-400 uppercase tracking-tighter whitespace-nowrap leading-none">
+          STARK LABS PROJECTS PROTOCOLS
+        </h1>
+      </div>
+
+      {/* Top Header Badge */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center justify-between pointer-events-none pt-4">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/80 backdrop-blur-2xl border border-blue-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
           <span className="text-cyan-400 font-bold">STARK LABS</span>
           <span className="text-white/40">|</span>
           <span className="text-blue-400 font-semibold">CLASSIFIED PROJECT PROTOCOLS</span>
         </div>
-      </div>
-
-      {/* Background Stark Title Watermark */}
-      <div className="absolute top-10 left-0 w-full flex items-start justify-center pointer-events-none z-0">
-        <h1 className="text-[14vw] sm:text-[17vw] md:text-[20vw] font-black text-cyan-500/[0.04] tracking-tighter leading-none whitespace-nowrap uppercase">
-          STARK LABS
-        </h1>
-      </div>
-
-      {/* Ambient Blue Glow behind folder */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[55vw] bg-blue-600/15 rounded-full blur-[160px] pointer-events-none z-0" />
-
-      {/* Main Perspective Container */}
-      <div className="mt-12 relative w-full max-w-7xl h-full flex items-center justify-center perspective-[2000px] z-10">
-        
-        {/* Origin Container */}
-        <div className="relative w-0 h-0 transform-style-3d">
-          
-          {/* Folder Back */}
-          <div 
-            ref={folderBackRef}
-            className="absolute w-[85vw] md:w-[32vw] max-w-[380px] aspect-video bg-[#090d16] rounded-[24px] border border-blue-500/40 shadow-[0_20px_50px_rgba(59,130,246,0.25)] flex items-center justify-center"
-            style={{ zIndex: 5 }}
-          >
-            <div className="absolute -top-6 left-6 w-32 h-8 bg-[#0f172a] rounded-t-xl border-t border-blue-500/30" />
-            <div className="relative z-10 text-blue-400 font-mono font-black text-2xl tracking-widest uppercase opacity-60">
-              ARCHIVE_SLOTS
-            </div>
-          </div>
-
-          {/* Desktop Project Cards */}
-          {projectsData.map((project, i) => (
-            <div 
-              key={i}
-              ref={el => cardsRef.current[i] = el}
-              className="hidden md:block absolute w-[80vw] md:w-[33vw] max-w-[380px] aspect-[16/10] will-change-transform"
-              style={{ zIndex: 10 + i }}
-            >
-              <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#090d16]/95 backdrop-blur-2xl shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-500 group hover:scale-[1.04] hover:border-blue-500 hover:shadow-[0_35px_80px_rgba(59,130,246,0.35)] hover:-translate-y-2 cursor-pointer relative z-10 p-7 flex flex-col justify-between">
-                
-                {/* Top Card Header */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20">
-                    {project.episode}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-cyan-400 font-bold">{project.match}</span>
-                    <span className="text-[10px] font-mono border border-white/30 px-1 text-white/70">HD</span>
-                  </div>
-                </div>
-
-                {/* Middle Title & Description */}
-                <div className="space-y-2 my-auto">
-                  <div className="text-[11px] font-mono uppercase tracking-widest text-white/40">
-                    {project.category}
-                  </div>
-                  <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-white/70 font-light leading-relaxed line-clamp-2">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Bottom Tech Tags */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="text-[10px] font-mono text-white/70 bg-white/5 px-2 py-0.5 rounded group-hover:border-blue-500/30 transition-colors">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Blue Glowing Corner Accent */}
-                <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-blue-500 group-hover:shadow-[0_0_15px_#3B82F6] transition-all" />
-              </div>
-            </div>
-          ))}
-
-          {/* Folder Front Flap */}
-          <div 
-            ref={folderFrontRef}
-            className="absolute w-[85vw] md:w-[32vw] max-w-[380px] aspect-video pointer-events-none will-change-transform"
-            style={{ zIndex: 60 }}
-          >
-            <div className="absolute bottom-0 w-full h-[85%] bg-[#0e1726] rounded-b-[24px] rounded-t-md shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex flex-col justify-end p-6 border-t border-blue-500/40">
-              <div className="w-20 h-1.5 bg-white/20 rounded-full mx-auto mb-2" />
-            </div>
-          </div>
-
+        <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider">
+          <span>SCROLL HORIZONTALLY TO EXPLORE &rarr;</span>
         </div>
       </div>
 
-      {/* Mobile Swipeable Carousel */}
-      <div 
-        ref={mobileCarouselRef}
-        className="md:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-auto py-12 flex items-center gap-6 px-[12.5vw] pointer-events-none z-[100] snap-x snap-mandatory overflow-x-hidden hide-scrollbar"
-      >
-        <style>{`
-          .hide-scrollbar::-webkit-scrollbar { display: none; }
-          .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        `}</style>
-        {projectsData.map((project, i) => (
-          <div 
-            key={`mob-${i}`}
-            ref={el => mobileCardsRef.current[i] = el}
-            className="shrink-0 w-[78vw] aspect-[16/11] snap-center will-change-transform relative z-10"
-          >
-            <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#090d16] p-6 flex flex-col justify-between shadow-[0_20px_40px_rgba(0,0,0,0.9)]">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">
+      {/* Horizontal Reel Track Container */}
+      <div className="relative z-10 w-full overflow-hidden my-auto py-6">
+        <div 
+          ref={trackRef} 
+          className="flex items-center gap-8 px-6 md:px-24 w-max will-change-transform"
+        >
+          {projectsData.map((project, i) => (
+            <div 
+              key={i}
+              className="group shrink-0 w-[85vw] sm:w-[420px] md:w-[480px] h-[380px] md:h-[430px] rounded-[2.5rem] p-8 md:p-10 bg-[#090d16]/95 backdrop-blur-3xl border border-blue-500/30 shadow-[0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between relative overflow-hidden transition-all duration-500 hover:border-cyan-400/80 hover:shadow-[0_30px_70px_rgba(59,130,246,0.3)] hover:-translate-y-2 cursor-pointer"
+            >
+              {/* Dynamic Specular Lighting Layer */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              {/* Cyan Accent Top Line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-60 transition-all duration-500 z-10" />
+
+              {/* Top Metadata */}
+              <div className="flex items-center justify-between relative z-10">
+                <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-cyan-400 bg-blue-500/10 px-3 py-1 rounded border border-blue-500/30 group-hover:border-cyan-400/60 transition-colors">
                   {project.episode}
                 </span>
-                <span className="text-xs font-mono text-cyan-400 font-bold">{project.match}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-cyan-300 font-bold">{project.match}</span>
+                  <span className="text-[10px] font-mono border border-white/20 px-1.5 py-0.5 rounded text-white/60">HD</span>
+                </div>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-black text-white">{project.title}</h3>
-                <p className="text-xs text-white/70 font-light line-clamp-2">{project.description}</p>
+
+              {/* Middle Title & Description */}
+              <div className="space-y-3 relative z-10 my-auto">
+                <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold">
+                  // {project.category}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-xs md:text-sm text-white/75 font-light leading-relaxed line-clamp-3">
+                  {project.description}
+                </p>
               </div>
-              <div className="flex flex-wrap gap-1 pt-2 border-t border-white/10">
-                {project.tags.slice(0, 3).map((tag, tIdx) => (
-                  <span key={tIdx} className="text-[10px] font-mono text-white/60 bg-white/5 px-2 py-0.5 rounded">
+
+              {/* Bottom Tech Tags */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10 relative z-10">
+                {project.tags.map((tag, tIdx) => (
+                  <span 
+                    key={tIdx} 
+                    className="text-[11px] font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded-lg group-hover:border-blue-500/40 transition-colors"
+                  >
                     {tag}
                   </span>
                 ))}
               </div>
+
+              {/* Glowing Corner Accent */}
+              <div className="absolute bottom-6 right-6 w-2.5 h-2.5 rounded-full bg-blue-500 group-hover:bg-cyan-400 group-hover:shadow-[0_0_15px_#00F0FF] transition-all duration-300 z-10" />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Ticker */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center justify-between text-xs font-mono text-white/40 tracking-widest uppercase pointer-events-none pb-4">
+        <span>STARK LABS CLASSIFIED FILE ARCHIVE</span>
+        <span>PAGE 01 / 05</span>
       </div>
 
     </section>
