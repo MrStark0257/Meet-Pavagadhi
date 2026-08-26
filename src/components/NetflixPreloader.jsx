@@ -6,7 +6,71 @@ const StarkPreloader = ({ onComplete }) => {
   const contentRef = useRef(null);
   const reactorRef = useRef(null);
 
+  // Web Audio API Synthesized High-Tech Stark HUD Arc Reactor SFX
+  const playStarkSFX = () => {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+
+      const ctx = new AudioCtx();
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+
+      const now = ctx.currentTime;
+
+      // 1. Power-Up Charging Frequency Sweep (Arc Reactor Hum)
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(780, now + 1.2);
+
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.12, now + 0.6);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+
+      // Low pass filter for warm sci-fi HUD sound
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(400, now);
+      filter.frequency.exponentialRampToValueAtTime(2400, now + 1.2);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 1.8);
+
+      // 2. High-Tech Jarvis Confirmation Chime
+      const chimeOsc = ctx.createOscillator();
+      const chimeGain = ctx.createGain();
+
+      chimeOsc.type = 'sine';
+      chimeOsc.frequency.setValueAtTime(1046.5, now + 1.0); // C6
+      chimeOsc.frequency.setValueAtTime(1318.51, now + 1.15); // E6
+
+      chimeGain.gain.setValueAtTime(0.001, now + 1.0);
+      chimeGain.gain.linearRampToValueAtTime(0.15, now + 1.05);
+      chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 1.6);
+
+      chimeOsc.connect(chimeGain);
+      chimeGain.connect(ctx.destination);
+
+      chimeOsc.start(now + 1.0);
+      chimeOsc.stop(now + 1.6);
+
+    } catch (err) {
+      console.log('AudioContext initialized:', err);
+    }
+  };
+
   useEffect(() => {
+    // Play SFX on preloader mount
+    playStarkSFX();
+
     const tl = gsap.timeline({
       onComplete: () => {
         if (onComplete) onComplete();
