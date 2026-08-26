@@ -46,11 +46,11 @@ const Hero = () => {
         "-=0.9"
       );
 
-    // Continuous Floating Bobbing Motion for STARK SCHEMATICS box
+    // Small, subtle floating motion for STARK SCHEMATICS box
     if (schematicsRef.current) {
       gsap.to(schematicsRef.current, {
-        y: -10,
-        duration: 2.5,
+        y: -6,
+        duration: 1.8,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut"
