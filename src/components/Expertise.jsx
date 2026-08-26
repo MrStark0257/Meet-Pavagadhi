@@ -148,7 +148,7 @@ const Expertise = () => {
             <div
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className={`sticky w-full p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br ${item.gradient} backdrop-blur-2xl border border-blue-500/30 shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col justify-between min-h-[260px] md:min-h-[280px] transform-gpu transition-all duration-300 overflow-hidden group hover:border-cyan-400/80 hover:shadow-[0_30px_70px_rgba(59,130,246,0.3)]`}
+              className="sticky w-full p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-3xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_30px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between min-h-[260px] md:min-h-[280px] transform-gpu transition-all duration-300 overflow-hidden group hover:border-cyan-400/80 hover:shadow-[0_30px_80px_rgba(59,130,246,0.35)]"
               style={{
                 zIndex: index + 1,
                 top: `${110 + index * 20}px`

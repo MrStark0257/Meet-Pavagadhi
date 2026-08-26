@@ -219,7 +219,7 @@ const Skills = () => {
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#090d16]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-blue-500/80 transition-colors duration-500"
+            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-white/[0.03] backdrop-blur-3xl border border-white/20 flex flex-col justify-between overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_30px_70px_rgba(0,0,0,0.95)] hover:border-cyan-400/80 transition-all duration-500"
           >
             {/* Inner Blue Glossy Reflection */}
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />

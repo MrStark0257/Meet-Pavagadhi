@@ -174,10 +174,10 @@ const Projects = () => {
                 zIndex: zIndex
               }}
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-              className={`absolute w-[86vw] sm:w-[420px] md:w-[460px] h-[340px] sm:h-[380px] rounded-[2.5rem] p-7 sm:p-9 bg-[#090e1d] border transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.95)] ${
+              className={`absolute w-[86vw] sm:w-[420px] md:w-[460px] h-[340px] sm:h-[380px] rounded-[2.5rem] p-7 sm:p-9 bg-white/[0.03] backdrop-blur-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_30px_70px_rgba(0,0,0,0.95)] ${
                 isActive 
-                  ? 'border-cyan-400 shadow-[0_0_50px_rgba(0,240,255,0.35)] ring-2 ring-cyan-400/50' 
-                  : 'border-blue-500/30 hover:border-blue-400/80'
+                  ? 'border-cyan-400/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_50px_rgba(0,240,255,0.35)] ring-2 ring-cyan-400/50' 
+                  : 'border-white/15 hover:border-cyan-400/70'
               }`}
               style={{
                 backfaceVisibility: 'hidden',
