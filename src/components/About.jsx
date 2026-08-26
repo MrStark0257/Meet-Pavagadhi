@@ -90,7 +90,7 @@ const About = () => {
           {/* Card 1: Bio & Core Profile (Span 7) */}
           <div
             ref={addToRefs}
-            className="md:col-span-7 p-8 md:p-12 bg-white/[0.03] backdrop-blur-3xl border border-white/20 rounded-[2.5rem] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between relative group hover:border-cyan-400/80 transition-all duration-500 overflow-hidden"
+            className="md:col-span-7 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-blue-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div
@@ -125,7 +125,7 @@ const About = () => {
           {/* Card 2: Academic Core & Education (Span 5) */}
           <div
             ref={addToRefs}
-            className="md:col-span-5 p-8 md:p-12 bg-white/[0.03] backdrop-blur-3xl border border-white/20 rounded-[2.5rem] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between relative group hover:border-cyan-400/80 transition-all duration-500 overflow-hidden"
+            className="md:col-span-5 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-blue-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div
@@ -174,7 +174,7 @@ const About = () => {
           {/* Card 3: Professional Experience Summary (Span 12) */}
           <div
             ref={addToRefs}
-            className="md:col-span-12 p-8 md:p-12 bg-white/[0.03] backdrop-blur-3xl border border-white/20 rounded-[2.5rem] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_25px_60px_rgba(0,0,0,0.85)] flex flex-col md:flex-row items-center justify-between gap-6 hover:border-cyan-400/80 transition-all duration-500 overflow-hidden relative group"
+            className="md:col-span-12 p-8 md:p-12 bg-[#090d16]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-blue-500/60 transition-all duration-500 overflow-hidden relative group"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div

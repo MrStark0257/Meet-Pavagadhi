@@ -242,24 +242,24 @@ const Hero = () => {
               {/* Electric Blue Neon Back Glow */}
               <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/50 via-cyan-500/40 to-indigo-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
-              {/* Frosted Glass Poster Card */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-white/[0.03] backdrop-blur-3xl rounded-3xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_30px_70px_rgba(0,0,0,0.9)] overflow-hidden">
+              {/* Poster Card with Glossy Sheen */}
+              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#0a1120]/90 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_80px_rgba(59,130,246,0.2)] overflow-hidden">
 
                 {/* Dynamic Specular Glare Layer */}
                 <div
                   ref={glareRef}
-                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-cyan-400/25 to-transparent pointer-events-none transform-gpu z-40"
+                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-cyan-400/20 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
 
                 {/* Stark Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3.5 py-1 bg-blue-600/80 backdrop-blur-xl border border-cyan-400/50 text-white font-mono text-[10px] font-bold tracking-widest rounded-full shadow-lg">
+                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
                   STARK SPECIALIST
                 </div>
 
                 <img
                   src={pictureImg}
                   alt="Developer Portrait"
-                  className="w-full h-[330px] md:h-[390px] object-cover rounded-2xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-[330px] md:h-[390px] object-cover rounded-xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
             </div>
@@ -272,21 +272,21 @@ const Hero = () => {
               className="relative group w-full max-w-xs transition-all duration-500 hover:scale-[1.04]"
             >
               {/* Glowing Cyber Accent Ring */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/60 via-cyan-400/60 to-indigo-600/60 rounded-3xl blur-lg opacity-40 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur-md opacity-40 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               
-              <div className="relative p-6 bg-white/[0.04] backdrop-blur-3xl border border-white/20 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-cyan-400/80 transition-all duration-500 overflow-hidden">
+              <div className="relative p-5 bg-[#090d16]/90 backdrop-blur-2xl border border-blue-500/40 rounded-xl shadow-[0_10px_35px_rgba(59,130,246,0.3)] group-hover:border-cyan-400 transition-colors duration-500 overflow-hidden">
                 {/* Top Cyan Accent Stripe */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-48 transition-all duration-500"></div>
 
-                <div className="flex items-center justify-between mb-2.5">
+                <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF] animate-ping"></span>
                     // STARK SCHEMATICS
                   </h3>
-                  <span className="text-[10px] font-mono text-cyan-300 bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">ONLINE</span>
+                  <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">ONLINE</span>
                 </div>
                 
-                <p className="text-xs text-white/90 leading-relaxed font-light">
+                <p className="text-xs text-white/85 leading-relaxed font-light">
                   B.Sc. IT (VNSGU) &bull; 3D Animation Specialist &bull; Web Developer &bull; Visual Media Specialist.
                 </p>
               </div>
