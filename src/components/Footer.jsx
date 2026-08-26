@@ -54,7 +54,7 @@ const Footer = () => {
             <span>//</span>
             <a href="mailto:haneypavagadhi1234@gmail.com" className="hover:text-blue-400 transition-colors">haneypavagadhi1234@gmail.com</a>
             <span>//</span>
-            <span>LOCATION: GUJARAT, INDIA</span>
+            <span>LOCATION: SURAT, GUJARAT, INDIA</span>
           </div>
         </div>
 

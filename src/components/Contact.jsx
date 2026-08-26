@@ -173,7 +173,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block">NODE C // GEO COORDINATES</span>
-                  <span className="text-sm font-bold text-white">Gujarat, India</span>
+                  <span className="text-sm font-bold text-white">Surat, Gujarat, India</span>
                 </div>
               </div>
 
