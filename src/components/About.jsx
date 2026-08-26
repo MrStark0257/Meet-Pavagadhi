@@ -107,7 +107,7 @@ const About = () => {
             <div className="space-y-5 relative z-10">
               <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Cast & Background</h3>
               <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
-                I am <span className="text-white font-bold drop-shadow">Dasari Venkata Ratna Sri Sushmita</span>, a B.Tech student in Artificial Intelligence and Machine Learning at Aditya Engineering College.
+                I am <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span>, a B.Tech student in Artificial Intelligence and Machine Learning.
               </p>
               <p className="text-sm md:text-base text-white/60 font-light leading-relaxed">
                 My technical narrative bridges rigorous algorithmic problem-solving with full-stack software architecture, translating complex backend logic into seamless, high-performance interfaces.
