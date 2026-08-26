@@ -145,8 +145,8 @@ const Expertise = () => {
             </span>
           </h2>
         </div>
-        <p className="text-white/70 text-xs md:text-sm font-light leading-relaxed max-w-xs border-l-2 border-cyan-400/40 pl-4">
-          SCROLL DOWN TO STACK TECHNICAL CAPABILITIES &darr;
+        <p className="text-white/75 text-xs md:text-sm font-light leading-relaxed max-w-xs border-l-2 border-cyan-400/40 pl-4">
+          Specializing in 3D animation, game engine mechanics, full-stack web architecture, and digital post-production.
         </p>
       </div>
 

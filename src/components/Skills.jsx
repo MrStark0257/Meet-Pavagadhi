@@ -154,8 +154,8 @@ const Skills = () => {
           <span className="text-white/40">|</span>
           <span className="text-blue-400 font-semibold">TECH MATRIX & SCHEMATICS</span>
         </div>
-        <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider">
-          <span>SCROLL DOWN TO REEL ALL CARDS INTO CENTER &darr;</span>
+        <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-cyan-300 font-bold tracking-wider">
+          <span>TECHNICAL SKILLSETS & FRAMEWORKS</span>
         </div>
       </div>
 
