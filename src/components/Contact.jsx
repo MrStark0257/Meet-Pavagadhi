@@ -14,6 +14,8 @@ const Contact = () => {
 
   const [activeNode, setActiveNode] = useState('phone');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const servicesList = [
     '3D ANIMATION & RIGGING',
@@ -30,7 +32,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.permission) {
@@ -38,11 +40,35 @@ const Contact = () => {
       return;
     }
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', service: '3D ANIMATION & RIGGING', message: '', permission: false });
-    }, 4500);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', service: '3D ANIMATION & RIGGING', message: '', permission: false });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 6000);
+      } else {
+        setErrorMessage(data.error || 'Failed to dispatch transmission.');
+      }
+    } catch (err) {
+      console.error('Transmission error:', err);
+      setErrorMessage('Network error while dispatching transmission.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -291,14 +317,26 @@ const Contact = () => {
                     </label>
                   </div>
 
+                  {/* Error Message Box */}
+                  {errorMessage && (
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/40 text-red-400 text-xs font-mono">
+                      ❌ {errorMessage}
+                    </div>
+                  )}
+
                   {/* Submit Laser Action Button */}
                   <button 
                     type="submit" 
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-mono font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-[1.01] active:scale-[0.99]"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-mono font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>ENGAGE TRANSMISSION PROTOCOL</span>
-                    <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <span>{isSubmitting ? 'DISPATCHING TRANSMISSION...' : 'ENGAGE TRANSMISSION PROTOCOL'}</span>
+                    <svg className={`w-4 h-4 ${isSubmitting ? 'animate-spin' : 'animate-pulse'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      {isSubmitting ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m0 14v1m8-8h-1M5 8h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      )}
                     </svg>
                   </button>
 
