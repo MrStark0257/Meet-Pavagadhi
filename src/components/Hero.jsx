@@ -296,16 +296,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 4. Custom Precision Cursor Suite */}
-      <div
-        ref={cursorDotRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3B82F6]"
-      ></div>
 
-      <div
-        ref={cursorRingRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-cyan-400/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
-      ></div>
 
       {/* --- STARK INDUSTRIES NAVBAR --- */}
       <header className="absolute top-0 inset-x-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
