@@ -32,18 +32,18 @@ const Hero = () => {
       { y: -60, opacity: 0 },
       { y: 0, opacity: 1, duration: 1 }
     )
-    .fromTo(
-      content.querySelectorAll('.hero-anim-item'),
-      { y: 50, opacity: 0, filter: "blur(10px)" },
-      { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.1, stagger: 0.12 },
-      "-=0.7"
-    )
-    .fromTo(
-      card,
-      { scale: 0.75, opacity: 0, rotationY: 35, rotationX: -15 },
-      { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, duration: 1.4, ease: "back.out(1.2)" },
-      "-=0.9"
-    );
+      .fromTo(
+        content.querySelectorAll('.hero-anim-item'),
+        { y: 50, opacity: 0, filter: "blur(10px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.1, stagger: 0.12 },
+        "-=0.7"
+      )
+      .fromTo(
+        card,
+        { scale: 0.75, opacity: 0, rotationY: 35, rotationX: -15 },
+        { scale: 1, opacity: 1, rotationY: 0, rotationX: 0, duration: 1.4, ease: "back.out(1.2)" },
+        "-=0.9"
+      );
 
     // --- MOUSE PHYSICS & SPOTLIGHT TRACKING ---
     gsap.set([cursorDotRef.current, cursorRingRef.current], {
@@ -54,7 +54,7 @@ const Hero = () => {
 
     const xToDot = gsap.quickTo(cursorDotRef.current, "x", { duration: 0.05, ease: "power2.out" });
     const yToDot = gsap.quickTo(cursorDotRef.current, "y", { duration: 0.05, ease: "power2.out" });
-    
+
     const xToRing = gsap.quickTo(cursorRingRef.current, "x", { duration: 0.15, ease: "power3.out" });
     const yToRing = gsap.quickTo(cursorRingRef.current, "y", { duration: 0.15, ease: "power3.out" });
 
@@ -172,7 +172,7 @@ const Hero = () => {
 
       {/* 3. Main Content Layer */}
       <div ref={contentRef} className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 h-full flex flex-col justify-between pt-24 pb-12">
-        
+
         {/* Top Netflix Cinematic Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-2xl">
@@ -189,17 +189,17 @@ const Hero = () => {
 
         {/* Main Center Cinematic Stage Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 my-auto">
-          
+
           {/* Left Side: Developer Story & Description */}
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
-            
+
             <div className="hero-anim-item flex items-center gap-3">
               <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">TOP 1%</span>
               <span className="text-white/80 text-xs font-mono tracking-widest uppercase">Software Engineer & Problem Solver</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
-              MEET <br />
+              SUSHMITA <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_35px_rgba(220,38,38,0.5)]">
                 DEV.ENGINE
               </span>
@@ -244,18 +244,18 @@ const Hero = () => {
 
           {/* Center: Interactive 3D Holographic Tilt Developer Poster Frame */}
           <div className="lg:col-span-4 flex justify-center perspective-[1200px]">
-            <div 
+            <div
               ref={cardRef}
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
             >
               {/* Cinematic Red Neon Back Glow */}
               <div className="absolute -inset-3 bg-gradient-to-r from-red-600/70 via-rose-600/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
-              
+
               {/* Poster Card with Glossy Sheen */}
               <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-red-600/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
-                
+
                 {/* Dynamic Specular Glare Layer */}
-                <div 
+                <div
                   ref={glareRef}
                   className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
@@ -307,7 +307,7 @@ const Hero = () => {
       {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
       <header className="absolute top-0 left-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
         <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(229,9,20,0.9)]">
-          MEET<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
+          SUSHMITA<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
           <a href="#home" className="hover:text-red-500 transition-colors">Home</a>

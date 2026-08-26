@@ -43,11 +43,11 @@ const MinimalPreloader = ({ onComplete }) => {
         <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></div>
 
         {/* Minimal Typography */}
-        <h1 
+        <h1
           className="text-2xl md:text-3xl font-black uppercase tracking-[0.3em] text-white"
           style={{ fontFamily: "'Bebas Neue', 'Impact', sans-serif" }}
         >
-          MEET
+          SUSHMITA
         </h1>
       </div>
     </div>
