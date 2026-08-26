@@ -56,27 +56,17 @@ const projectsData = [
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [rotationAngle, setRotationAngle] = useState(0);
   const containerRef = useRef(null);
 
-  const angleStep = 360 / projectsData.length;
-
-  const handleSelect = (index) => {
-    setActiveIndex(index);
-    setRotationAngle(-index * angleStep);
-  };
-
   const handleNext = () => {
-    const nextIdx = (activeIndex + 1) % projectsData.length;
-    handleSelect(nextIdx);
+    setActiveIndex((prev) => (prev + 1) % projectsData.length);
   };
 
   const handlePrev = () => {
-    const prevIdx = (activeIndex - 1 + projectsData.length) % projectsData.length;
-    handleSelect(prevIdx);
+    setActiveIndex((prev) => (prev - 1 + projectsData.length) % projectsData.length);
   };
 
-  // Keyboard navigation & Wheel rotation
+  // Keyboard Navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') handleNext();
@@ -85,7 +75,7 @@ const Projects = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex]);
+  }, []);
 
   return (
     <section 
@@ -93,7 +83,7 @@ const Projects = () => {
       ref={containerRef}
       className="bg-[#02050b] w-full min-h-screen relative overflow-hidden py-24 px-4 sm:px-6 md:px-12 select-none flex flex-col justify-between"
     >
-      {/* Background Cyber Grid Matrix */}
+      {/* Background Matrix Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-20 z-0"
         style={{
@@ -116,12 +106,12 @@ const Projects = () => {
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             HOLOGRAM 3D <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
-              ORBITAL REVOLVER.
+              COVERFLOW STAGE.
             </span>
           </h2>
         </div>
         
-        {/* Revolver Navigation Controls */}
+        {/* Revolver Controls */}
         <div className="flex items-center gap-4">
           <button 
             onClick={handlePrev}
@@ -149,84 +139,100 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Main 3D Revolver Workspace */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto h-[460px] sm:h-[500px] flex items-center justify-center perspective-[1400px] my-6">
-        
-        {/* 3D Rotating Ring */}
-        <div 
-          className="relative w-full h-full flex items-center justify-center transition-transform duration-700 ease-out transform-style-3d"
-          style={{
-            transform: `rotateY(${rotationAngle}deg)`
-          }}
-        >
-          {projectsData.map((project, idx) => {
-            const cardAngle = idx * angleStep;
-            const isActive = idx === activeIndex;
+      {/* Clean 3D Coverflow Stage Workspace */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto h-[440px] sm:h-[480px] flex items-center justify-center perspective-[1200px] my-6">
+        {projectsData.map((project, idx) => {
+          // Calculate distance relative to activeIndex
+          let offset = idx - activeIndex;
+          if (offset < -2) offset += projectsData.length;
+          if (offset > 2) offset -= projectsData.length;
 
-            return (
-              <div
-                key={project.id}
-                onClick={() => handleSelect(idx)}
-                className={`absolute w-[88vw] sm:w-[420px] md:w-[460px] h-[340px] sm:h-[380px] rounded-[2.5rem] p-7 sm:p-9 bg-[#080d1a]/95 backdrop-blur-3xl border transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] ${
-                  isActive 
-                    ? 'border-cyan-400 shadow-[0_0_50px_rgba(0,240,255,0.3)] ring-2 ring-cyan-400/40' 
-                    : 'border-blue-500/30 opacity-60 hover:opacity-90 hover:border-blue-400'
-                }`}
-                style={{
-                  transform: `rotateY(${cardAngle}deg) translateZ(420px)`,
-                  backfaceVisibility: 'visible'
-                }}
-              >
-                {/* Internal Cyan Laser Stripe */}
-                <div className={`absolute top-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent transition-all duration-500 ${
-                  isActive ? 'w-64 opacity-100' : 'w-24 opacity-40'
-                }`} />
+          const isVisible = Math.abs(offset) <= 2;
+          const isActive = offset === 0;
 
-                {/* Top Card Bar */}
-                <div className="flex items-center justify-between relative z-10">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-blue-500/10 px-3 py-1 rounded-xl border border-blue-500/30">
-                    {project.episode}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-cyan-300 font-bold">{project.match}</span>
-                    <span className="text-xl">{project.icon}</span>
-                  </div>
+          // 3D positioning coordinates
+          let translateX = offset * 310; // Mobile / Desktop spacing
+          if (window.innerWidth < 640) translateX = offset * 240;
+
+          let rotateY = offset * -35;
+          let scale = isActive ? 1.05 : 0.82;
+          let opacity = isActive ? 1 : Math.abs(offset) === 1 ? 0.6 : 0;
+          let zIndex = 30 - Math.abs(offset) * 10;
+
+          if (!isVisible) return null;
+
+          return (
+            <motion.div
+              key={project.id}
+              onClick={() => setActiveIndex(idx)}
+              initial={false}
+              animate={{
+                x: translateX,
+                rotateY: rotateY,
+                scale: scale,
+                opacity: opacity,
+                zIndex: zIndex
+              }}
+              transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+              className={`absolute w-[86vw] sm:w-[420px] md:w-[460px] h-[340px] sm:h-[380px] rounded-[2.5rem] p-7 sm:p-9 bg-[#090e1d] border transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.95)] ${
+                isActive 
+                  ? 'border-cyan-400 shadow-[0_0_50px_rgba(0,240,255,0.35)] ring-2 ring-cyan-400/50' 
+                  : 'border-blue-500/30 hover:border-blue-400/80'
+              }`}
+              style={{
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                transformStyle: 'preserve-3d'
+              }}
+            >
+              {/* Internal Cyan Laser Top Stripe */}
+              <div className={`absolute top-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent transition-all duration-500 ${
+                isActive ? 'w-64 opacity-100' : 'w-24 opacity-40'
+              }`} />
+
+              {/* Top Card Bar */}
+              <div className="flex items-center justify-between relative z-10">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-blue-500/10 px-3 py-1 rounded-xl border border-blue-500/30">
+                  {project.episode}
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-cyan-300 font-bold">{project.match}</span>
+                  <span className="text-xl">{project.icon}</span>
                 </div>
-
-                {/* Card Title & Description */}
-                <div className="space-y-3 relative z-10 my-auto">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-bold block">
-                    // {project.category}
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-white/75 font-light leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Tech Stack Badges */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10 relative z-10">
-                  {project.tags.map((tag, tIdx) => (
-                    <span 
-                      key={tIdx} 
-                      className="text-[10px] sm:text-[11px] font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded-lg"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Glowing Core Indicator */}
-                <div className={`absolute bottom-6 right-6 w-3 h-3 rounded-full transition-all duration-300 ${
-                  isActive ? 'bg-cyan-400 shadow-[0_0_20px_#00F0FF] animate-pulse' : 'bg-blue-600'
-                }`} />
               </div>
-            );
-          })}
-        </div>
 
+              {/* Card Title & Description */}
+              <div className="space-y-3 relative z-10 my-auto">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-bold block">
+                  // {project.category}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
+                  {project.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/75 font-light leading-relaxed line-clamp-3">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Tech Stack Badges */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10 relative z-10">
+                {project.tags.map((tag, tIdx) => (
+                  <span 
+                    key={tIdx} 
+                    className="text-[10px] sm:text-[11px] font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded-lg"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Glowing Core Indicator */}
+              <div className={`absolute bottom-6 right-6 w-3 h-3 rounded-full transition-all duration-300 ${
+                isActive ? 'bg-cyan-400 shadow-[0_0_20px_#00F0FF] animate-pulse' : 'bg-blue-600'
+              }`} />
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Bottom Mark Suit Selector Bar */}
@@ -239,7 +245,7 @@ const Projects = () => {
           {projectsData.map((project, idx) => (
             <button
               key={project.id}
-              onClick={() => handleSelect(idx)}
+              onClick={() => setActiveIndex(idx)}
               className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-widest transition-all duration-300 border ${
                 idx === activeIndex
                   ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-cyan-400 shadow-[0_0_25px_rgba(0,240,255,0.4)] scale-105'
