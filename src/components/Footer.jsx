@@ -32,10 +32,10 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs font-mono text-white/60">
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com"
+              href="https://github.com/MrStark0257"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-colors uppercase tracking-wider"
+              className="hover:text-cyan-400 transition-colors uppercase tracking-wider font-bold text-cyan-300"
             >
               GitHub //
             </a>
@@ -46,14 +46,6 @@ const Footer = () => {
               className="hover:text-blue-400 transition-colors uppercase tracking-wider"
             >
               LinkedIn //
-            </a>
-            <a
-              href="https://leetcode.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-colors uppercase tracking-wider"
-            >
-              LeetCode //
             </a>
           </div>
 
