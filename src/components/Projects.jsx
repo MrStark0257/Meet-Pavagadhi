@@ -31,20 +31,12 @@ const projectsData = [
     episode: "S01 E03"
   },
   {
-    title: "Gym Management System",
-    category: "Full-Stack Software",
-    description: "End-to-end web management software for member tracking, scheduling, and admin workflow automation.",
-    tags: ["HTML5", "CSS3", "JavaScript", "React"],
-    match: "97%",
-    episode: "S01 E04"
-  },
-  {
     title: "3D Character Rigging & Animation",
     category: "3D Animation & VFX",
     description: "Created production-ready character models, biped rigging, and keyframe animations for films & ads.",
     tags: ["Autodesk Maya", "Blender", "3ds Max", "Cinema 4D"],
     match: "100%",
-    episode: "S01 E05"
+    episode: "S01 E04"
   },
   {
     title: "Interactive Game Asset Pipeline",
@@ -52,7 +44,7 @@ const projectsData = [
     description: "Optimized low-poly 3D game assets and integrated animation rigs into Unity & Unreal Engine projects.",
     tags: ["Unity", "Unreal Engine", "Asset Optimization", "Rigging"],
     match: "98%",
-    episode: "S01 E06"
+    episode: "S01 E05"
   }
 ];
 

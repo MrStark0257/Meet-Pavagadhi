@@ -15,7 +15,7 @@ const expertiseData = [
   {
     number: "02",
     title: "Web Development",
-    text: "Designing and developing responsive websites using HTML, CSS, JavaScript, and modern frameworks like React. Architected projects including FETC, Parikshaa, Zclick Media, and Gym Management Systems.",
+    text: "Designing and developing responsive websites using HTML, CSS, JavaScript, and modern frameworks like React for projects including FETC, Parikshaa, and Zclick Media.",
     tag: "WEB ENGINEERING & REACT",
     gradient: "from-[#1a0809] via-[#111111] to-[#090909]"
   },
