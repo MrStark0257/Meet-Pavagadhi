@@ -242,14 +242,8 @@ const Hero = () => {
               {/* Electric Blue Neon Back Glow */}
               <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/50 via-cyan-500/40 to-indigo-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
-              {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#0a1120]/90 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_80px_rgba(59,130,246,0.2)] overflow-hidden">
-
-                {/* Dynamic Specular Glare Layer */}
-                <div
-                  ref={glareRef}
-                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-cyan-400/20 to-transparent pointer-events-none transform-gpu z-40"
-                ></div>
+              {/* Poster Card */}
+              <div className="relative w-[280px] md:w-[320px] p-3 bg-black/90 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_80px_rgba(59,130,246,0.2)] overflow-hidden">
 
                 {/* Stark Tag */}
                 <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
@@ -259,7 +253,7 @@ const Hero = () => {
                 <img
                   src={pictureImg}
                   alt="Meet Pavagadhi - Developer Portrait"
-                  className="w-full h-[340px] md:h-[400px] object-cover object-top rounded-xl filter contrast-105 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-[340px] md:h-[400px] object-cover object-top rounded-xl group-hover:scale-[1.02] transition-transform duration-500 relative z-10"
                 />
               </div>
             </div>
