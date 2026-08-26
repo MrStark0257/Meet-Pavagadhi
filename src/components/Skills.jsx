@@ -55,81 +55,63 @@ const Skills = () => {
 
     let ctx = gsap.context(() => {
 
-      // Function to render cards positioned dynamically based on scroll progress
-      const updateDeck = (progress) => {
-        // progress goes from 0 (stacked) to 1 (fanned out & initial) to (skillCategories.length)
-        const isStacked = progress < 0.2;
-        const fanProgress = Math.min(1, Math.max(0, (progress - 0.05) / 0.15)); // 0 to 1 during fan-out
-        
-        // Active card index from progress
-        const activeIdx = Math.min(
-          skillCategories.length - 1,
-          Math.max(0, Math.floor((progress - 0.2) / 0.8 * skillCategories.length))
-        );
+      const spacing = window.innerWidth < 640 ? 280 : window.innerWidth < 1024 ? 340 : 380;
+
+      // Update function mapping continuous scroll float progress to card position
+      const renderStage = (progress) => {
+        // progress maps from 0 (Card 0 centered) to (skillCategories.length - 1) (Card 5 centered)
+        const currentActiveFloat = Math.min(skillCategories.length - 1, Math.max(0, progress));
+        const activeIdx = Math.round(currentActiveFloat);
 
         cards.forEach((card, i) => {
           if (!card) return;
 
-          if (isStacked && fanProgress === 0) {
-            // Initial Stacked state
-            gsap.set(card, {
-              x: 0,
-              y: 0,
-              scale: 1 - i * 0.015,
-              rotationZ: (i - 2.5) * 2,
-              rotationY: 0,
-              opacity: 1,
-              zIndex: 30 - i
-            });
-          } else {
-            // Fanned Out & Centered Focus Tracking state
-            const offset = i - activeIdx;
-            
-            // Dynamic card spacing ensuring no offscreen cutoff
-            const cardSpacing = window.innerWidth < 640 ? 190 : window.innerWidth < 1024 ? 240 : 280;
-            const targetX = offset * cardSpacing;
+          const offset = i - currentActiveFloat;
+          const absOffset = Math.abs(offset);
+          const targetX = offset * spacing;
 
-            const isFocused = i === activeIdx;
-            const scale = isFocused ? 1.05 : Math.max(0.75, 0.88 - Math.abs(offset) * 0.08);
-            const opacity = Math.max(0, 1 - Math.abs(offset) * 0.35);
-            const zIndex = isFocused ? 50 : 30 - Math.abs(offset);
-            const rotY = offset * -20;
-            const rotZ = offset * 2;
+          const isFocused = i === activeIdx;
+          const scale = Math.max(0.72, 1.05 - absOffset * 0.15);
+          const opacity = Math.max(0.1, 1 - absOffset * 0.45);
+          const zIndex = Math.round(50 - absOffset * 10);
+          const rotY = offset * -18;
+          const rotZ = offset * 1.5;
 
-            gsap.set(card, {
-              x: targetX * fanProgress,
-              y: isFocused ? -20 * fanProgress : 0,
-              scale: scale,
-              rotationY: rotY * fanProgress,
-              rotationZ: rotZ * fanProgress,
-              opacity: opacity,
-              zIndex: zIndex
-            });
-          }
+          gsap.set(card, {
+            x: targetX,
+            y: isFocused ? -15 : 0,
+            scale: scale,
+            rotationY: rotY,
+            rotationZ: rotZ,
+            opacity: opacity,
+            zIndex: zIndex
+          });
         });
 
-        // Watermark sync
+        // Watermark text sync
         textRefs.current.forEach((txt, i) => {
           if (txt) {
-            gsap.set(txt, { opacity: i === activeIdx ? 1 : 0 });
+            const txtOpacity = Math.max(0, 1 - Math.abs(i - currentActiveFloat));
+            gsap.set(txt, { opacity: txtOpacity });
           }
         });
       };
 
-      // Set initial state
-      updateDeck(0);
+      // Set initial stage (Card 0 Centered)
+      renderStage(0);
 
-      // ScrollTrigger Master Controller
+      // ScrollTrigger Pin & Step Controller
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
-        end: "+=350%",
+        end: "+=400%",
         pin: true,
-        scrub: 0.5,
+        scrub: 0.6,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          // self.progress goes from 0 to 1
-          updateDeck(self.progress * (skillCategories.length));
+          // self.progress goes from 0 to 1 -> maps from 0 to 5
+          const targetStep = self.progress * (skillCategories.length - 1);
+          renderStage(targetStep);
         }
       });
 
@@ -173,17 +155,17 @@ const Skills = () => {
           <span className="text-blue-400 font-semibold">TECH MATRIX & SCHEMATICS</span>
         </div>
         <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider">
-          <span>SCROLL DOWN TO FAN OUT & FOCUS MATRIX &darr;</span>
+          <span>SCROLL DOWN TO REEL ALL CARDS INTO CENTER &darr;</span>
         </div>
       </div>
 
-      {/* Cards Stack & Centered Focus Tracking Stage */}
+      {/* Cards Centered Reel Stage */}
       <div className="relative w-full max-w-7xl h-full flex items-center justify-center z-10 transform-style-3d">
         {skillCategories.map((category, i) => (
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="absolute shrink-0 w-[84vw] sm:w-[320px] md:w-[360px] h-[440px] md:h-[480px] rounded-[2.5rem] p-7 md:p-9 bg-[#090d16]/95 backdrop-blur-3xl border border-blue-500/30 flex flex-col justify-between overflow-hidden group shadow-[0_30px_70px_rgba(0,0,0,0.9)] hover:border-cyan-400/80 transition-colors duration-300 will-change-transform"
+            className="absolute shrink-0 w-[84vw] sm:w-[340px] md:w-[380px] h-[440px] md:h-[480px] rounded-[2.5rem] p-7 md:p-9 bg-[#090d16]/95 backdrop-blur-3xl border border-blue-500/30 flex flex-col justify-between overflow-hidden group shadow-[0_30px_70px_rgba(0,0,0,0.9)] hover:border-cyan-400/80 transition-colors duration-300 will-change-transform"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden'
