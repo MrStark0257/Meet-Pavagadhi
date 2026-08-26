@@ -104,9 +104,9 @@ const Projects = () => {
             <span>STARK LABS // CLASSIFIED PROJECTS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            HOLOGRAM 3D <br />
+            FEATURED PROJECTS <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
-              COVERFLOW STAGE.
+              & CREATIVE WORKS.
             </span>
           </h2>
         </div>
