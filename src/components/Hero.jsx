@@ -259,56 +259,112 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Center: Interactive 3D Holographic Tilt Developer Poster Frame */}
+          {/* Center: Interactive Stark Cyber HUD Developer Portrait Frame */}
           <div className="lg:col-span-4 flex justify-center perspective-[1200px]">
             <div
               ref={cardRef}
-              className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
+              className="relative group transform-gpu transition-all duration-500 will-change-transform"
             >
-              {/* Electric Blue Neon Back Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/50 via-cyan-500/40 to-indigo-600/50 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
+              {/* Electric Blue & Cyan Neon Aura Surge */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/50 via-cyan-500/40 to-indigo-600/50 rounded-3xl blur-3xl opacity-80 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
-              {/* Poster Card */}
-              <div className="relative w-[280px] md:w-[320px] p-3 bg-black/90 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_80px_rgba(59,130,246,0.2)] overflow-hidden">
+              {/* Cyber HUD Chassis Frame */}
+              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#050a14]/95 backdrop-blur-2xl rounded-2xl border border-blue-500/40 shadow-[0_40px_90px_rgba(0,0,0,0.95)] overflow-hidden group-hover:border-cyan-400/80 transition-colors duration-500">
 
-                {/* Stark Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl">
-                  STARK SPECIALIST
+                {/* HUD Corner Target Brackets */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-400 z-30 pointer-events-none"></div>
+                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cyan-400 z-30 pointer-events-none"></div>
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cyan-400 z-30 pointer-events-none"></div>
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-400 z-30 pointer-events-none"></div>
+
+                {/* Top Stark Tag */}
+                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-mono text-[10px] font-black tracking-widest rounded shadow-xl flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                  <span>STARK SPECIALIST</span>
                 </div>
 
+                {/* Top Right Mini Arc Reactor Ring */}
+                <div className="absolute top-6 right-6 z-30 w-7 h-7 rounded-full border border-cyan-400/60 p-0.5 flex items-center justify-center bg-black/60 backdrop-blur-md">
+                  <div className="w-full h-full rounded-full border border-dashed border-cyan-400 animate-spin" style={{ animationDuration: '6s' }}></div>
+                </div>
+
+                {/* Portrait Photo */}
                 <img
                   src={pictureImg}
                   alt="Meet Pavagadhi - Developer Portrait"
-                  className="w-full h-[340px] md:h-[400px] object-cover object-top rounded-xl group-hover:scale-[1.02] transition-transform duration-500 relative z-10"
+                  className="w-full h-[340px] md:h-[390px] object-cover object-top rounded-xl group-hover:scale-[1.02] transition-transform duration-500 relative z-10"
                 />
+
+                {/* Bottom Biometric Verification Badge */}
+                <div className="absolute bottom-6 inset-x-6 z-30 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-cyan-400/40 rounded-lg text-[9px] font-mono text-cyan-300 font-bold uppercase tracking-wider flex items-center justify-between">
+                  <span>BIOMETRIC: VERIFIED</span>
+                  <span className="text-blue-400">100% OPTIMAL</span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Technical Specs & Stack */}
+          {/* Right Side: Stark HUD Diagnostic Console & Capability Matrix */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start space-y-4 text-left">
             <div 
               ref={schematicsRef}
-              className="relative group w-full max-w-xs transition-all duration-500 hover:scale-[1.04]"
+              className="relative group w-full max-w-sm transition-all duration-500 hover:scale-[1.03]"
             >
               {/* Glowing Cyber Accent Ring */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur-md opacity-40 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               
-              <div className="relative p-5 bg-[#090d16]/90 backdrop-blur-2xl border border-blue-500/40 rounded-xl shadow-[0_10px_35px_rgba(59,130,246,0.3)] group-hover:border-cyan-400 transition-colors duration-500 overflow-hidden">
-                {/* Top Cyan Accent Stripe */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-48 transition-all duration-500"></div>
+              <div className="relative p-5 bg-[#070c18]/95 backdrop-blur-2xl border border-blue-500/40 rounded-2xl shadow-[0_15px_40px_rgba(59,130,246,0.3)] group-hover:border-cyan-400 transition-colors duration-500 overflow-hidden space-y-4">
+                
+                {/* Top Cyan Accent Laser Stripe */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-56 transition-all duration-500"></div>
 
-                <div className="flex items-center justify-between mb-2">
+                {/* Console Header */}
+                <div className="flex items-center justify-between pb-2 border-b border-blue-500/20">
                   <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF] animate-ping"></span>
-                    // STARK SCHEMATICS
+                    // STARK DIAGNOSTICS
                   </h3>
-                  <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30">ONLINE</span>
+                  <span className="text-[10px] font-mono text-cyan-300 bg-blue-500/20 px-2 py-0.5 rounded border border-cyan-500/40 font-bold">ONLINE</span>
                 </div>
                 
-                <p className="text-xs text-white/85 leading-relaxed font-light">
-                  B.Sc. IT (VNSGU) &bull; 3D Animation Specialist &bull; Web Developer &bull; Visual Media Specialist.
-                </p>
+                {/* Capability Matrix Progress Bars */}
+                <div className="space-y-3 font-mono text-[11px]">
+                  <div>
+                    <div className="flex justify-between text-white/80 font-bold mb-1">
+                      <span>3D ANIMATION & RIGGING</span>
+                      <span className="text-cyan-400">98%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-black/60 rounded-full overflow-hidden border border-blue-500/30">
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full w-[98%] shadow-[0_0_10px_#00F0FF]"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-white/80 font-bold mb-1">
+                      <span>WEB ARCHITECTURE & REACT</span>
+                      <span className="text-blue-400">95%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-black/60 rounded-full overflow-hidden border border-blue-500/30">
+                      <div className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full w-[95%]"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-white/80 font-bold mb-1">
+                      <span>GAME ENGINES & VFX</span>
+                      <span className="text-cyan-300">92%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-black/60 rounded-full overflow-hidden border border-blue-500/30">
+                      <div className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full w-[92%]"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Bio Tech Line */}
+                <div className="pt-2 border-t border-blue-500/20 text-[10px] font-mono text-white/70 leading-relaxed font-light">
+                  B.Sc. IT (VNSGU) &bull; Visual Media Specialist &bull; Stark OS Protocol Engaged.
+                </div>
+
               </div>
             </div>
           </div>
