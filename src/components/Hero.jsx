@@ -130,19 +130,40 @@ const Hero = () => {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
+        @keyframes marquee-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0%); }
+        }
+        .animate-marquee-slow {
           display: flex;
           width: max-content;
-          animation: marquee 35s linear infinite;
+          animation: marquee 75s linear infinite;
+        }
+        .animate-marquee-reverse-slow {
+          display: flex;
+          width: max-content;
+          animation: marquee-reverse 65s linear infinite;
         }
       `}</style>
 
-      {/* 1. Cinematic Background Gradient & Marquee */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#050b14] to-[#030712] z-0">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-10">
-          <div className="flex whitespace-nowrap animate-marquee">
-            {[...developerRoles, ...developerRoles].map((role, idx) => (
-              <span key={idx} className="text-[14vw] font-black text-blue-500 mx-8 uppercase tracking-tighter">
+      {/* 1. Cinematic Background Gradient & Multi-Row Staggered Slow Marquee */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#050b14] to-[#030712] z-0 pointer-events-none overflow-hidden">
+        {/* Top Marquee Row */}
+        <div className="absolute top-[10%] left-0 w-full flex items-center pointer-events-none select-none opacity-10 z-0">
+          <div className="flex whitespace-nowrap animate-marquee-reverse-slow">
+            {['3D ANIMATOR // GAME SPECIALIST', 'GRAPHIC DESIGNER // VIDEO EDITOR', 'STARK OS DEVELOPER PROTOCOL', '3D ANIMATOR // GAME SPECIALIST', 'GRAPHIC DESIGNER // VIDEO EDITOR', 'STARK OS DEVELOPER PROTOCOL'].map((role, idx) => (
+              <span key={idx} className="text-[7vw] font-black text-blue-400 mx-10 uppercase tracking-tighter mix-blend-overlay">
+                {role} &bull;
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Marquee Row */}
+        <div className="absolute bottom-[12%] left-0 w-full flex items-center pointer-events-none select-none opacity-10 z-0">
+          <div className="flex whitespace-nowrap animate-marquee-slow">
+            {['WEB DEVELOPER // REACT ARCHITECT', 'B.SC. IT // DIGITAL CREATIVE', 'MARK LXXXV PROTOCOL', 'WEB DEVELOPER // REACT ARCHITECT', 'B.SC. IT // DIGITAL CREATIVE', 'MARK LXXXV PROTOCOL'].map((role, idx) => (
+              <span key={idx} className="text-[7vw] font-black text-cyan-400 mx-10 uppercase tracking-tighter mix-blend-overlay">
                 {role} &bull;
               </span>
             ))}
