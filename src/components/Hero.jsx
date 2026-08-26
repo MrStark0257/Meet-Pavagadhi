@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import pictureImg from '../assets/Portfolio/picture.png';
+import { playHoverSFX, playClickSFX } from '../utils/sfx';
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -233,6 +234,8 @@ const Hero = () => {
             <div className="hero-anim-item flex items-center gap-4 pt-2">
               <a
                 href="#projects"
+                onMouseEnter={playHoverSFX}
+                onClick={playClickSFX}
                 className="px-8 py-3.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-widest rounded transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -242,6 +245,8 @@ const Hero = () => {
               </a>
               <a
                 href="#contact"
+                onMouseEnter={playHoverSFX}
+                onClick={playClickSFX}
                 className="px-8 py-3.5 bg-neutral-900/80 text-white border border-white/20 font-bold text-xs uppercase tracking-widest rounded hover:bg-neutral-800 transition-all duration-300 shadow-xl backdrop-blur-md flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
