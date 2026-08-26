@@ -258,8 +258,8 @@ const Hero = () => {
 
                 <img
                   src={pictureImg}
-                  alt="Developer Portrait"
-                  className="w-full h-[330px] md:h-[390px] object-cover rounded-xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
+                  alt="Meet Pavagadhi - Developer Portrait"
+                  className="w-full h-[340px] md:h-[400px] object-cover object-top rounded-xl filter contrast-105 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
             </div>
