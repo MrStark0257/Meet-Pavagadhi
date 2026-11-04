@@ -1,196 +1,44 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { playClickSFX, playHoverSFX, playOpenHUDSFX } from '../utils/sfx';
+import fetcImg from '../assets/projects/fetc.jpeg';
 
 /**
  * =======================================================================
- * STARK INDUSTRIES // WORK SHOWCASE ARCHIVE DATA
+ * STARK INDUSTRIES // VERIFIED WORK SHOWCASE ARCHIVE
  * -----------------------------------------------------------------------
- * TIP: You can easily update, add, or remove projects from this array.
- * To use your own screenshots: drop your image into src/assets/ and import it,
- * or use an image URL in the `image` field.
+ * Add any new project objects into this `projectsData` array.
+ * Categories are automatically detected and displayed in the filter bar.
  * =======================================================================
  */
 const projectsData = [
   {
     id: 'fetc-portal',
     mark: 'MARK I',
-    title: 'FETC Web Platform',
+    title: 'FETC Official Portal',
     category: 'Web Development',
-    subtitle: 'Institutional Architecture & Administrative Portal',
-    description: 'Engineered a high-performance web platform featuring automated student examination matrices, dynamic timetable generators, and real-time administrative control dashboards.',
-    fullDescription: 'The FETC Web Platform is a production-grade institutional management system built to handle high-concurrency student interactions. It streamlines examination workflows, provides real-time grade calculations, and features a responsive mobile-first portal for both students and faculty.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    tags: ['React', 'JavaScript', 'Tailwind CSS', 'REST API', 'Vite'],
+    subtitle: 'Foreign English Testing Capital & Study Abroad Platform',
+    description: 'Designed and developed the official single-page web portal for Foreign English Testing Capital (FETC), Surat. Showcases international exam training (IELTS, PTE, TOEFL, SELT, GRE, GMAT), global study abroad destination guides, and student lead intake pipelines.',
+    fullDescription: 'FETC (Foreign English Testing Capital) is an authorized English examination, training, and global study abroad consultancy headquartered in Surat, Gujarat. Engineered with a responsive Single Page Architecture (SPA), the platform features modern interactive layouts, modular course navigation, foreign university destination directories, streamlined visa counseling intake forms, and high-performance cross-device styling.',
+    image: fetcImg,
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'SPA', 'Responsive Architecture'],
     highlights: [
-      'Sub-second page transition benchmarks',
-      'Dynamic Role-Based Access Control (RBAC)',
-      'Responsive Mobile-First Interface',
-      'Automated real-time data persistence'
-    ],
-    powerScore: '99%',
-    liveUrl: 'https://github.com/MrStark0257',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2024'
-  },
-  {
-    id: 'biped-mech-vfx',
-    mark: 'MARK II',
-    title: 'Cyber Biped Rigging & VFX',
-    category: '3D Animation & VFX',
-    subtitle: 'Anatomical Armature & Production Animation',
-    description: 'Designed full-body biped skeletal rigging with custom IK/FK switching controls, facial morph targets, and cinematic cloth/particle simulations in Autodesk Maya & Blender.',
-    fullDescription: 'A production-level character rigging and visual effects pipeline. Incorporates inverse/forward kinematics switching, dynamic secondary weight simulations, custom Python rigging scripts, and 4K multi-pass Arnold and Cycles shader renders.',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Autodesk Maya', 'Blender', 'IK/FK Rigging', 'Substance 3D', 'Arnold'],
-    highlights: [
-      'Full-range biped skeletal deformation & weight painting',
-      'Custom facial blendshape expressive library',
-      'Motion capture retargeting & physics solver integration',
-      'Ultra-HD 4K cinematic lighting & render passes'
+      'Interactive exam coaching directories (IELTS, PTE, TOEFL, SELT, GRE, GMAT)',
+      'Global study abroad guides for UK, USA, Canada, Australia, Europe & more',
+      'High-conversion student consultation & admission inquiry intake workflows',
+      'Ultra-responsive mobile-first design with modern component hierarchy'
     ],
     powerScore: '100%',
-    liveUrl: 'https://www.linkedin.com/in/meet-pavagadhi-66087a205/',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2023 - 2024'
-  },
-  {
-    id: 'neon-odyssey-game',
-    mark: 'MARK III',
-    title: 'Neon Odyssey Combat Engine',
-    category: 'Game Development',
-    subtitle: 'Third-Person Sci-Fi Cyber Action Prototype',
-    description: 'Developed 3D character controller, particle ability VFX systems, dynamic arena lighting, and procedural enemy AI state machines in Unity 3D & Unreal Engine.',
-    fullDescription: 'A fast-paced sci-fi cyber action combat showcase. Features custom GLSL shaders, camera shake algorithms, modular arena layouts, low-draw-call asset optimization, and state-machine-driven melee combat dynamics.',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Unity 3D', 'Unreal Engine 5', 'C#', 'Shader Graph', 'Blender'],
-    highlights: [
-      'Fluid 60 FPS combat animation controller',
-      'Procedural particle & volumetric bloom shaders',
-      'Optimized low-draw-call 3D environment models',
-      'Dynamic Cinemachine third-person camera system'
-    ],
-    powerScore: '98%',
-    liveUrl: 'https://github.com/MrStark0257',
+    liveUrl: 'https://fetc.in/',
     githubUrl: 'https://github.com/MrStark0257',
     year: '2024'
-  },
-  {
-    id: 'parikshaa-platform',
-    mark: 'MARK IV',
-    title: 'Parikshaa Assessment System',
-    category: 'Web Development',
-    subtitle: 'Real-Time Online Evaluation Engine',
-    description: 'Mission-critical web application for conducting timed examinations with anti-blur visibility monitoring, automatic autosave, and comprehensive instant analytics.',
-    fullDescription: 'Parikshaa is an intuitive assessment platform built to evaluate thousands of candidates simultaneously. It provides granular question analytics, tab-switching deterrence, and smooth reactive state management built with React.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    tags: ['React 19', 'JavaScript', 'Tailwind CSS', 'Vite', 'REST API'],
-    highlights: [
-      'Zero-data-loss local persistence & crash recovery',
-      'Anti-cheat browser focus & tab-switch tracker',
-      'Instant score grading algorithm & report generator',
-      'Cross-platform responsive design for mobile & tablet'
-    ],
-    powerScore: '98%',
-    liveUrl: 'https://github.com/MrStark0257',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2024'
-  },
-  {
-    id: 'stark-hud-portfolio',
-    mark: 'MARK V',
-    title: 'Stark HUD Cyber System',
-    category: 'Web Development',
-    subtitle: 'Futuristic Portfolio Architecture & Audio Synth',
-    description: 'Cinematic Stark Industries themed developer terminal with procedural Web Audio API frequency synthesis, GSAP scroll dynamics, and neon holographic styling.',
-    fullDescription: 'An ultra-immersive web interface embodying the iconic Stark Industries Mark LXXXV HUD aesthetic. Features real-time cursor light tracking, procedural synthesizer audio feedback, lazy-loaded modular sections, and high-performance Framer Motion transitions.',
-    image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80',
-    tags: ['React 19', 'Tailwind CSS', 'GSAP', 'Web Audio API', 'Framer Motion'],
-    highlights: [
-      'Procedural Web Audio API sound synthesizer engine',
-      'Interactive magnetic mouse-spotlight cards',
-      'Ultra-fast FCP & lazy-loaded section bundles',
-      'Vercel Analytics & Speed Insights integration'
-    ],
-    powerScore: '100%',
-    liveUrl: 'https://github.com/MrStark0257',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2026'
-  },
-  {
-    id: 'zclick-studio-suite',
-    mark: 'MARK VI',
-    title: 'Zclick Commercial Media Suite',
-    category: 'Graphic & Video Post',
-    subtitle: 'Brand Identity, Motion Graphics & Commercial Editing',
-    description: 'Creative post-production direction for commercial promotional banners, kinetic typography motion graphics, and multi-platform advertising video campaigns.',
-    fullDescription: 'Comprehensive creative suite delivered during tenure at Z click Media. Encompasses video editing, color correction, visual effects compositing, and brand identity kits designed for high-engagement multi-channel distribution.',
-    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Premiere Pro', 'After Effects', 'Photoshop', 'Illustrator', 'Motion Graphics'],
-    highlights: [
-      'Color grading curve adjustments & cinema LUTs',
-      'Custom kinetic typography title sequences',
-      'High-conversion social media banner campaign design',
-      'Fast-turnaround commercial reel editing'
-    ],
-    powerScore: '99%',
-    liveUrl: 'https://www.linkedin.com/in/meet-pavagadhi-66087a205/',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2023 - 2026'
-  },
-  {
-    id: 'sci-fi-drone-3d',
-    mark: 'MARK VII',
-    title: 'Combat Recon Drone Model',
-    category: '3D Animation & VFX',
-    subtitle: 'Hard Surface 3D Modeling & PBR Texturing',
-    description: 'Engineered a hard-surface combat drone model with clean quad topology, PBR weathered metallic texturing, and custom thruster illumination passes.',
-    fullDescription: 'High-detail 3D asset crafted for cinematic render engines and game integration. Built with non-destructive boolean workflows, quad-dominant edge loops, UDIM multi-tile texturing, and realistic surface wear shaders.',
-    image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Blender', 'Autodesk Maya', 'Substance Painter', 'Hard Surface', 'Cycles'],
-    highlights: [
-      'Optimized game-ready polygon topology (<50k tris)',
-      '4K PBR metallic/roughness texture sets',
-      'Procedural dust, scratch, and heat-burn shaders',
-      'Turntable 360-degree presentation studio lighting'
-    ],
-    powerScore: '97%',
-    liveUrl: 'https://www.linkedin.com/in/meet-pavagadhi-66087a205/',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2023'
-  },
-  {
-    id: 'infinite-runner-pipeline',
-    mark: 'MARK VIII',
-    title: 'Quantum Rush Mobile Runner',
-    category: 'Game Development',
-    subtitle: 'Procedural Endless Track & Mobile Input System',
-    description: 'Engineered infinite track generation algorithms, responsive multi-touch swipe controllers, and low-draw-call chunk pooling in Unity 3D.',
-    fullDescription: 'A mobile-optimized endless runner project built around high frame-rate performance on low-end hardware. Features object pooling architecture, procedural obstacle generation, dynamic speed scaling, and particle FX bursts.',
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Unity 3D', 'C#', 'Mobile Optimization', 'Object Pooling', 'Blender'],
-    highlights: [
-      'Sub-15ms draw call budget for 60 FPS mobile performance',
-      'Zero-garbage-collection object pooling system',
-      'Adaptive touchscreen swipe & tap input listener',
-      'Real-time high-score database integration'
-    ],
-    powerScore: '96%',
-    liveUrl: 'https://github.com/MrStark0257',
-    githubUrl: 'https://github.com/MrStark0257',
-    year: '2023'
   }
 ];
 
-const categories = [
-  'All Work',
-  'Web Development',
-  '3D Animation & VFX',
-  'Game Development',
-  'Graphic & Video Post'
-];
-
 const Projects = () => {
+  // Dynamically derive categories from current projectsData
+  const dynamicCategories = ['All Work', ...new Set(projectsData.map((p) => p.category))];
+
   const [activeCategory, setActiveCategory] = useState('All Work');
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -276,18 +124,18 @@ const Projects = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-xs font-mono text-white/60">
             <div className="px-4 py-2 rounded-xl bg-[#080f20]/80 border border-blue-500/30 flex items-center gap-2">
               <span className="text-cyan-400 font-bold">{projectsData.length}</span>
-              <span>DEPLOYED PROJECTS</span>
+              <span>LIVE PRODUCTION WORK</span>
             </div>
             <div className="px-4 py-2 rounded-xl bg-[#080f20]/80 border border-cyan-400/30 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span className="text-emerald-300 font-bold">READY TO DEPLOY</span>
+              <span className="text-emerald-300 font-bold">OPERATIONAL</span>
             </div>
           </div>
         </div>
 
         {/* Category Filter Tab Bar */}
         <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none">
-          {categories.map((category) => {
+          {dynamicCategories.map((category) => {
             const count = category === 'All Work' 
               ? projectsData.length 
               : projectsData.filter((p) => p.category === category).length;
@@ -336,13 +184,13 @@ const Projects = () => {
                 <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-cyan-400/60 z-20 pointer-events-none group-hover:border-cyan-400 transition-colors"></div>
 
                 {/* Top Section: Media Preview Banner */}
-                <div className="relative w-full h-52 sm:h-56 overflow-hidden bg-black/60">
+                <div className="relative w-full h-56 sm:h-60 overflow-hidden bg-black/60">
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-90 group-hover:brightness-105"
+                    className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700 filter brightness-95 group-hover:brightness-105"
                   />
 
                   {/* Dark Radial Gradient Overlay */}
@@ -372,10 +220,10 @@ const Projects = () => {
                     <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-snug">
                       {project.title}
                     </h3>
-                    <p className="text-xs font-mono text-white/50 tracking-wider">
+                    <p className="text-xs font-mono text-cyan-400/80 tracking-wider">
                       {project.subtitle}
                     </p>
-                    <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed line-clamp-2 pt-1">
+                    <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed line-clamp-3 pt-1">
                       {project.description}
                     </p>
                   </div>
@@ -383,7 +231,7 @@ const Projects = () => {
                   {/* Tech Stack Badges */}
                   <div className="space-y-4 pt-3 border-t border-white/5">
                     <div className="flex flex-wrap gap-1.5">
-                      {project.tags.slice(0, 4).map((tag, idx) => (
+                      {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
                           className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[10px] font-mono text-white/75 group-hover:border-cyan-400/30 transition-colors"
@@ -391,11 +239,6 @@ const Projects = () => {
                           {tag}
                         </span>
                       ))}
-                      {project.tags.length > 4 && (
-                        <span className="px-2 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[10px] font-mono text-cyan-400">
-                          +{project.tags.length - 4}
-                        </span>
-                      )}
                     </div>
 
                     {/* Bottom Action Bar */}
@@ -408,6 +251,23 @@ const Projects = () => {
                         <span>EXPLORE HUD</span>
                         <span className="text-xs">→</span>
                       </button>
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Visit Live Project"
+                          title="Visit fetc.in"
+                          onMouseEnter={playHoverSFX}
+                          onClick={playClickSFX}
+                          className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 hover:text-white hover:border-cyan-400 hover:bg-cyan-500/20 transition-all flex items-center justify-center"
+                        >
+                          <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      )}
 
                       {project.githubUrl && (
                         <a
@@ -430,12 +290,46 @@ const Projects = () => {
                 </div>
               </motion.div>
             ))}
+
+            {/* Pending Classified Transmission Companion Card */}
+            <motion.div
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: 0.1 }}
+              className="rounded-3xl bg-[#050b17]/60 border border-dashed border-cyan-400/30 p-8 flex flex-col justify-between items-center text-center space-y-6 hover:border-cyan-400/60 transition-colors"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_25px_rgba(0,240,255,0.2)]">
+                <span className="w-3 h-3 rounded-full bg-cyan-400 animate-ping"></span>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold">
+                  // TRANSMISSION NODE: PENDING ARCHIVE
+                </div>
+                <h3 className="text-lg font-bold text-white">
+                  More Exhibits Loading...
+                </h3>
+                <p className="text-xs text-white/50 font-light leading-relaxed max-w-xs">
+                  Additional productions across 3D Animation, Game Systems, and Video Editing are currently being classified.
+                </p>
+              </div>
+
+              <a
+                href="#contact"
+                onMouseEnter={playHoverSFX}
+                onClick={playClickSFX}
+                className="px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-xs font-mono text-cyan-300 hover:text-white uppercase tracking-wider transition-all"
+              >
+                REQUEST CUSTOM DEMO →
+              </a>
+            </motion.div>
           </AnimatePresence>
         </motion.div>
 
         {/* Bottom Stark Note */}
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/40 uppercase tracking-widest">
-          <p>// MULTI-DISCIPLINARY ARCHITECTURE &bull; 3D &bull; WEB &bull; GAMES &bull; VIDEO</p>
+          <p>// PRODUCTION PORTFOLIO &bull; DESIGNED & CODED BY MEET PAVAGADHI</p>
           <a 
             href="#contact" 
             className="text-cyan-400 hover:text-white transition-colors flex items-center gap-1.5"
@@ -503,7 +397,7 @@ const Projects = () => {
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#070e1c] via-transparent to-black/30 pointer-events-none" />
 
@@ -583,7 +477,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center gap-2 hover:scale-105"
                     >
-                      <span>LAUNCH EXHIBIT</span>
+                      <span>LAUNCH FETC.IN</span>
                       <span>↗</span>
                     </a>
                   )}
