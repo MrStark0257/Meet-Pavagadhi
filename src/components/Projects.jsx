@@ -5,30 +5,29 @@ import fetcImg from '../assets/projects/fetc.jpeg';
 
 /**
  * =======================================================================
- * STARK INDUSTRIES // VERIFIED WORK SHOWCASE ARCHIVE
+ * STARK INDUSTRIES // VERIFIED WORK ARCHIVE
  * -----------------------------------------------------------------------
- * Add any new project objects into this `projectsData` array.
- * Categories are automatically detected and displayed in the filter bar.
+ * Verified client & production projects designed and built by Meet Pavagadhi.
  * =======================================================================
  */
 const projectsData = [
   {
     id: 'fetc-portal',
-    mark: 'MARK I',
     title: 'FETC Official Portal',
     category: 'Web Development',
     subtitle: 'Foreign English Testing Capital & Study Abroad Platform',
-    description: 'Designed and developed the official single-page web portal for Foreign English Testing Capital (FETC), Surat. Showcases international exam training (IELTS, PTE, TOEFL, SELT, GRE, GMAT), global study abroad destination guides, and student lead intake pipelines.',
+    badge: 'LIVE PRODUCTION',
+    clientTag: '2024 • CLIENT WORK',
+    description: 'Designed and developed the official single-page web portal for Foreign English Testing Capital (FETC), Surat. Showcases global exam training catalogs (IELTS, PTE, TOEFL, SELT, GRE, GMAT), international study abroad guides, and student lead intake pipelines.',
     fullDescription: 'FETC (Foreign English Testing Capital) is an authorized English examination, training, and global study abroad consultancy headquartered in Surat, Gujarat. Engineered with a responsive Single Page Architecture (SPA), the platform features modern interactive layouts, modular course navigation, foreign university destination directories, streamlined visa counseling intake forms, and high-performance cross-device styling.',
     image: fetcImg,
-    tags: ['React', 'JavaScript', 'Tailwind CSS', 'SPA', 'Responsive Architecture'],
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'SPA Architecture', 'Responsive UI'],
     highlights: [
       'Interactive exam coaching directories (IELTS, PTE, TOEFL, SELT, GRE, GMAT)',
       'Global study abroad guides for UK, USA, Canada, Australia, Europe & more',
       'High-conversion student consultation & admission inquiry intake workflows',
       'Ultra-responsive mobile-first design with modern component hierarchy'
     ],
-    powerScore: '100%',
     liveUrl: 'https://fetc.in/',
     year: '2024'
   }
@@ -109,7 +108,7 @@ const Projects = () => {
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/40 backdrop-blur-md border border-cyan-400/40 text-xs font-mono uppercase tracking-widest text-cyan-300 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
               <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF] animate-pulse"></span>
-              <span>// STARK WORK ARCHIVE &bull; PROTOCOL 04</span>
+              <span>// STARK WORK ARCHIVE &bull; PRODUCTION PORTFOLIO</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
@@ -178,10 +177,6 @@ const Projects = () => {
                 transition={{ duration: 0.35 }}
                 className="group relative rounded-3xl bg-[#070e1c]/90 border border-blue-500/30 overflow-hidden hover:border-cyan-400/80 transition-all duration-500 hover:shadow-[0_15px_45px_rgba(0,240,255,0.15)] flex flex-col justify-between"
               >
-                {/* Cyber Corner Laser Brackets */}
-                <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-cyan-400/60 z-20 pointer-events-none group-hover:border-cyan-400 transition-colors"></div>
-                <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-cyan-400/60 z-20 pointer-events-none group-hover:border-cyan-400 transition-colors"></div>
-
                 {/* Top Section: Media Preview Banner */}
                 <div className="relative w-full h-56 sm:h-60 overflow-hidden bg-black/60">
                   <img
@@ -197,11 +192,12 @@ const Projects = () => {
 
                   {/* Top Badges */}
                   <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between z-10">
-                    <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-cyan-400/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest shadow-lg">
-                      {project.mark}
+                    <span className="px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md border border-emerald-400/50 text-[10px] font-mono text-emerald-300 font-bold uppercase tracking-widest shadow-lg flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      {project.badge}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-blue-600/80 backdrop-blur-md text-[10px] font-mono text-white font-bold uppercase tracking-wider">
-                      {project.powerScore}
+                    <span className="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-500/30 backdrop-blur-md text-[10px] font-mono text-cyan-200 font-bold uppercase tracking-wider">
+                      {project.clientTag}
                     </span>
                   </div>
 
@@ -247,7 +243,7 @@ const Projects = () => {
                         onMouseEnter={playHoverSFX}
                         className="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600/80 to-cyan-500/80 hover:from-blue-500 hover:to-cyan-400 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
                       >
-                        <span>EXPLORE HUD</span>
+                        <span>VIEW DETAILS</span>
                         <span className="text-xs">→</span>
                       </button>
 
@@ -274,7 +270,7 @@ const Projects = () => {
               </motion.div>
             ))}
 
-            {/* Pending Classified Transmission Companion Card */}
+            {/* Pending Transmission Companion Card */}
             <motion.div
               layout
               initial={{ opacity: 0, y: 20 }}
@@ -325,7 +321,7 @@ const Projects = () => {
       </div>
 
       {/* =======================================================================
-          INTERACTIVE HOLOGRAPHIC DETAIL MODAL
+          INTERACTIVE DETAIL MODAL
          ======================================================================= */}
       <AnimatePresence>
         {selectedProject && (
@@ -345,30 +341,24 @@ const Projects = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-3xl rounded-[2rem] bg-[#070e1c] border-2 border-cyan-400/60 shadow-[0_0_80px_rgba(0,240,255,0.25)] overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto"
+              className="relative w-full max-w-3xl rounded-3xl bg-[#070e1c] border border-cyan-400/50 shadow-[0_0_80px_rgba(0,240,255,0.25)] overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto"
             >
-              {/* Corner Laser Brackets */}
-              <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none z-30"></div>
-              <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-cyan-400 pointer-events-none z-30"></div>
-
               {/* Modal Top Header Bar */}
-              <div className="px-6 py-4 bg-[#0a1426] border-b border-cyan-400/30 flex items-center justify-between z-20">
-                <div className="flex items-center gap-3">
+              <div className="px-6 py-4 bg-[#0a1426] border-b border-white/10 flex items-center justify-between z-20">
+                <div className="flex items-center gap-2.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#00F0FF] animate-pulse"></span>
-                  <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest">
-                    // STARK TELEMETRY &bull; {selectedProject.mark}
+                  <span className="text-xs font-mono font-bold text-white/90 uppercase tracking-widest">
+                    PROJECT ARCHITECTURE <span className="text-cyan-400">//</span> {selectedProject.title}
                   </span>
                 </div>
 
                 <button
                   onClick={handleCloseModal}
                   onMouseEnter={playHoverSFX}
-                  className="p-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 text-white/70 hover:text-cyan-300 transition-colors border border-white/10"
+                  className="w-8 h-8 rounded-xl bg-white/5 hover:bg-red-500/20 text-white/70 hover:text-red-400 transition-all border border-white/10 flex items-center justify-center text-xs font-mono"
                   aria-label="Close Project Modal"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  ✕
                 </button>
               </div>
 
@@ -386,16 +376,25 @@ const Projects = () => {
 
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                     <div>
-                      <span className="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-cyan-400/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">
+                      <span className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-cyan-400/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">
                         {selectedProject.category}
                       </span>
                       <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-2 drop-shadow-md">
                         {selectedProject.title}
                       </h3>
                     </div>
-                    <span className="px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400/40 text-xs font-mono text-cyan-300 font-bold">
-                      POWER {selectedProject.powerScore}
-                    </span>
+
+                    {selectedProject.liveUrl && (
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-1.5 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-xs font-mono text-cyan-300 font-bold hover:bg-cyan-500/30 transition-colors flex items-center gap-1.5"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>fetc.in ↗</span>
+                      </a>
+                    )}
                   </div>
                 </div>
 
