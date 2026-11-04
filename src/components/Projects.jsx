@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { playClickSFX, playHoverSFX, playOpenHUDSFX } from '../utils/sfx';
-import fetcImg from '../assets/projects/fetc.jpeg';
+import fetcImg from '../assets/projects/fetc-screenshot.png';
 
 /**
  * =======================================================================
