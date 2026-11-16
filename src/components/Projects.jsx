@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { playClickSFX, playHoverSFX, playOpenHUDSFX } from '../utils/sfx';
 import fetcImg from '../assets/projects/fetc-presentation.png';
 import auraVoyageImg from '../assets/projects/auravoyage-presentation.png';
+import verdoraImg from '../assets/projects/verdora-presentation.png';
+import aetherImg from '../assets/projects/aether-presentation.png';
+import havenixImg from '../assets/projects/havenix-presentation.png';
 
 /**
  * =======================================================================
@@ -50,6 +53,66 @@ const projectsData = [
       'Interactive Custom Package Studio with real-time dynamic pricing & multi-currency converter'
     ],
     liveUrl: 'https://mrstark0257.github.io/AuraVoyage-Tours-And-Travel/',
+    year: '2026'
+  },
+  {
+    id: 'verdora-maison',
+    title: 'VERDORA Botanical Maison',
+    category: 'E-Commerce',
+    subtitle: 'Luxury Botanical E-Commerce Experience & Living Flora Showcase',
+    badge: 'LIVE STOREFRONT',
+    clientTag: '2026 • PRODUCTION',
+    description: 'Engineered a luxury botanical e-commerce maison and living flora showcase with React 19, Tailwind CSS, and Framer Motion. Features custom botanical design tokens, animated product interactions, Supabase backend integration, and an elegant shopping cart workflow.',
+    fullDescription: 'VERDORA is an agency-grade luxury botanical e-commerce maison and living flora showcase designed to demonstrate high-aesthetic UI/UX design, custom design tokens, and frontend engineering excellence. Built with React 19, Tailwind CSS, Framer Motion, and Supabase, it features an interactive botanical catalog, dynamic plant care specifications, fluid drawer-based cart management, micro-interactions, and responsive layout architecture.',
+    image: verdoraImg,
+    tags: ['React 19', 'Tailwind CSS', 'Framer Motion', 'Supabase', 'Vite', 'Lucide Icons'],
+    highlights: [
+      'Agency-grade botanical design tokens with organic dark aesthetic',
+      'Interactive living flora catalog with dynamic species filtering and care guides',
+      'Fluid cart management, checkout drawer, and Supabase integration',
+      'Smooth 60FPS Framer Motion page reveals and product interaction animations'
+    ],
+    liveUrl: 'https://sanchitsharma217-arch.github.io/verdora/',
+    year: '2026'
+  },
+  {
+    id: 'aether-exchange',
+    title: 'AETHER // Universal Exchange',
+    category: 'E-Commerce',
+    subtitle: 'Canonical Anti-Amazon Platform & Modern Swiss Luxury Tech',
+    badge: 'LIVE PLATFORM',
+    clientTag: '2026 • PRODUCTION',
+    description: 'Architected a modern Swiss minimalist luxury tech e-commerce platform built with Next.js 16, React 19, and Tailwind CSS v4. Replaces ad-diluted marketplace paradigms with canonical curation, instantaneous Turbopack rendering, and fluid motion design.',
+    fullDescription: 'AETHER Universal Exchange is a high-concept anti-Amazon digital commerce architecture engineered with Next.js 16 (Turbopack), React 19, TypeScript, and Tailwind CSS v4. Designed around Swiss modernist design principles, AETHER eliminates promotional noise, low-quality third-party clutter, and disposability loops by delivering verified, curated hardware artifacts with fluid micro-interactions, dark aesthetic UI hierarchy, and extreme responsiveness.',
+    image: aetherImg,
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Framer Motion', 'Turbopack'],
+    highlights: [
+      'Canonical Anti-Amazon philosophy: Zero ads, zero algorithmic clutter, curated archive',
+      'Next.js 16 App Router with Turbopack for near-instant client transitions',
+      'Monochrome Swiss typography, high-contrast dark aesthetic, and sharp micro-interactions',
+      'Interactive product catalog archive with multi-tier specifications'
+    ],
+    liveUrl: 'https://sanchitsharma217-arch.github.io/aether/',
+    year: '2026'
+  },
+  {
+    id: 'havenix-studio',
+    title: 'Havenix Architectural Studio',
+    category: '3D & Architecture',
+    subtitle: 'Interactive 3D Architectural & Luxury Interior Design Portfolio',
+    badge: 'LIVE 3D WEB APP',
+    clientTag: '2026 • PRODUCTION',
+    description: 'Engineered an immersive architectural and interior design web application combining Next.js 16, Three.js, React Three Fiber, GSAP, and Lenis smooth scrolling. Features an interactive 3D WebGL hero canvas and luxury editorial layouts.',
+    fullDescription: 'Havenix is a state-of-the-art architectural & interior design portfolio platform built with Next.js 16, React 19, Three.js (@react-three/fiber & drei), GSAP, Lenis inertia scrolling, and Tailwind CSS v4. It delivers a museum-grade visual experience with an interactive WebGL 3D hero scene, staggered GSAP reveal triggers, buttery-smooth momentum scrolling, and bespoke editorial project showcases.',
+    image: havenixImg,
+    tags: ['Next.js 16', 'React 19', 'Three.js / R3F', 'GSAP', 'Lenis Scroll', 'Tailwind CSS v4'],
+    highlights: [
+      'Interactive WebGL 3D Hero environment powered by Three.js & React Three Fiber',
+      'Ultra-smooth inertia momentum scrolling driven by Lenis',
+      'Cinematic GSAP scroll-triggered text and gallery reveal choreographies',
+      'Museum-grade luxury architectural project showcases with full-bleed imagery'
+    ],
+    liveUrl: 'https://sanchitsharma217-arch.github.io/Havenix/',
     year: '2026'
   }
 ];
