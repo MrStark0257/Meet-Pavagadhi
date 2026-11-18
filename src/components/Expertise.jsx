@@ -45,10 +45,14 @@ const Expertise = () => {
     if (!cards.length || !container) return;
 
     let ctx = gsap.context(() => {
+      const isMobile = window.innerWidth < 768;
+      const stepY = isMobile ? 12 : 28;
+      const liftY = isMobile ? 5 : 10;
+
       cards.forEach((card, i) => {
         if (i > 0) {
           gsap.set(card, {
-            y: 500,
+            y: isMobile ? 320 : 500,
             opacity: 0,
             scale: 0.94,
             zIndex: i + 1
@@ -78,16 +82,28 @@ const Expertise = () => {
         if (i === 0) return;
 
         const prevCards = cards.slice(0, i);
-        const targetY = i * 28;
+        const targetY = i * stepY;
 
+        // Scale and shift previous cards up
         tl.to(prevCards, {
           scale: (idx) => 1 - (i - idx) * 0.03,
-          y: (idx) => idx * 28 - (i - idx) * 10,
-          opacity: (idx) => 1 - (i - idx) * 0.15,
+          y: (idx) => idx * stepY - (i - idx) * liftY,
+          opacity: (idx) => 1 - (i - idx) * 0.12,
           duration: 1,
           ease: "power2.out"
         }, (i - 1) * 1);
 
+        // Fade out previous card's body text so background fonts never overlap
+        const prevCardBodies = prevCards.map(c => c.querySelector('.card-body-content')).filter(Boolean);
+        if (prevCardBodies.length) {
+          tl.to(prevCardBodies, {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          }, (i - 1) * 1);
+        }
+
+        // Animate incoming active card
         tl.to(card, {
           y: targetY,
           opacity: 1,
@@ -95,6 +111,16 @@ const Expertise = () => {
           duration: 1,
           ease: "power2.out"
         }, (i - 1) * 1);
+
+        // Ensure active card body is fully visible
+        const currentBody = card.querySelector('.card-body-content');
+        if (currentBody) {
+          tl.to(currentBody, {
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out"
+          }, (i - 1) * 1);
+        }
       });
 
       const handleMouseMove = (e, card) => {
@@ -121,40 +147,40 @@ const Expertise = () => {
     <section
       id="expertise"
       ref={containerRef}
-      className="relative w-full h-screen bg-[#030712] text-white py-12 px-6 md:px-12 select-none overflow-hidden flex flex-col justify-between"
+      className="relative w-full h-[100dvh] min-h-[580px] bg-[#030712] text-white py-4 sm:py-6 md:py-12 px-4 sm:px-6 md:px-12 select-none overflow-hidden flex flex-col justify-between"
     >
       {/* Ambient Background Glow */}
       <div className="absolute top-1/3 left-1/4 w-[550px] h-[550px] bg-blue-600/10 rounded-full blur-[180px] pointer-events-none z-0" />
       <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-cyan-600/10 rounded-full blur-[160px] pointer-events-none z-0" />
 
       {/* Section Header */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-blue-500/20 pt-4">
-        <div className="space-y-2 max-w-xl">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-xs font-mono uppercase tracking-widest text-cyan-400 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
+      <div className="relative z-20 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 pb-2 sm:pb-4 border-b border-blue-500/20 pt-1 sm:pt-4 flex-shrink-0">
+        <div className="space-y-1 sm:space-y-2 max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-cyan-400 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+            <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-cyan-400 animate-ping shadow-[0_0_10px_#00F0FF]"></span>
             <span className="text-cyan-400 font-bold">PROTOCOL 02</span>
             <span className="text-white/40">|</span>
-            <span className="text-blue-400 font-semibold">SPECIALIZATIONS & CORE SERVICES</span>
+            <span className="text-blue-400 font-semibold truncate max-w-[190px] sm:max-w-none">SPECIALIZATIONS & SERVICES</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
             DOMAINS OF EXPERTISE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
               & CREATIVE SERVICES.
             </span>
           </h2>
         </div>
-        <p className="text-white/75 text-xs md:text-sm font-light leading-relaxed max-w-xs border-l-2 border-cyan-400/40 pl-4">
+        <p className="text-white/75 text-[11px] sm:text-xs md:text-sm font-light leading-relaxed max-w-xs border-l-2 border-cyan-400/40 pl-3 md:pl-4 line-clamp-2 md:line-clamp-none">
           Comprehensive engineering & creative solutions — bridging 3D digital art, game engine architecture, full-stack web applications, and video post-production.
         </p>
       </div>
 
       {/* Pinned 3D Stacking Deck Workspace */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full h-[480px] md:h-[530px] my-auto flex items-center justify-center">
+      <div className="relative z-10 max-w-6xl mx-auto w-full h-[390px] sm:h-[440px] md:h-[530px] my-auto flex items-center justify-center flex-shrink-0">
         {expertiseData.map((item, index) => (
           <div
             key={index}
             ref={el => cardsRef.current[index] = el}
-            className="absolute inset-x-0 mx-auto w-full p-8 md:p-11 rounded-[2.5rem] bg-[#090e1c]/95 backdrop-blur-3xl border border-blue-500/40 shadow-[0_30px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between h-[390px] md:h-[440px] overflow-hidden group hover:border-cyan-400 hover:shadow-[0_30px_90px_rgba(0,240,255,0.3)] transition-colors duration-300 will-change-transform"
+            className="absolute inset-x-0 mx-auto w-full p-5 sm:p-7 md:p-11 rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] bg-[#090e1c]/95 backdrop-blur-3xl border border-blue-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.9)] md:shadow-[0_30px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between h-[340px] sm:h-[380px] md:h-[440px] overflow-hidden group hover:border-cyan-400 hover:shadow-[0_30px_90px_rgba(0,240,255,0.3)] transition-colors duration-300 will-change-transform"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden'
@@ -171,34 +197,34 @@ const Expertise = () => {
             {/* Glowing Top Cyan Accent Line */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent z-10 group-hover:w-80 transition-all duration-500" />
 
-            {/* Card Header Top */}
-            <div className="flex items-center justify-between w-full mb-3 relative z-10">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 px-3.5 py-1 rounded-xl bg-blue-500/10 border border-blue-500/30 group-hover:border-cyan-400 transition-colors">
+            {/* Card Header Top (Tab Bar) */}
+            <div className="flex items-center justify-between w-full mb-2 sm:mb-3 relative z-10 flex-shrink-0">
+              <span className="text-[9px] sm:text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 px-2.5 sm:px-3.5 py-1 rounded-xl bg-blue-500/10 border border-blue-500/30 group-hover:border-cyan-400 transition-colors">
                 {item.tag}
               </span>
-              <span className="text-3xl md:text-5xl font-mono font-black text-cyan-400/40 group-hover:text-cyan-400 transition-colors">
+              <span className="text-2xl sm:text-3xl md:text-5xl font-mono font-black text-cyan-400/40 group-hover:text-cyan-400 transition-colors">
                 {item.number}
               </span>
             </div>
 
             {/* Card Body */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start my-auto relative z-10">
-              <div className="lg:col-span-5 space-y-2">
-                <h3 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors duration-300">
+            <div className="card-body-content grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 md:gap-6 items-start my-auto relative z-10 w-full transition-opacity duration-300">
+              <div className="lg:col-span-5 space-y-1 sm:space-y-2">
+                <h3 className="text-xl sm:text-2xl md:text-4xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors duration-300">
                   {item.title}
                 </h3>
               </div>
-              <div className="lg:col-span-7 space-y-4">
-                <p className="text-xs md:text-sm text-white/90 font-light leading-relaxed">
+              <div className="lg:col-span-7 space-y-2.5 sm:space-y-4">
+                <p className="text-[11px] sm:text-xs md:text-sm text-white/85 font-light leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
                   {item.text}
                 </p>
 
                 {/* Key Deliverable Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-0.5 sm:pt-1">
                   {item.deliverables.map((del, dIdx) => (
                     <span 
                       key={dIdx}
-                      className="text-[10px] sm:text-xs font-mono text-cyan-300 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-lg font-medium"
+                      className="text-[9px] sm:text-[10px] md:text-xs font-mono text-cyan-300 bg-blue-500/10 border border-blue-500/30 px-2.5 py-1 rounded-lg font-medium whitespace-nowrap"
                     >
                       ✓ {del}
                     </span>
@@ -208,13 +234,13 @@ const Expertise = () => {
             </div>
 
             {/* Blue/Cyan Corner Accent */}
-            <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-blue-500 group-hover:bg-cyan-400 group-hover:shadow-[0_0_20px_#00F0FF] z-10 transition-all duration-300" />
+            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-blue-500 group-hover:bg-cyan-400 group-hover:shadow-[0_0_20px_#00F0FF] z-10 transition-all duration-300" />
           </div>
         ))}
       </div>
 
-      {/* Footer Ticker Indicator */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full flex items-center justify-between text-xs font-mono text-white/40 tracking-widest uppercase pointer-events-none pb-4">
+      {/* Footer Ticker Indicator (Hidden on mobile to prevent overlapping) */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full hidden md:flex items-center justify-between text-xs font-mono text-white/40 tracking-widest uppercase pointer-events-none pb-4 flex-shrink-0">
         <span>MEET PAVAGADHI SPECIALIZATION MATRIX</span>
         <span>CORE DOMAINS 01-04</span>
       </div>
