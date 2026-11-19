@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { playClickSFX, playHoverSFX, playOpenHUDSFX } from '../utils/sfx';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -17,6 +18,7 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false);
 
   const servicesList = [
     '3D ANIMATION & RIGGING',
@@ -25,12 +27,34 @@ const Contact = () => {
     'VISUAL MEDIA & EDITING'
   ];
 
+  // Lock scroll and handle escape key for Calendly modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsCalendlyModalOpen(false);
+    };
+    if (isCalendlyModalOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isCalendlyModalOpen]);
+
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [id]: type === 'checkbox' ? checked : value
     }));
+  };
+
+  const handleOpenCalendly = () => {
+    playOpenHUDSFX();
+    setIsCalendlyModalOpen(true);
   };
 
   const handleSubmit = async (e) => {
@@ -135,27 +159,57 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-10 items-start">
 
             {/* Left Column: Interactive Signal Nodes */}
-            <div className="lg:col-span-4 space-y-6">
+            <div className="lg:col-span-4 space-y-4 sm:space-y-5">
               
               <div className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
                 // SELECT CHANNEL NODE
               </div>
 
+              {/* Calendly Booking Node (Highlighted Direct Scheduling) */}
+              <div 
+                onClick={handleOpenCalendly}
+                onMouseEnter={playHoverSFX}
+                className="p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center justify-between gap-3 bg-gradient-to-r from-blue-950/70 via-cyan-950/40 to-blue-950/70 border-cyan-400/60 hover:border-cyan-300 hover:shadow-[0_0_35px_rgba(0,240,255,0.3)] group hover:scale-[1.01]"
+              >
+                <div className="flex items-center gap-3.5 overflow-hidden">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/20 border border-cyan-400/60 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform shrink-0 shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div className="overflow-hidden">
+                    <span className="text-[10px] font-mono text-cyan-300 uppercase tracking-widest block font-bold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                      NODE F // CALENDLY 1-ON-1
+                    </span>
+                    <span className="text-sm font-black text-white group-hover:text-cyan-300 transition-colors block truncate">
+                      Schedule 30-Min Call
+                    </span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono font-bold text-cyan-400 group-hover:translate-x-1 transition-transform shrink-0 px-2.5 py-1 rounded-lg bg-cyan-400/10 border border-cyan-400/30">
+                  BOOK ↗
+                </span>
+              </div>
+
               {/* Phone Node */}
               <div 
                 onClick={() => setActiveNode('phone')}
-                className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
+                className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
                   activeNode === 'phone' 
                     ? 'bg-blue-500/20 border-cyan-400 shadow-[0_0_25px_rgba(0,240,255,0.2)]' 
                     : 'bg-[#030712]/80 border-white/10 hover:border-blue-500/40'
                 }`}
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-cyan-400">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-cyan-400 shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <div>
+                <div className="overflow-hidden">
                   <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block">NODE A // TELEPHONY</span>
                   <a href="tel:+919824999054" className="text-sm font-bold text-white hover:text-cyan-300 transition-colors">+91-9824999054</a>
                 </div>
@@ -164,13 +218,13 @@ const Contact = () => {
               {/* Email Node */}
               <div 
                 onClick={() => setActiveNode('email')}
-                className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
+                className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
                   activeNode === 'email' 
                     ? 'bg-blue-500/20 border-cyan-400 shadow-[0_0_25px_rgba(0,240,255,0.2)]' 
                     : 'bg-[#030712]/80 border-white/10 hover:border-blue-500/40'
                 }`}
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -186,19 +240,19 @@ const Contact = () => {
               {/* Location Node */}
               <div 
                 onClick={() => setActiveNode('location')}
-                className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
+                className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-4 ${
                   activeNode === 'location' 
                     ? 'bg-blue-500/20 border-cyan-400 shadow-[0_0_25px_rgba(0,240,255,0.2)]' 
                     : 'bg-[#030712]/80 border-white/10 hover:border-blue-500/40'
                 }`}
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-400">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-400 shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <div>
+                <div className="overflow-hidden">
                   <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block">NODE C // GEO COORDINATES</span>
                   <span className="text-sm font-bold text-white">Surat, Gujarat, India</span>
                 </div>
@@ -209,9 +263,9 @@ const Contact = () => {
                 href="https://github.com/MrStark0257"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 bg-[#030712]/80 border-white/10 hover:border-cyan-400 hover:bg-blue-500/10 group"
+                className="p-4 sm:p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 bg-[#030712]/80 border-white/10 hover:border-cyan-400 hover:bg-blue-500/10 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform shrink-0">
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                   </svg>
@@ -229,9 +283,9 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/meet-pavagadhi-66087a205/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 bg-[#030712]/80 border-white/10 hover:border-cyan-400 hover:bg-blue-500/10 group"
+                className="p-4 sm:p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 bg-[#030712]/80 border-white/10 hover:border-cyan-400 hover:bg-blue-500/10 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform shrink-0">
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
@@ -245,7 +299,7 @@ const Contact = () => {
               </a>
 
               {/* Live Core Specs Box */}
-              <div className="p-5 rounded-2xl bg-[#030712]/90 border border-blue-500/30 text-xs font-mono space-y-2">
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#030712]/90 border border-blue-500/30 text-xs font-mono space-y-2">
                 <div className="text-cyan-400 font-bold uppercase tracking-wider">// SYSTEM DISPATCH</div>
                 <div className="text-white/70">AVAILABILITY: FREELANCE & FULL-TIME</div>
                 <div className="text-white/50 text-[11px]">AVG RESPONSE TIME: &lt; 2 HOURS</div>
@@ -254,7 +308,28 @@ const Contact = () => {
             </div>
 
             {/* Right Column: Hologram Form Interface */}
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8 space-y-6">
+
+              {/* Direct Calendly Quick Trigger Banner */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-950/40 via-cyan-950/30 to-blue-950/40 border border-cyan-400/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono shadow-[0_0_20px_rgba(0,240,255,0.08)]">
+                <div className="flex items-center gap-2.5 text-white/90">
+                  <span className="text-cyan-400 font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    INSTANT CONSULTATION
+                  </span>
+                  <span className="text-white/30 hidden sm:inline">|</span>
+                  <span className="text-white/60 text-[11px] sm:text-xs">Lock a 30-min Google Meet session directly</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleOpenCalendly}
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.4)] flex items-center gap-1.5 hover:scale-105 active:scale-95 shrink-0 self-end sm:self-auto"
+                >
+                  <span>SCHEDULE 30-MIN CALL</span>
+                  <span>↗</span>
+                </button>
+              </div>
+
               {submitted ? (
                 <div className="py-20 rounded-2xl bg-[#030712]/90 border border-cyan-400/50 flex flex-col items-center justify-center text-center space-y-4 shadow-[0_0_50px_rgba(0,240,255,0.2)]">
                   <div className="w-20 h-20 rounded-full bg-cyan-400/20 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-[0_0_40px_#00F0FF] animate-pulse">
@@ -402,6 +477,70 @@ const Contact = () => {
         </div>
 
       </div>
+
+      {/* =======================================================================
+          STARK HUD // CALENDLY INTERACTIVE SCHEDULER MODAL
+         ======================================================================= */}
+      {isCalendlyModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          {/* Backdrop Blur */}
+          <div 
+            onClick={() => setIsCalendlyModalOpen(false)}
+            className="fixed inset-0 bg-black/85 backdrop-blur-xl transition-opacity animate-fadeIn"
+          />
+
+          {/* Modal Dialog Box */}
+          <div className="relative w-full max-w-4xl rounded-3xl bg-[#060b17] border border-cyan-400/50 shadow-[0_0_80px_rgba(0,240,255,0.25)] overflow-hidden z-10 my-auto flex flex-col">
+            {/* Modal Header Bar */}
+            <div className="px-5 sm:px-6 py-4 bg-[#0a1426] border-b border-cyan-400/30 flex items-center justify-between z-20">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#00F0FF] animate-pulse"></span>
+                <span className="text-xs font-mono font-bold text-white/90 uppercase tracking-widest">
+                  STARK SCHEDULER <span className="text-cyan-400">//</span> 30-MIN 1-ON-1 CONSULTATION
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://calendly.com/haneypavagadhi1234/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:flex items-center gap-1.5 text-xs font-mono text-cyan-300 hover:text-white px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-400/30 transition-colors"
+                >
+                  <span>DIRECT TAB</span>
+                  <span>↗</span>
+                </a>
+                <button
+                  onClick={() => setIsCalendlyModalOpen(false)}
+                  className="w-8 h-8 rounded-xl bg-white/5 hover:bg-red-500/20 text-white/70 hover:text-red-400 transition-all border border-white/10 flex items-center justify-center text-xs font-mono"
+                  aria-label="Close Calendly Modal"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Embedded Calendly Frame */}
+            <div className="w-full h-[620px] bg-[#060b17] overflow-hidden">
+              <iframe
+                src="https://calendly.com/haneypavagadhi1234/30min?hide_gdpr_banner=1&background_color=060b17&text_color=ffffff&primary_color=00f0ff"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Calendly Scheduling Page"
+                className="w-full h-full"
+              ></iframe>
+            </div>
+
+            {/* Modal Footer Bar */}
+            <div className="px-6 py-3 bg-[#0a1426] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/50">
+              <span>POWERED BY CALENDLY TRANSMISSION ENGINE</span>
+              <span className="text-cyan-400 font-bold">INSTANT GOOGLE MEET CONFIRMATION</span>
+            </div>
+          </div>
+        </div>
+      )}
+
     </section>
   );
 };

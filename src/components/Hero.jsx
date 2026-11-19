@@ -245,6 +245,23 @@ const Hero = () => {
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </a>
+                <a
+                  href="https://calendly.com/haneypavagadhi1234/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Schedule 30-Min Call on Calendly"
+                  title="Calendly: Schedule 30-Min Call"
+                  onMouseEnter={playHoverSFX}
+                  onClick={playClickSFX}
+                  className="p-3.5 bg-neutral-900/80 text-cyan-300 hover:text-cyan-400 border border-cyan-400/40 rounded hover:border-cyan-400 hover:bg-neutral-800 transition-all duration-300 shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 flex items-center justify-center"
+                >
+                  <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -457,6 +474,21 @@ const Hero = () => {
             </svg>
           </a>
           <a
+            href="https://calendly.com/haneypavagadhi1234/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Schedule 30-Min Call on Calendly"
+            title="Calendly: Schedule 30-Min Call"
+            className="p-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300"
+          >
+            <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
             href="#contact"
             className="px-5 py-2 rounded bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:scale-105 active:scale-95"
           >
@@ -493,7 +525,7 @@ const Hero = () => {
                 <span className="text-cyan-400 text-xs">→</span>
               </a>
             ))}
-            <div className="flex items-center gap-4 pt-3 border-t border-white/10">
+            <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-white/10">
               <a
                 href="https://github.com/MrStark0257"
                 target="_blank"
@@ -516,6 +548,21 @@ const Hero = () => {
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
                 LinkedIn
+              </a>
+              <span className="text-white/20">|</span>
+              <a
+                href="https://calendly.com/haneypavagadhi1234/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-white font-bold"
+              >
+                <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Book Call ↗
               </a>
             </div>
           </div>
