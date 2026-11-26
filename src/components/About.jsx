@@ -229,7 +229,7 @@ const About = () => {
                   </div>
                   <span className="px-3 py-1 rounded-full bg-cyan-400/15 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold tracking-wider shrink-0 flex items-center gap-1.5 self-start sm:self-auto shadow-[0_0_10px_rgba(0,240,255,0.25)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-                    2024 — PRESENT
+                    2026 — PRESENT
                   </span>
                 </div>
 
