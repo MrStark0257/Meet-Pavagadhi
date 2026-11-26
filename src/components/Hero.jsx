@@ -164,7 +164,7 @@ const Hero = () => {
 
             <div className="hero-anim-item flex flex-wrap items-center gap-2.5">
               <span className="px-2.5 py-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-[10px] sm:text-xs rounded tracking-widest shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse">STARK PROTOCOL</span>
-              <span className="text-cyan-400 text-[10px] sm:text-xs font-mono tracking-widest uppercase">// 3D ANIMATOR & WEB ENGINEER</span>
+              <span className="text-cyan-400 text-[10px] sm:text-xs font-mono tracking-widest uppercase">// FOUNDER @ NEXVEDA &bull; 3D &amp; WEB ENGINEER</span>
             </div>
 
             <h1 className="hero-anim-item text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter text-white leading-[0.98] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
@@ -185,7 +185,7 @@ const Hero = () => {
             </div>
 
             <p className="hero-anim-item text-xs sm:text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md drop-shadow">
-              Specializing in 3D animation, game development, responsive web design, and graphic/video post-production. Turning creative vision into high-performance digital products.
+              Founder at <a href="https://nexvedatechnology.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:text-cyan-200 underline underline-offset-2">Nexveda Technology</a>, 3D Animator & Web Developer. Building high-performance web applications, 3D character rigs, and scalable digital platforms.
             </p>
 
             {/* Action Button Set */}

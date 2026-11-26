@@ -107,10 +107,10 @@ const About = () => {
             <div className="space-y-5 relative z-10">
               <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">Cast & Profile</h3>
               <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
-                Hi, I'm <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span> — a 3D Animator, Web Developer, and Game Specialist.
+                Hi, I'm <span className="text-white font-bold drop-shadow">Meet Pavagadhi</span> — Founder at <a href="https://nexvedatechnology.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 decoration-cyan-400/50">Nexveda Technology</a>, 3D Animator, and Web Developer.
               </p>
               <p className="text-sm md:text-base text-white/60 font-light leading-relaxed">
-                With a B.Sc. in IT and mastery across Autodesk Maya, Blender, Unity, Unreal Engine, React, and Adobe Creative Suite, I turn creative concepts into high-impact digital experiences, 3D animations, and responsive web applications.
+                With a B.Sc. in IT and mastery across React, modern web architecture, Autodesk Maya, Blender, Unity, and Unreal Engine, I direct client digital engineering at Nexveda Technology while delivering bespoke 3D animations and high-performance web applications worldwide.
               </p>
             </div>
 
@@ -203,9 +203,53 @@ const About = () => {
             {/* Two-Column Grid: Timeline on Left, Tech Stack on Right */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10 items-start">
               
-              {/* Left Column: 3 Cleanly Aligned Experience Cards */}
-              <div className="lg:col-span-7 space-y-3.5">
-                {/* Exp 1 */}
+              {/* Left Column: 4 Cleanly Aligned Experience Cards */}
+              <div className="lg:col-span-7 space-y-3">
+                {/* Exp 1: Nexveda Technology (Company Work / Startup) */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-950/50 via-cyan-950/30 to-blue-950/50 border border-cyan-400/40 hover:border-cyan-300 hover:shadow-[0_0_30px_rgba(0,240,255,0.25)] transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors">
+                        Nexveda Technology
+                      </span>
+                      <a
+                        href="https://nexvedatechnology.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-cyan-400/15 border border-cyan-400/40 text-[10px] font-mono font-bold text-cyan-300 hover:text-white hover:bg-cyan-400/30 transition-all"
+                        title="Visit Nexveda Technology"
+                      >
+                        <span>nexvedatechnology.com</span>
+                        <span>↗</span>
+                      </a>
+                    </div>
+                    <p className="text-xs text-cyan-200/70 font-mono">
+                      Founder & Tech Lead &bull; Digital Engineering Studio & Web Apps
+                    </p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-cyan-400/15 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold tracking-wider shrink-0 flex items-center gap-1.5 self-start sm:self-auto shadow-[0_0_10px_rgba(0,240,255,0.25)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                    2024 — PRESENT
+                  </span>
+                </div>
+
+                {/* Exp 2: Freelance Web Developer (Freelance Work) */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
+                  <div className="space-y-1">
+                    <div className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors flex items-center gap-2">
+                      <span>Freelance Web Developer</span>
+                    </div>
+                    <p className="text-xs text-white/50 font-mono">
+                      Full-Stack Architecture, React 19, Modern Responsive UI
+                    </p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-bold tracking-wider shrink-0 flex items-center gap-1.5 self-start sm:self-auto">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                    2022 — PRESENT
+                  </span>
+                </div>
+
+                {/* Exp 3: Freelance 3D Animator (Freelance Work) */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
                   <div className="space-y-1">
                     <div className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors flex items-center gap-2">
@@ -221,36 +265,7 @@ const About = () => {
                   </span>
                 </div>
 
-                {/* Exp 2 */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors">
-                        Web Developer
-                      </span>
-                      <span className="text-white/30 text-xs font-mono">//</span>
-                      <a
-                        href="https://nexvedatechnology.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-400/30 text-xs font-mono font-semibold text-cyan-300 hover:text-white hover:bg-cyan-500/20 transition-all"
-                        title="Visit Nexveda Technology"
-                      >
-                        <span>Nexveda Technology</span>
-                        <span className="text-[10px]">↗</span>
-                      </a>
-                    </div>
-                    <p className="text-xs text-white/50 font-mono">
-                      Custom Websites, React/Next.js Web Applications & Digital Solutions
-                    </p>
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-bold tracking-wider shrink-0 flex items-center gap-1.5 self-start sm:self-auto">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-                    2022 — PRESENT
-                  </span>
-                </div>
-
-                {/* Exp 3 */}
+                {/* Exp 4: Z click Media */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
                   <div className="space-y-1">
                     <div className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors flex items-center gap-2">
