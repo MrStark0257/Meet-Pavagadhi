@@ -223,12 +223,25 @@ const About = () => {
 
                 {/* Exp 2 */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/item">
-                  <div className="space-y-1">
-                    <div className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors flex items-center gap-2">
-                      <span>Web Developer</span>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <span className="text-base font-bold text-white group-hover/item:text-cyan-300 transition-colors">
+                        Web Developer
+                      </span>
+                      <span className="text-white/30 text-xs font-mono">//</span>
+                      <a
+                        href="https://nexvedatechnology.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-400/30 text-xs font-mono font-semibold text-cyan-300 hover:text-white hover:bg-cyan-500/20 transition-all"
+                        title="Visit Nexveda Technology"
+                      >
+                        <span>Nexveda Technology</span>
+                        <span className="text-[10px]">↗</span>
+                      </a>
                     </div>
                     <p className="text-xs text-white/50 font-mono">
-                      Full-Stack Architecture, React, Modern Responsive UI
+                      Custom Websites, React/Next.js Web Applications & Digital Solutions
                     </p>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-bold tracking-wider shrink-0 flex items-center gap-1.5 self-start sm:self-auto">
