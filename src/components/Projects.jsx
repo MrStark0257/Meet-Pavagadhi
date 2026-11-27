@@ -6,6 +6,7 @@ import auraVoyageImg from '../assets/projects/auravoyage-presentation.png';
 import verdoraImg from '../assets/projects/verdora-presentation.png';
 import aetherImg from '../assets/projects/aether-presentation.png';
 import havenixImg from '../assets/projects/havenix-presentation.png';
+import atelierVesperImg from '../assets/projects/atelier-vesper-presentation.png';
 
 /**
  * =======================================================================
@@ -113,6 +114,26 @@ const projectsData = [
       'Museum-grade luxury architectural project showcases with full-bleed imagery'
     ],
     liveUrl: 'https://sanchitsharma217-arch.github.io/Havenix/',
+    year: '2026'
+  },
+  {
+    id: 'atelier-vesper',
+    title: 'Atelier Vesper',
+    category: 'WordPress & CMS',
+    subtitle: 'Architectural Interior Design WordPress Theme & Spatial Studio',
+    badge: 'LIVE THEME',
+    clientTag: '2026 • WORDPRESS',
+    description: 'Engineered a bespoke, editorial WordPress theme crafted for interior design studios, architectural practices, and spatial curators. Built with zero page-builder dependencies, it pairs warm architectural aesthetics with silky-smooth Lenis motion choreography, custom post types, and native project specifications.',
+    fullDescription: 'Atelier Vesper is a high-end, editorial WordPress theme and digital spatial portfolio engineered for interior architecture practices and design ateliers. Built with a modern warm architectural design system, native custom post types (vesper_project) with custom project specifications (location, area, materials), zero heavy page-builder dependencies, Lenis inertia scrolling, GSAP ScrollTrigger parallax, and a zero-plugin consultation inquiry pipeline.',
+    image: atelierVesperImg,
+    tags: ['WordPress 6.0+', 'PHP 8.2', 'GSAP ScrollTrigger', 'Lenis Smooth Scroll', 'theme.json', 'CSS3 & Vanilla JS'],
+    highlights: [
+      'Warm architectural design system with editorial typography & curtain reveals',
+      'Native Portfolio Spaces Custom Post Type (vesper_project) with project spec meta boxes',
+      'Silky-smooth inertia scrolling powered by Lenis and GSAP ScrollTrigger parallax',
+      'Built-in consultation inquiry form handler with nonce verification & honeypot spam guard'
+    ],
+    liveUrl: 'https://past-table.localsite.io',
     year: '2026'
   }
 ];
