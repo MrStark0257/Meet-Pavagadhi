@@ -134,6 +134,10 @@ const projectsData = [
       'Built-in consultation inquiry form handler with nonce verification & honeypot spam guard'
     ],
     liveUrl: 'https://past-table.localsite.io',
+    demoCredentials: {
+      username: 'friction',
+      password: 'gifted'
+    },
     year: '2026'
   }
 ];
@@ -341,6 +345,19 @@ const Projects = () => {
                       ))}
                     </div>
 
+                    {/* Optional Demo Credentials Badge */}
+                    {project.demoCredentials && (
+                      <div className="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-amber-300">
+                        <span className="flex items-center gap-1.5 font-bold shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                          DEMO LOGIN:
+                        </span>
+                        <span className="text-white/90 truncate ml-2">
+                          ID: <strong className="text-amber-200 font-bold">{project.demoCredentials.username}</strong> &bull; PASS: <strong className="text-amber-200 font-bold">{project.demoCredentials.password}</strong>
+                        </span>
+                      </div>
+                    )}
+
                     {/* Bottom Action Bar */}
                     <div className="flex items-center justify-between gap-3 pt-1">
                       <button
@@ -503,6 +520,31 @@ const Projects = () => {
                   </div>
                 </div>
 
+                {/* Optional Demo Credentials Notice */}
+                {selectedProject.demoCredentials && (
+                  <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/40 via-yellow-950/20 to-amber-950/40 border border-amber-400/50 shadow-[0_0_25px_rgba(251,191,36,0.15)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+                      <div>
+                        <span className="text-xs font-mono font-bold text-amber-300 uppercase tracking-widest block">
+                          🔒 LIVE DEMO LOGIN CREDENTIALS
+                        </span>
+                        <span className="text-[11px] font-mono text-white/60">
+                          Enter these credentials when prompted by the site:
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs font-mono shrink-0">
+                      <span className="px-3 py-1.5 rounded-lg bg-black/70 border border-amber-400/40 text-white font-bold">
+                        USER: <span className="text-amber-300">{selectedProject.demoCredentials.username}</span>
+                      </span>
+                      <span className="px-3 py-1.5 rounded-lg bg-black/70 border border-amber-400/40 text-white font-bold">
+                        PASS: <span className="text-amber-300">{selectedProject.demoCredentials.password}</span>
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Subtitle & Deep Description */}
                 <div className="space-y-3">
                   <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-bold">
@@ -556,7 +598,7 @@ const Projects = () => {
 
               {/* Modal Footer Action Buttons */}
               <div className="p-6 bg-[#0a1426] border-t border-cyan-400/30 flex flex-wrap items-center justify-between gap-4">
-                <div>
+                <div className="flex flex-wrap items-center gap-3">
                   {selectedProject.liveUrl && (
                     <a
                       href={selectedProject.liveUrl}
@@ -567,6 +609,14 @@ const Projects = () => {
                       <span>VISIT LIVE PLATFORM</span>
                       <span>↗</span>
                     </a>
+                  )}
+                  {selectedProject.demoCredentials && (
+                    <div className="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-400/30 text-xs font-mono text-amber-300 flex items-center gap-2">
+                      <span className="text-white/60">LOGIN:</span>
+                      <span>ID: <strong className="text-amber-200">{selectedProject.demoCredentials.username}</strong></span>
+                      <span className="text-white/30">|</span>
+                      <span>PASS: <strong className="text-amber-200">{selectedProject.demoCredentials.password}</strong></span>
+                    </div>
                   )}
                 </div>
 
